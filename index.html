@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7b159d">
+  <meta name="description" content="Comunidade Alma Cuidada — curadoria de conteúdo terapêutico, livroterapia dirigida e uma comunidade acolhedora para desenvolvimento emocional no seu ritmo.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Comunidade Alma Cuidada">
+  <meta property="og:description" content="Um espaço seguro para nutrir, acolher e expandir a sua alma.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://almacuidada.vercel.app/">
+  <meta property="og:image" content="https://almacuidada.vercel.app/assets/og-alma-cuidada.jpg">
+  <meta property="og:image:alt" content="Open Graph da Comunidade Alma Cuidada com espiral suave e a frase: Um espaço seguro para nutrir, acolher e expandir a sua alma.">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Comunidade Alma Cuidada">
+  <meta name="twitter:description" content="Um espaço seguro para nutrir, acolher e expandir a sua alma.">
+  <meta name="twitter:image" content="https://almacuidada.vercel.app/assets/og-alma-cuidada.jpg">
+  <link rel="canonical" href="https://almacuidada.vercel.app/">
+  <title>Comunidade Alma Cuidada | Livroterapia & Curadoria Terapêutica</title>
+  <style>
+    :root{
+      --bg:#f6eddf;
+      --bg-soft:#fffaf2;
+      --paper:#fffdf9;
+      --ink:#2b2530;
+      --muted:#706773;
+      --purple:#7d159f;
+      --purple-2:#9846a7;
+      --purple-3:#5a0e78;
+      --mauve:#9b7186;
+      --olive:#aaa164;
+      --olive-2:#8f8954;
+      --green:#6fd84f;
+      --teal:#12a6ba;
+      --line:rgba(91,61,88,.14);
+      --shadow:0 24px 60px rgba(91,49,86,.12);
+      --shadow-soft:0 12px 32px rgba(91,49,86,.09);
+      --radius:28px;
+      --radius-sm:18px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55;overflow-x:hidden}
+    body.menu-open{overflow:hidden}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    button,input,textarea{font:inherit}
+    .container{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
+    .section{padding:94px 0;position:relative}
+    .section-tight{padding:64px 0}
+    .serif{font-family:Georgia,"Times New Roman",serif}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.76rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--purple)}
+    .eyebrow:before{content:"";width:28px;height:2px;background:linear-gradient(90deg,var(--purple),var(--olive));border-radius:99px}
+    .title{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.6rem,5vw,5rem);line-height:.98;letter-spacing:-.035em;margin:14px 0 0;background:linear-gradient(90deg,#78129f 8%,#8f4f8a 56%,#9e965f);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 8px 14px rgba(76,35,68,.08)}
+    .title.small{font-size:clamp(2.1rem,3.6vw,3.6rem)}
+    .lead{font-size:clamp(1.02rem,1.5vw,1.2rem);color:#767047;max-width:760px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:900;border:1px solid transparent;cursor:pointer;transition:.25s ease;box-shadow:0 12px 30px rgba(93,32,92,.12)}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(93,32,92,.18)}
+    .btn-primary{color:#fff;background:linear-gradient(100deg,var(--purple) 0%,#963b9d 52%,var(--olive) 100%)}
+    .btn-green{color:#fff;background:linear-gradient(90deg,var(--teal),#6dda51)}
+    .btn-ghost{background:rgba(255,255,255,.7);border-color:rgba(125,21,159,.16);color:var(--purple)}
+    .trust-row{display:flex;flex-wrap:wrap;gap:18px;color:#7a696f;font-size:.82rem;margin-top:18px}
+    .trust-row span{display:inline-flex;align-items:center;gap:7px}
+    .trust-dot{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#fff;font-size:.68rem;font-weight:900}
+
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:50;background:rgba(246,237,223,.86);backdrop-filter:blur(18px);border-bottom:1px solid rgba(125,21,159,.09)}
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:11px;min-width:205px}
+    .brand svg{width:48px;height:48px;flex:0 0 48px}
+    .brand-copy{display:flex;flex-direction:column;font-family:Georgia,"Times New Roman",serif;line-height:.82}
+    .brand-copy strong{font-size:1.55rem;letter-spacing:.03em;color:#111}
+    .brand-copy small{font-family:ui-sans-serif,system-ui;font-size:.55rem;letter-spacing:.4em;color:var(--purple);margin-top:8px;font-weight:900}
+    .nav-links{display:flex;align-items:center;gap:26px;color:#6b5c67;font-size:.88rem;font-weight:800}
+    .nav-links a:hover{color:var(--purple)}
+    .menu-btn{display:none;border:0;background:transparent;width:44px;height:44px;border-radius:12px;place-items:center;color:var(--purple);font-size:1.5rem}
+
+    /* Hero */
+    .hero{padding:76px 0 66px;overflow:hidden}
+    .hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none}
+    .hero:before{width:560px;height:560px;right:-180px;top:-160px;background:radial-gradient(circle,rgba(148,72,160,.20),rgba(148,72,160,0) 70%)}
+    .hero:after{width:470px;height:470px;left:-220px;bottom:-300px;background:radial-gradient(circle,rgba(176,168,101,.18),rgba(176,168,101,0) 70%)}
+    .top-pill{display:inline-flex;align-items:center;min-height:38px;padding:0 20px;border-radius:999px;color:#fff;font-size:.72rem;font-weight:900;background:linear-gradient(90deg,var(--purple),var(--olive));box-shadow:var(--shadow-soft)}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center;position:relative;z-index:1}
+    .hero-copy h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3.15rem,6vw,6.25rem);line-height:.92;letter-spacing:-.052em;margin:34px 0 24px;background:linear-gradient(95deg,#9c975d 0%,#7f10a3 28%,#84508b 67%,#a28d74 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 8px 16px rgba(76,35,68,.08)}
+    .hero-copy .lead{max-width:650px}
+    .hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:30px}
+    .hero-media{position:relative;padding:16px 18px 18px}
+    .hero-media:before{content:"";position:absolute;inset:-16px 10% 8px 4%;border:2px solid rgba(125,21,159,.18);border-radius:44% 56% 48% 52% / 57% 47% 53% 43%;transform:rotate(-3deg)}
+    .hero-media:after{content:"";position:absolute;inset:14% -10% -4% 22%;border:2px solid rgba(170,161,100,.24);border-radius:50%;z-index:-1}
+    .hero-image{border-radius:34px;overflow:hidden;box-shadow:0 30px 70px rgba(73,38,71,.18);position:relative;background:#ddd;aspect-ratio:1.23/1}
+    .hero-image img{width:100%;height:100%;object-fit:cover}
+    .float-note{position:absolute;z-index:3;max-width:240px;padding:12px 16px;border-radius:16px;background:linear-gradient(90deg,rgba(125,21,159,.88),rgba(151,76,157,.78));color:#fff;font-size:.77rem;line-height:1.15;font-style:italic;box-shadow:0 16px 36px rgba(76,30,74,.17)}
+    .float-note.one{left:-16px;top:34%}.float-note.two{right:-24px;bottom:18%}
+
+    /* Generic layouts */
+    .center{text-align:center}.center .lead{margin:20px auto 0}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .card{background:rgba(255,255,255,.66);border:1px solid rgba(125,21,159,.10);border-radius:var(--radius);box-shadow:var(--shadow-soft)}
+    .icon{width:54px;height:54px;border-radius:17px;display:grid;place-items:center;background:#fff9e7;border:1px solid rgba(170,161,100,.22);font-size:1.5rem;box-shadow:0 8px 20px rgba(75,45,70,.07)}
+
+    /* Intro */
+    .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:center}
+    .intro-grid--single{grid-template-columns:1fr;max-width:940px}
+    .intro-copy--wide{max-width:940px;margin:0 auto}
+    .intro-copy--wide .title.small{max-width:760px}
+    .intro-copy--wide p{max-width:860px;font-size:1.08rem}
+    .intro-copy--wide .mini{margin-top:26px}
+    .intro-photo{border-radius:34px;overflow:hidden;box-shadow:var(--shadow);position:relative}
+    .intro-photo img{width:100%;aspect-ratio:1.2/1;object-fit:cover}
+    .intro-photo.spiral-breath{background:linear-gradient(135deg,rgba(245,238,227,.96),rgba(237,225,241,.92));}
+    .intro-photo.spiral-breath img{animation:spiralBreathe 8s ease-in-out infinite;transform-origin:center center;filter:saturate(1.02) brightness(1.01)}
+    @keyframes spiralBreathe{0%{transform:scale(1) rotate(0deg)}25%{transform:scale(1.035) rotate(1.2deg)}50%{transform:scale(1.065) rotate(0deg)}75%{transform:scale(1.035) rotate(-1.2deg)}100%{transform:scale(1) rotate(0deg)}}
+    .intro-copy p{font-size:1.08rem;color:#817851}
+    .intro-copy .mini{margin-top:28px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .mini div{padding:16px 17px;border:1px solid rgba(125,21,159,.10);border-radius:18px;background:rgba(255,255,255,.5);font-size:.86rem;color:#6a586c}
+
+    /* Pillars */
+    .pillars{padding-top:8px}
+    .pillar-card{position:relative;overflow:hidden;padding:28px 28px 24px;min-height:330px;background:linear-gradient(145deg,#7c159c 0%,#92578a 58%,#aaa164 120%);color:#fff;border-radius:24px;box-shadow:var(--shadow-soft)}
+    .pillar-card:after{content:"";position:absolute;right:-70px;bottom:-70px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.08)}
+    .pillar-card h3{font-size:1.28rem;margin:18px 0 14px}
+    .pillar-card p{font-size:.91rem;color:#fff7f8;margin:0}
+    .pillar-foot{position:absolute;left:28px;right:28px;bottom:22px;border-top:1px solid rgba(255,255,255,.6);padding-top:15px;font-family:Georgia,"Times New Roman",serif;font-size:.86rem}
+    .check-green{color:#75ed56;font-weight:900;margin-right:6px}
+
+    /* Platform */
+    .platform{background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.48));overflow:hidden}
+    .platform-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:54px;align-items:center}
+    .platform-copy ul{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .platform-copy li{display:flex;gap:10px;align-items:flex-start;padding:14px;border-radius:15px;background:rgba(255,255,255,.58);font-size:.86rem;color:#675d67}
+    .platform-copy li b{color:var(--purple)}
+    .device-stage{position:relative;min-height:500px;display:grid;place-items:center}
+    .device-stage:before{content:"";position:absolute;width:88%;height:74%;border:16px double rgba(147,70,160,.20);border-radius:48%;transform:rotate(7deg)}
+    .laptop{width:88%;border-radius:22px;overflow:hidden;border:8px solid #222;background:#111;box-shadow:0 36px 70px rgba(50,27,49,.25);position:relative;z-index:2}
+    .laptop img{width:100%;aspect-ratio:1.62/1;object-fit:cover}
+    .phone{position:absolute;z-index:3;right:1%;bottom:1%;width:23%;border-radius:28px;overflow:hidden;border:7px solid #171717;background:#111;box-shadow:0 24px 50px rgba(50,27,49,.28)}
+    .phone img{width:100%;aspect-ratio:.52/1;object-fit:cover}
+    .device-note{position:absolute;z-index:4;padding:12px 16px;border-radius:15px;color:#fff;background:linear-gradient(90deg,var(--purple),#b579bb);max-width:230px;font-size:.77rem;line-height:1.2}.device-note.n1{top:12%;right:-1%}.device-note.n2{bottom:12%;left:0}
+
+    /* How it works */
+    .how-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:54px;align-items:center}
+    .rhythm{margin:16px 0 22px;font-weight:900;letter-spacing:.06em;color:var(--purple)}
+    .steps{display:grid;gap:12px;margin-top:28px}
+    .step{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:17px 18px;border:1px solid rgba(141,134,81,.55);border-radius:18px;background:rgba(255,255,255,.36)}
+    .step-num{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--olive);color:#fff;font-weight:900}
+    .step h4{margin:0;color:var(--olive-2);font-size:1rem}.step p{margin:3px 0 0;color:#827951;font-size:.9rem}
+    .phone-frame{width:min(340px,78vw);margin:auto;background:#111;border-radius:46px;border:12px solid #111;overflow:hidden;box-shadow:var(--shadow)}
+    .phone-frame img{width:100%;aspect-ratio:.51/1;object-fit:cover}
+
+    /* Content showcase */
+    .showcase{background:#fff8ee}
+    .showcase-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px}
+    .content-track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(210px,1fr);gap:16px;overflow-x:auto;padding:6px 2px 22px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+    .content-card{scroll-snap-align:start;min-height:280px;border-radius:24px;padding:20px;background:linear-gradient(160deg,#7c159c,#924f8b 60%,#a59c62);color:#fff;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+    .content-card:before{content:"";position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.08);right:-40px;top:-30px}
+    .content-card .cover{height:150px;border-radius:16px;background:rgba(255,255,255,.95);display:grid;place-items:center;color:var(--purple);font-family:Georgia,"Times New Roman",serif;font-size:1.25rem;text-align:center;padding:18px;box-shadow:inset 0 0 0 1px rgba(125,21,159,.08)}
+    .content-card b{font-size:.98rem}.content-card small{color:#f9ecf9}
+
+    /* Benefits */
+    .benefit-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+    .benefit-item{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:18px;background:linear-gradient(90deg,rgba(125,21,159,.08),rgba(170,161,100,.12));border:1px solid rgba(125,21,159,.10);font-weight:800;color:#6d4a72}
+    .gift{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:#fff4dc;color:var(--purple);font-size:1.2rem;flex:0 0 38px}
+
+    /* Value + practical */
+    .value-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:24px}
+    .value-box,.practical-box{padding:30px}
+    .value-small-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+    .value-small{padding:18px;border:1px solid rgba(170,161,100,.45);border-radius:20px;background:rgba(255,255,255,.42)}
+    .value-small h4{font-family:Georgia,"Times New Roman",serif;font-size:1.18rem;color:var(--purple);margin:0 0 5px}.value-small p{font-size:.82rem;color:#795c78;margin:0}
+    .practical-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+    .practical-card{text-align:center;padding:20px 14px;border-radius:18px;background:#fff9f1;border:1px solid rgba(125,21,159,.08)}
+    .practical-card .picon{font-size:1.7rem}.practical-card h4{font-family:Georgia,"Times New Roman",serif;color:var(--purple);margin:12px 0 6px;font-size:1rem}.practical-card p{font-size:.76rem;color:#6d626d;margin:0}
+    .quote{margin-top:16px;padding:20px 26px;border-radius:18px;background:linear-gradient(90deg,var(--purple),#8860a0);color:#fff;text-align:center;font-style:italic}
+
+    /* Impact + founder */
+    .split-cards{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}
+    .impact-card,.founder-card{padding:36px}
+    .impact-graphic{display:grid;grid-template-columns:repeat(5,46px);gap:8px;margin:26px 0 24px}.person-dot{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#f3e1f3;color:var(--purple);font-size:1.25rem}.person-dot.free{background:#dff6d5;color:#3d9930;box-shadow:0 0 0 4px rgba(111,216,79,.18)}
+    .impact-card h3,.founder-card h3{font-family:Georgia,"Times New Roman",serif;color:var(--purple);font-size:2rem;margin:0}
+    .impact-card .bigline{font-family:Georgia,"Times New Roman",serif;font-size:1.5rem;color:#745376;line-height:1.15;margin:14px 0}
+    .impact-card p,.founder-copy p{color:#776b73;font-size:.92rem}
+    .founder-wrap{display:grid;grid-template-columns:190px 1fr;gap:24px;align-items:start}.founder-photo{border-radius:24px;overflow:hidden;border:4px solid rgba(125,21,159,.4);box-shadow:var(--shadow-soft)}.founder-photo img{width:100%;aspect-ratio:1/1.05;object-fit:cover}.credentials{font-weight:900;color:var(--olive-2);font-size:.86rem;margin:9px 0 12px}.signature{font-family:Georgia,"Times New Roman",serif;font-style:italic;color:#85677a;font-size:1.25rem;margin-top:14px}
+
+    /* Testimonials */
+    .testimonial-grid{display:grid;grid-template-columns:.58fr 1.42fr;gap:30px;align-items:start}.rating{color:#d4b800;font-size:1.5rem;letter-spacing:.1em}.rating-copy{font-size:.78rem;color:#8f8954;font-weight:900}.quotes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.testimonial{padding:22px;border-radius:22px;background:#fff;border:1px solid rgba(125,21,159,.08);box-shadow:0 9px 24px rgba(69,43,65,.06)}.test-head{display:flex;align-items:center;gap:12px}.avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#f1e8e6;color:#8d538f;font-weight:900}.test-head strong{display:block;font-size:.9rem}.test-head small{font-size:.72rem;color:#756b75}.testimonial blockquote{margin:18px 0 0;font-size:.86rem;color:#3c343d;font-style:italic;line-height:1.55}
+
+    /* Pricing */
+    .pricing{background:linear-gradient(180deg,#f9f0e4,#f4e8d8)}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:38px;align-items:stretch}.price-card{padding:30px;border-radius:28px;background:linear-gradient(145deg,#7d159f 0%,#92598d 60%,#a79d64 120%);color:#fff;position:relative;box-shadow:var(--shadow);display:flex;flex-direction:column}.price-card.best{outline:3px solid var(--green);transform:translateY(-8px)}.best-ribbon{position:absolute;top:-18px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--teal),#6bd650);padding:8px 18px;border-radius:999px;font-size:.74rem;font-weight:900;white-space:nowrap}.plan-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.plan-name{padding:6px 12px;background:linear-gradient(90deg,#7d159f,#a99968);font-weight:900}.save-badge{background:#fff;color:var(--purple);border-radius:999px;padding:6px 10px;font-weight:900;font-size:.78rem}.plan-desc{min-height:68px;margin:14px 0 12px;font-size:.9rem;font-style:italic}.price{display:flex;align-items:flex-start;justify-content:center;gap:4px;margin:10px 0 14px}.price .currency{font-weight:900;margin-top:13px}.price strong{font-size:5.3rem;line-height:.92;font-weight:900}.price .suffix{font-size:1.1rem;font-weight:900;margin-top:20px}.subprice{text-align:center;margin-top:-5px;font-weight:800;font-style:italic}.features{list-style:none;padding:0;margin:24px 0 24px;display:grid;gap:10px}.features li{font-size:.84rem;font-weight:800;display:flex;gap:8px}.features li:before{content:"✓";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--green);color:#fff;flex:0 0 20px}.price-card .btn{margin-top:auto;border:1px solid rgba(255,255,255,.35)}.pricing-trust{justify-content:center;margin-top:34px}.guarantee-note{text-align:center;color:var(--purple);margin-top:20px;font-size:.9rem}.guarantee-note strong{display:block}
+
+    /* FAQ */
+    .faq-grid{display:grid;grid-template-columns:.56fr 1.44fr;gap:52px}.faq-list{display:grid;gap:13px}.faq-item{border-radius:18px;overflow:hidden;background:linear-gradient(90deg,#9f4aa8,#a5a068);color:#fff;box-shadow:var(--shadow-soft)}.faq-item summary{list-style:none;cursor:pointer;padding:19px 52px 19px 20px;font-weight:900;position:relative}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{content:"+";position:absolute;right:20px;top:15px;font-size:1.5rem}.faq-item[open] summary:after{content:"–"}.faq-item p{margin:0;padding:0 20px 20px;color:#fffefa;font-size:.94rem}.contact-strip{text-align:center;padding-top:50px;color:#8f8954;font-weight:900}.contact-strip .btn{margin-top:18px}
+
+    /* Footer */
+    .footer{background:linear-gradient(100deg,#7d159f,#9d7188 64%,#8f745f);color:#fff;padding:52px 0 22px}.footer-grid{display:grid;grid-template-columns:1.05fr .8fr 1fr;gap:56px}.footer .brand-copy strong{color:#fff}.footer .brand-copy small{color:#ead3f0}.footer p{color:#fff4f4;font-size:.86rem}.footer h4{color:#c1b864;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase}.footer-links{display:grid;gap:7px;font-size:.84rem}.footer-links a:hover{text-decoration:underline}.support{display:grid;gap:12px;font-size:.86rem}.support span{display:flex;gap:9px;align-items:flex-start}.footer-bottom{display:flex;justify-content:space-between;gap:20px;border-top:1px solid rgba(255,255,255,.42);padding-top:20px;margin-top:30px;font-size:.72rem;color:#fff3f6}.footer-legal{display:flex;gap:20px}
+    .wa-float{position:fixed;right:20px;bottom:20px;z-index:60;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#27c669;color:#fff;font-size:1.55rem;box-shadow:0 16px 35px rgba(30,120,68,.28);transition:.2s}.wa-float:hover{transform:translateY(-3px) scale(1.03)}
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}.reveal.show{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+    @media(max-width:980px){
+      .nav-links{display:none}.menu-btn{display:grid}.nav>.btn{display:none}
+      .mobile-menu{display:none;position:fixed;inset:78px 0 0;background:rgba(246,237,223,.98);z-index:49;padding:30px}.mobile-menu.open{display:block}.mobile-menu a{display:block;padding:16px 0;border-bottom:1px solid var(--line);font-weight:900;color:var(--purple)}
+      .hero-grid,.intro-grid,.platform-grid,.how-grid,.value-grid,.split-cards,.testimonial-grid,.faq-grid{grid-template-columns:1fr}
+      .hero-copy h1{font-size:clamp(3.6rem,10vw,6rem)}.hero-media{max-width:700px;margin:auto}.float-note.one{left:0}.float-note.two{right:0}
+      .grid-3{grid-template-columns:1fr}.pillar-card{min-height:290px}
+      .platform-grid{gap:22px}.device-stage{min-height:470px}.platform-copy ul{grid-template-columns:repeat(2,1fr)}
+      .benefit-list{grid-template-columns:repeat(2,1fr)}.practical-cards{grid-template-columns:repeat(2,1fr)}
+      .pricing-grid{grid-template-columns:1fr;max-width:620px;margin-inline:auto}.price-card.best{transform:none;margin-top:14px}
+      .footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}
+    }
+    @media(max-width:640px){
+      .container{width:min(calc(100% - 28px),var(--max))}.section{padding:72px 0}.nav{height:68px}.mobile-menu{inset:68px 0 0}.brand{min-width:auto}.brand-copy strong{font-size:1.25rem}.brand svg{width:40px;height:40px}
+      .hero{padding-top:52px}.hero-copy h1{font-size:clamp(3.2rem,15vw,5.2rem)}.hero-actions{align-items:stretch}.hero-actions .btn{width:100%}.hero-media{padding:8px}.hero-image{border-radius:26px}.float-note{font-size:.68rem;max-width:180px}.float-note.one{top:28%}.float-note.two{bottom:10%}
+      .title{font-size:clamp(2.6rem,13vw,4rem)}.title.small{font-size:clamp(2.2rem,10vw,3.2rem)}
+      .intro-copy .mini,.platform-copy ul,.value-small-grid,.quotes-grid,.benefit-list,.practical-cards{grid-template-columns:1fr}
+      .intro-copy{order:1}.intro-photo{order:2;margin-top:8px}
+      .intro-grid--single{gap:24px}
+      .intro-copy--wide .title.small{max-width:none}
+      .intro-copy--wide p{max-width:none;font-size:1rem}
+      .device-stage{min-height:330px}.device-note{display:none}.laptop{width:96%;border-width:5px}.phone{width:27%;right:0;border-width:4px}
+      .showcase-head{display:block}.showcase-head .btn{margin-top:18px}.content-track{grid-auto-columns:78%}
+      .founder-wrap{grid-template-columns:1fr}.founder-photo{max-width:280px}.impact-graphic{grid-template-columns:repeat(5,38px)}.person-dot{width:38px;height:38px}
+      .footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column}.footer-legal{flex-wrap:wrap}
+      .price strong{font-size:4.6rem}.top-pill{font-size:.62rem;padding-inline:14px}.wa-float{width:52px;height:52px}
+      .trust-row{justify-content:center;text-align:center;width:100%;margin-left:auto;margin-right:auto}
+      .trust-row span{justify-content:center}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#topo" aria-label="Alma Cuidada - início">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#7d159f" stroke-width="2"/><path d="M49 28c2-11-9-19-18-14-8 4-9 15-2 20 7 5 15 0 14-7-.7-5-6-7-10-4-4 3-3 9 1 12 8 6 20-1 20-12" fill="none" stroke="#7d159f" stroke-width="2.5" stroke-linecap="round"/><path d="M15 42c8 8 20 10 30 4" fill="none" stroke="#9c5ea7" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="brand-copy"><strong>alma cuidada</strong><small>COMUNIDADE</small></span>
+      </a>
+      <a class="btn btn-primary" href="#planos" data-track="header_cta">Quero fazer parte</a>
+    </div>
+  </header>
+  <main id="topo">
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="top-pill">CURADORIA DE CONTEÚDO TERAPÊUTICO &amp; LIVROTERAPIA</span>
+          <h1>Um espaço seguro para nutrir, acolher e expandir a sua alma.</h1>
+          <p class="lead">Deixe de se perder no caos do mundo digital. Tenha acesso a um ecossistema cuidadosamente desenhado para a sua saúde emocional, unindo livroterapia guiada, reflexões profundas e acolhimento terapêutico em grupo.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#planos" data-track="hero_cta">Quero fazer parte</a><a class="btn btn-ghost" href="#como-funciona">Ver como funciona</a></div>
+          <div class="trust-row"><span><i class="trust-dot">✓</i>Cancelamento fácil</span><span><i class="trust-dot">✓</i>Compra segura</span><span><i class="trust-dot">✓</i>7 dias de garantia</span></div>
+        </div>
+        <div class="hero-media reveal">
+          <div class="hero-image"><img src="https://almacuidada-lyk6vmc9v-schuindt.vercel.app/assets/hero-meditacao.jpg" alt="Mulher em postura de meditação ao ar livre" fetchpriority="high"></div>
+          <div class="float-note one">A leitura cura o que a agitação do mundo tenta fragmentar.</div>
+          <div class="float-note two">Comunidade viva, apoio emocional contínuo.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="comunidade">
+      <div class="container intro-grid intro-grid--single">
+        <div class="intro-copy intro-copy--wide reveal">
+          <span class="eyebrow">O que é</span><h2 class="title small">O que é a Comunidade Alma Cuidada?</h2>
+          <p>Não somos um clube de leitura convencional, nem apenas mais um curso de autoajuda. Somos uma curadoria profunda e ativa, pensada para quem procura resgatar a sua essência, acalmar a mente e crescer emocionalmente no seu próprio ritmo.</p>
+          <div class="mini"><div><strong>Curadoria intencional</strong><br>Menos excesso, mais direção.</div><div><strong>Ritmo possível</strong><br>Conteúdo para acompanhar sua rotina.</div><div><strong>Prática reflexiva</strong><br>Transforme leitura em autoconhecimento.</div><div><strong>Espaço acolhedor</strong><br>Comunidade moderada e colaborativa.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight pillars">
+      <div class="container grid-3">
+        <article class="pillar-card reveal"><div class="icon">🧭</div><h3>Curadoria Especializada</h3><p>Filtramos o que há de melhor e mais fundamentado em psicologia, filosofia e desenvolvimento pessoal. Conteúdos essenciais para você consumir o que realmente pode contribuir com o seu processo de forma segura.</p><div class="pillar-foot"><span class="check-green">●</span>Sem conteúdos superficiais</div></article>
+        <article class="pillar-card reveal"><div class="icon">📖</div><h3>Livroterapia Dirigida</h3><p>A literatura como espelho da alma ajuda a refletir melhor. Você recebe obras significativas, reflexões terapêuticas e práticas de autocuidado para transformar palavras em ferramentas de autoconhecimento.</p><div class="pillar-foot"><span class="check-green">●</span>Leituras com propósito ativo</div></article>
+        <article class="pillar-card reveal"><div class="icon">👥</div><h3>Comunidade Colaborativa</h3><p>Caminhar sozinho é desafiador. Nosso espaço reúne pessoas com o mesmo anseio de evolução, em um ambiente acolhedor, moderado e orientado ao cuidado emocional e terapêutico.</p><div class="pillar-foot"><span class="check-green">●</span>Um refúgio seguro e acolhedor</div></article>
+      </div>
+    </section>
+
+    <section class="section platform">
+      <div class="container platform-grid">
+        <div class="platform-copy reveal"><span class="eyebrow">Tudo em um só lugar</span><h2 class="title small">Plataforma com área de membros</h2><p class="lead">Uma experiência digital acolhedora para organizar conteúdos, livros, práticas e encontros sem transformar o autocuidado em mais uma tarefa.</p><ul><li><b>✦</b><span>Ambiente intuitivo e acolhedor</span></li><li><b>✦</b><span>Conteúdo sempre atual</span></li><li><b>✦</b><span>Comunidade ativa</span></li><li><b>✦</b><span>Acesso em qualquer lugar</span></li></ul></div>
+        <div class="device-stage reveal"><div class="laptop"><img src="https://almacuidada-lyk6vmc9v-schuindt.vercel.app/assets/plataforma-dashboard.jpg" alt="Área de membros Alma Cuidada em tela de computador" loading="lazy"></div><div class="phone"><img src="https://almacuidada-lyk6vmc9v-schuindt.vercel.app/assets/plataforma-mobile.jpg" alt="Área de membros Alma Cuidada no celular" loading="lazy"></div><div class="device-note n1">Tudo que você precisa para evoluir, em um só lugar.</div><div class="device-note n2">Conteúdo curado com carinho e propósito.</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="como-funciona">
+      <div class="container how-grid">
+        <div class="reveal"><span class="eyebrow">Ritmo leve e prático</span><h2 class="title small">Como funciona a Comunidade Alma Cuidada?</h2><p class="lead">Você recebe um acompanhamento de modo leve e prático. Os conteúdos chegam pelo grupo VIP da comunidade e podem ser consumidos no seu tempo, de acordo com a sua rotina, sem pressão para “ficar em dia”.</p>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div><h4>Acesso a uma curadoria terapêutica incrível</h4><p>No primeiro dia de cada ciclo, partilhamos o calendário sugerido e os temas terapêuticos fundamentais.</p></div></div>
+            <div class="step"><div class="step-num">2</div><div><h4>Insights para o seu autoconhecimento</h4><p>Análises e reflexões em áudio ou vídeo curto para ouvir e ver onde e quando quiser.</p></div></div>
+            <div class="step"><div class="step-num">3</div><div><h4>Encontro mensal ao vivo e gravado</h4><p>Círculo virtual acolhedor para debater a obra, partilhar sentimentos e realizar dinâmicas de reflexão.</p></div></div>
+            <div class="step"><div class="step-num">4</div><div><h4>Acesso contínuo a outros benefícios</h4><p>Um espaço privado para interagir de forma empática e construtiva com os demais membros.</p></div></div>
+          </div>
+          <div style="margin-top:28px"><a class="btn btn-primary" href="#planos">Quero fazer parte</a></div>
+        </div>
+        <div class="reveal"><div class="phone-frame"><img src="https://almacuidada-lyk6vmc9v-schuindt.vercel.app/assets/plataforma-mobile.jpg" alt="Conteúdos da comunidade no aplicativo" loading="lazy"></div></div>
+      </div>
+    </section>
+
+    <section class="section showcase" id="beneficios">
+      <div class="container">
+        <div class="showcase-head reveal"><div><span class="eyebrow">Curadoria viva</span><h2 class="title small">Conteúdo que acompanha sua jornada</h2><p class="lead">Uma biblioteca dinâmica com leituras, áudios, desafios, masterclasses e práticas que chegam aos poucos para gerar profundidade — não sobrecarga.</p></div><a class="btn btn-ghost" href="#planos">Ver planos</a></div>
+        <div class="content-track reveal" aria-label="Exemplos de conteúdos da comunidade">
+          <article class="content-card"><div class="cover">Geração<br>Ansiosa</div><div><b>Livroterapia</b><br><small>Leitura guiada e roteiro reflexivo</small></div></article>
+          <article class="content-card"><div class="cover">Acalme-se<br>Desafio 8 Dias</div><div><b>Desafio terapêutico</b><br><small>Prática breve com acompanhamento</small></div></article>
+          <article class="content-card"><div class="cover">Toda Ansiedade<br>Merece um Abraço</div><div><b>Insight semanal</b><br><small>Reflexões para o cotidiano</small></div></article>
+          <article class="content-card"><div class="cover">Masterclass<br>Livroterapia</div><div><b>Masterclass mensal</b><br><small>Conteúdo aprofundado ao vivo</small></div></article>
+          <article class="content-card"><div class="cover">Mindfulness<br>Salmo 23</div><div><b>Prática contemplativa</b><br><small>Presença, espiritualidade e cuidado</small></div></article>
+        </div>
+
+        <div class="center reveal" style="margin-top:46px"><h2 class="title small">Benefícios de Ser Alma Cuidada</h2></div>
+        <div class="benefit-list reveal">
+          <div class="benefit-item"><span class="gift">🎁</span>R$ 100 de desconto mensal no plano terapêutico individual</div><div class="benefit-item"><span class="gift">🎧</span>Acesso a ebooks autorais e audiobooks</div><div class="benefit-item"><span class="gift">📚</span>Estante terapêutica</div><div class="benefit-item"><span class="gift">🧒</span>Livroterapia infantil</div><div class="benefit-item"><span class="gift">📺</span>Masterclass mensal</div><div class="benefit-item"><span class="gift">🧠</span>Dinâmicas terapêuticas</div><div class="benefit-item"><span class="gift">✝</span>Discipulendo — Fé &amp; espiritualidade</div><div class="benefit-item"><span class="gift">📖</span>Clube do livro</div><div class="benefit-item"><span class="gift">🎓</span>Curadoria educacional</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container value-grid">
+        <div class="card value-box reveal"><span class="eyebrow">Por que você vai se transformar por aqui?</span><div class="value-small-grid"><div class="value-small"><h4>Conteúdo de Alto Valor</h4><p>Materiais selecionados para apoiar seu processo.</p></div><div class="value-small"><h4>Insights Terapêuticos</h4><p>Dicas e exercícios que favorecem o autoconhecimento.</p></div><div class="value-small"><h4>Livros que Inspiram</h4><p>Obras que tocam a alma e ampliam perspectivas.</p></div><div class="value-small"><h4>Plataforma Inovadora</h4><p>Experiência digital moderna, simples e acolhedora.</p></div></div></div>
+        <div class="card practical-box reveal"><h2 class="title small">O Poder Prático da Livroterapia</h2><div class="practical-cards"><div class="practical-card"><div class="picon">🧠</div><h4>Redução do Stress</h4><p>A leitura guiada pode favorecer pausas, presença e desaceleração cotidiana.</p></div><div class="practical-card"><div class="picon">🤝</div><h4>Identificação &amp; Catarse</h4><p>Histórias ajudam a reconhecer que inquietações humanas podem ser compartilhadas.</p></div><div class="practical-card"><div class="picon">🪶</div><h4>Expressão de Emoções</h4><p>Roteiros reflexivos ajudam a nomear sentimentos difíceis de expressar.</p></div><div class="practical-card"><div class="picon">🎭</div><h4>Empatia Profunda</h4><p>Outras perspectivas podem ampliar a compreensão de si e das relações.</p></div></div><div class="quote">“A biblioterapia utiliza a literatura para criar pontes entre o mundo interno e externo do leitor.”</div></div>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container split-cards">
+        <article class="card impact-card reveal"><span class="eyebrow">Impacto Social</span><h3>Impacto Social</h3><div class="impact-graphic" aria-label="Quatro assinantes ajudam a oferecer um acesso gratuito"><span class="person-dot">●</span><span class="person-dot">●</span><span class="person-dot">●</span><span class="person-dot">●</span><span class="person-dot free">♥</span></div><div class="bigline">A cada 4 assinantes você ajuda a presentear <strong>1 acesso gratuito.</strong></div><p>A sua assinatura não transforma apenas a sua vida. Parte desse ecossistema busca ampliar o acesso ao cuidado e ao conhecimento para quem precisa, mas não tem condições de pagar.</p><a class="btn btn-primary" href="#planos">Quero fazer parte dessa corrente</a></article>
+        <article class="card founder-card reveal"><div class="founder-wrap"><div class="founder-photo"><img src="https://almacuidada-lyk6vmc9v-schuindt.vercel.app/assets/andre-schuindt.jpg" alt="André Schuindt" loading="lazy"></div><div class="founder-copy"><span class="eyebrow">Fundador da Alma Cuidada</span><h3>André Schuindt</h3><div class="credentials">Terapeuta, Psicanalista, Pedagogo, Psicopedagogo e Instrutor de Meditação</div><p>Tenho quase 10 anos de experiência no cuidado terapêutico, acolhendo pessoas com empatia e atenção integral. A proposta da Alma Cuidada nasce da união entre educação, reflexão, leitura e práticas de autocuidado.</p><p>Estou aqui para lhe ajudar de verdade. Vem ser Alma Cuidada!</p><div class="signature">André Schuindt</div></div></div></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container testimonial-grid">
+        <div class="reveal"><span class="eyebrow">Apoio real</span><h2 class="title small">Quem já é membro assinante...</h2><div class="rating" aria-label="5 estrelas">★★★★★</div><div class="rating-copy">Pontuação Média: 4.9/5 estrelas</div></div>
+        <div class="quotes-grid reveal">
+          <article class="testimonial"><div class="test-head"><span class="avatar">CR</span><div><strong>Clarisse Rodrigues</strong><small>Membro há 4 meses · Plano Semestral</small></div></div><blockquote>“Sempre adorei ler, mas com o ritmo do dia a dia acabava por desistir a meio. A organização e os áudios explicativos da comunidade ajudaram-me a recuperar o hábito ao meu próprio ritmo.”</blockquote></article>
+          <article class="testimonial"><div class="test-head"><span class="avatar">FA</span><div><strong>Fabricio Antunes</strong><small>Membro há 8 meses · Plano Anual</small></div></div><blockquote>“Procurava por desenvolvimento pessoal fundamentado e prático. A curadoria da Alma Cuidada aborda os temas com sobriedade e incentiva uma reflexão profunda sobre o nosso cotidiano.”</blockquote></article>
+          <article class="testimonial"><div class="test-head"><span class="avatar">ML</span><div><strong>Mariana Lacerda</strong><small>Membro há 2 meses · Plano Mensal</small></div></div><blockquote>“Os encontros em tempo real são extraordinários. Saber que existem outras pessoas com partilhas tão humanas ajuda a criar uma sensação incrível de pertença e respeito mútuo.”</blockquote></article>
+          <article class="testimonial"><div class="test-head"><span class="avatar">TP</span><div><strong>Teresa Pimenta</strong><small>Membro há 1 ano · Plano Anual</small></div></div><blockquote>“Este ano li obras fundamentais que nunca teria descoberto sozinha. Os roteiros reflexivos têm sido de uma enorme utilidade no meu processo.”</blockquote></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pricing" id="planos">
+      <div class="container">
+        <div class="center reveal"><span class="eyebrow">Escolha o seu ciclo de cuidado</span><h2 class="title">Escolha o seu ciclo de cuidado</h2><p class="lead">Opções pensadas para que você possa priorizar seu desenvolvimento emocional e psicológico no ritmo que faz sentido para você.</p></div>
+        <div class="pricing-grid reveal">
+          <article class="price-card"><div class="plan-top"><span class="plan-name">MENSAL</span><span class="save-badge">Sem fidelização</span></div><p class="plan-desc">Ideal para experimentar e viver a dinâmica curatorial da comunidade de forma livre.</p><div class="price"><span class="currency">R$</span><strong>47</strong><span class="suffix">/mês</span></div><ul class="features"><li>Acesso total à plataforma com login e senha</li><li>Conteúdos atualizados semanalmente</li><li>Comunidade exclusiva para compartilhar</li><li>Curadoria Terapêutica Especializada</li></ul><a class="btn btn-green plan-cta" href="https://payfast.greenn.com.br/redirect/272524" target="_blank" rel="noopener" data-plan="mensal">INICIAR MENSAL</a></article>
+          <article class="price-card"><div class="plan-top"><span class="plan-name">SEMESTRAL</span><span class="save-badge">Economia de 20%</span></div><p class="plan-desc">Uma jornada contínua e aprofundada de 6 meses. O plano mais procurado pela nossa comunidade.</p><div class="price"><span class="currency">6x R$</span><strong>42</strong><span class="suffix">,45</span></div><div class="subprice">ou R$ 227 à vista</div><ul class="features"><li>Acesso total à plataforma com login e senha</li><li>Conteúdos atualizados semanalmente</li><li>Comunidade exclusiva para compartilhar</li><li>Curadoria Terapêutica Especializada</li></ul><a class="btn btn-green plan-cta" href="https://payfast.greenn.com.br/redirect/272527" target="_blank" rel="noopener" data-plan="semestral">INICIAR SEMESTRAL</a></article>
+          <article class="price-card best"><div class="best-ribbon">Melhor escolha · ECONOMIA DE 28%</div><div class="plan-top"><span class="plan-name">ANUAL</span><span class="save-badge">Economia de 28%</span></div><p class="plan-desc">Para quem assume um compromisso firme com o próprio equilíbrio ao longo do ano.</p><div class="price"><span class="currency">12x R$</span><strong>41</strong><span class="suffix">,85</span></div><div class="subprice">ou R$ 407 à vista</div><ul class="features"><li>Acesso total à plataforma com login e senha</li><li>Conteúdos atualizados semanalmente</li><li>Comunidade exclusiva para compartilhar</li><li>Curadoria Terapêutica Especializada</li></ul><a class="btn btn-green plan-cta" href="https://payfast.greenn.com.br/redirect/272528" target="_blank" rel="noopener" data-plan="anual">INICIAR ANUAL</a></article>
+        </div>
+        <div class="trust-row pricing-trust reveal"><span><i class="trust-dot">✓</i>Cancelamento fácil sem fidelização</span><span><i class="trust-dot">✓</i>Compra segura</span><span><i class="trust-dot">✓</i>7 dias de garantia</span></div>
+        <div class="guarantee-note reveal"><strong>Garantia incondicional de 7 dias.</strong>Se considerar que a curadoria não é para você, solicite a devolução dentro do prazo informado.</div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container faq-grid">
+        <div class="reveal"><span class="eyebrow">Perguntas Frequentes</span><h2 class="title small">Esclareça as suas dúvidas</h2><p class="lead">As respostas essenciais antes de começar seu ciclo de cuidado.</p></div>
+        <div class="faq-list reveal">
+          <details class="faq-item" open><summary>Preciso ter e/ou ler o livro para poder participar?</summary><p>Não. Ter o livro é opcional. O ensino será fracionado por capítulo e você terá resumos fundamentais e áudios que apoiam a compreensão de quem não conseguiu ler. O foco está na aprendizagem prática e aplicada dos conteúdos.</p></details>
+          <details class="faq-item"><summary>Algum livro em análise está incluído na mensalidade?</summary><p>Não. A subscrição garante acesso à plataforma, aos roteiros terapêuticos digitais, às pílulas de áudio analíticas e aos círculos de conversa online. O livro pode ser adquirido na livraria de preferência ou em formato digital, quando disponível.</p></details>
+          <details class="faq-item"><summary>Posso efetuar o cancelamento a qualquer momento?</summary><p>Sim. O plano mensal permite cancelamento sem custos adicionais. Nos planos Semestral e Anual, aplicam-se as condições do período contratado, com possibilidade de cancelamento da renovação automática.</p></details>
+          <details class="faq-item"><summary>A comunidade substitui o acompanhamento psicológico?</summary><p>Não. O ecossistema funciona como apoio de desenvolvimento humano e partilha de autoconhecimento com foco na livroterapia. Não substitui acompanhamento psicológico individualizado nem terapia clínica.</p></details>
+        </div>
+      </div>
+      <div class="container contact-strip reveal"><div>Havendo quaisquer outras perguntas, pode entrar em contato e falar comigo.<br><u>Contato André Schuindt:</u></div><a class="btn btn-primary" href="https://wa.me/5522981052618?text=Ol%C3%A1%20Andr%C3%A9%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20Comunidade%20Alma%20Cuidada." target="_blank" rel="noopener">☏ WhatsApp</a></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><a class="brand" href="#topo"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="none" stroke="#fff" stroke-width="2"/><path d="M49 28c2-11-9-19-18-14-8 4-9 15-2 20 7 5 15 0 14-7-.7-5-6-7-10-4-4 3-3 9 1 12 8 6 20-1 20-12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg><span class="brand-copy"><strong>alma cuidada</strong><small>COMUNIDADE</small></span></a><p>Um refúgio seguro de leitura guiada, focado no autoconhecimento, na desaceleração das tarefas cotidianas e na reconexão emocional e espiritual.</p></div>
+      <div><h4>Links úteis</h4><div class="footer-links"><a href="#comunidade">Sobre a Comunidade</a><a href="#como-funciona">Como Funciona</a><a href="#planos">Planos e Preços</a><a href="#faq">Perguntas Frequentes</a><a href="#beneficios">Benefícios</a></div></div>
+      <div><h4>Segurança &amp; suporte</h4><p><strong>Dúvidas sobre a assinatura ou problemas com seu acesso?</strong><br>Fale diretamente com o nosso time.</p><div class="support"><span>☏ <a href="https://wa.me/5522981052618" target="_blank" rel="noopener">+55 22 98105-2618</a></span><span>✉ <a href="mailto:almacuidada@gmail.com">almacuidada@gmail.com</a></span><span>🛡 Transações devem ser realizadas em ambiente seguro e criptografado.</span></div></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 Comunidade Alma Cuidada. Todos os direitos reservados.</span><span class="footer-legal"><a href="#faq">Termos de Uso</a><a href="#faq">Política de Privacidade</a></span></div>
+  </footer>
+  <a class="wa-float" href="https://wa.me/5522981052618?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20a%20Comunidade%20Alma%20Cuidada." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">☏</a>
+
+  <script>
+    const reveal=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');reveal.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>reveal.observe(el));
+    window.dataLayer=window.dataLayer||[];document.querySelectorAll('[data-track],.plan-cta').forEach(el=>el.addEventListener('click',()=>window.dataLayer.push({event:'cta_click',cta:el.dataset.track||'plan_cta',plan:el.dataset.plan||null,label:el.textContent.trim()})));
+  </script>
+</body>
+</html>
