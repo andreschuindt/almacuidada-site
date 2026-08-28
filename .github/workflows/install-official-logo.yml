@@ -97,3 +97,5 @@ jobs:
           git commit -m "Implementa logotipo oficial da Alma Cuidada"
           git pull --rebase origin main
           git push origin main
+
+# trigger deploy logo oficial
