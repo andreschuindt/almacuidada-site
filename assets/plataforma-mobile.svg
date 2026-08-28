@@ -20,26 +20,10 @@
   </defs>
 
   <rect width="720" height="1026" fill="url(#bg)"/>
-
-  <!-- logotipo inspirado diretamente no anexo fornecido -->
-  <g transform="translate(360 92)">
-    <path d="M0 5
-             C-72 -65 -160 -16 -151 71
-             C-142 157 -36 189 52 151
-             C132 116 148 10 91 -54
-             C43 -108 -51 -101 -105 -38"
-          fill="none" stroke="#8B15AA" stroke-width="10" stroke-linecap="round"/>
-    <path d="M-55 14
-             C-10 -42 59 -24 66 30
-             C72 76 24 109 -19 85
-             C-51 67 -55 27 -31 6
-             C-10 -12 22 -7 31 13
-             C39 31 26 49 10 48"
-          fill="none" stroke="#8B15AA" stroke-width="9" stroke-linecap="round"/>
-    <circle cx="68" cy="152" r="7" fill="#8B15AA"/>
-    <circle cx="88" cy="146" r="7" fill="#8B15AA"/>
-    <circle cx="108" cy="137" r="6" fill="#8B15AA"/>
-  </g>
+  <!-- logotipo oficial Alma Cuidada -->
+  <image href="logo-oficial-alma-cuidada.png"
+         x="245" y="35" width="230" height="230"
+         preserveAspectRatio="xMidYMid meet"/>
 
   <text x="360" y="292" text-anchor="middle" class="serif" font-size="42" font-weight="700" fill="#FFFFFF">alma cuidada</text>
   <text x="360" y="323" text-anchor="middle" class="sans" font-size="20" font-weight="700" letter-spacing="7" fill="#9C22B3">mentoria terapêutica</text>
