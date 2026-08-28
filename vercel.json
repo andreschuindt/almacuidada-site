@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/assets/plataforma-mobile.jpg",
+      "destination": "/assets/plataforma-mobile.svg"
+    }
+  ]
+}
