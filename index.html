@@ -237,6 +237,41 @@
   
     .brand img.brand-mark{width:48px;height:48px;object-fit:contain;flex:0 0 48px}
     @media(max-width:640px){.brand img.brand-mark{width:40px;height:40px;flex:0 0 40px}}
+  
+    /* Carrossel — Por que você vai se transformar */
+    .transform-carousel{position:relative;margin-top:24px;outline:none}
+    .transform-carousel-viewport{overflow:hidden;border-radius:24px;background:#fffaf3;border:1px solid rgba(170,161,100,.34);box-shadow:0 14px 34px rgba(91,49,86,.09)}
+    .transform-carousel-track{display:flex;transition:transform .55s cubic-bezier(.22,.7,.25,1);will-change:transform}
+    .transform-slide{min-width:100%;display:grid;grid-template-rows:210px auto;background:linear-gradient(180deg,#fffdf9,#fff8ef)}
+    .transform-slide-media{position:relative;overflow:hidden;background:#e9dfe7}
+    .transform-slide-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,15,42,.02),rgba(72,25,72,.18));pointer-events:none}
+    .transform-slide-media img{width:100%;height:100%;object-fit:cover;transition:transform 5.5s ease}
+    .transform-slide.is-active .transform-slide-media img{transform:scale(1.045)}
+    .transform-slide-media--contain{background:linear-gradient(145deg,#151619,#2b172d)}
+    .transform-slide-media--contain img{object-fit:contain;padding:8px}
+    .transform-slide-copy{padding:22px 24px 26px}
+    .transform-slide-kicker{display:inline-block;color:var(--olive-2);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:900;margin-bottom:6px}
+    .transform-slide h4{font-family:Georgia,"Times New Roman",serif;font-size:1.7rem;line-height:1.08;color:var(--purple);margin:0 0 9px}
+    .transform-slide p{margin:0;color:#765f70;font-size:.94rem;line-height:1.55}
+    .transform-carousel-btn{position:absolute;top:96px;z-index:5;width:42px;height:42px;border:0;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.94);color:var(--purple);font-size:1.7rem;line-height:1;cursor:pointer;box-shadow:0 8px 22px rgba(56,29,55,.18);transition:.2s ease}
+    .transform-carousel-btn:hover{transform:translateY(-2px);background:#fff}
+    .transform-carousel-prev{left:12px}.transform-carousel-next{right:12px}
+    .transform-carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+    .transform-dot{width:9px;height:9px;border:0;padding:0;border-radius:999px;background:rgba(125,21,159,.22);cursor:pointer;transition:.25s ease}
+    .transform-dot.is-active{width:26px;background:linear-gradient(90deg,var(--purple),var(--olive))}
+    @media(max-width:900px){
+      .value-grid{grid-template-columns:1fr}
+      .transform-slide{grid-template-rows:230px auto}
+    }
+    @media(max-width:640px){
+      .value-box{padding:22px}
+      .transform-slide{grid-template-rows:190px auto}
+      .transform-slide-copy{padding:19px 20px 22px}
+      .transform-slide h4{font-size:1.45rem}
+      .transform-carousel-btn{top:76px;width:38px;height:38px;font-size:1.5rem}
+      .transform-carousel-prev{left:8px}.transform-carousel-next{right:8px}
+    }
+
   </style>
 </head>
 <body>
@@ -325,7 +360,39 @@
 
     <section class="section">
       <div class="container value-grid">
-        <div class="card value-box reveal"><span class="eyebrow">Por que você vai se transformar por aqui?</span><div class="value-small-grid"><div class="value-small"><h4>Conteúdo de Alto Valor</h4><p>Materiais selecionados para apoiar seu processo.</p></div><div class="value-small"><h4>Insights Terapêuticos</h4><p>Dicas e exercícios que favorecem o autoconhecimento.</p></div><div class="value-small"><h4>Livros que Inspiram</h4><p>Obras que tocam a alma e ampliam perspectivas.</p></div><div class="value-small"><h4>Plataforma Inovadora</h4><p>Experiência digital moderna, simples e acolhedora.</p></div></div></div>
+        <div class="card value-box reveal">
+          <span class="eyebrow">Por que você vai se transformar por aqui?</span>
+          <div class="transform-carousel" data-transform-carousel aria-label="Motivos para fazer parte da Alma Cuidada" tabindex="0">
+            <div class="transform-carousel-viewport">
+              <div class="transform-carousel-track">
+                <article class="transform-slide is-active" aria-hidden="false">
+                  <div class="transform-slide-media"><img src="assets/og-alma-cuidada-comunidade-2026.jpg" alt="Conteúdos selecionados da Comunidade Alma Cuidada" loading="lazy"></div>
+                  <div class="transform-slide-copy"><span class="transform-slide-kicker">Curadoria</span><h4>Conteúdo de Alto Valor</h4><p>Materiais selecionados para apoiar seu processo.</p></div>
+                </article>
+                <article class="transform-slide" aria-hidden="true">
+                  <div class="transform-slide-media"><img src="assets/hero-meditacao.jpg" alt="Momento de pausa, reflexão e cuidado emocional" loading="lazy"></div>
+                  <div class="transform-slide-copy"><span class="transform-slide-kicker">Autoconhecimento</span><h4>Insights Terapêuticos</h4><p>Dicas e exercícios que favorecem o autoconhecimento.</p></div>
+                </article>
+                <article class="transform-slide" aria-hidden="true">
+                  <div class="transform-slide-media"><img src="assets/plataforma-dashboard.jpg" alt="Biblioteca de conteúdos e livros da Alma Cuidada" loading="lazy"></div>
+                  <div class="transform-slide-copy"><span class="transform-slide-kicker">Livroterapia</span><h4>Livros que Inspiram</h4><p>Obras que tocam a alma e ampliam perspectivas.</p></div>
+                </article>
+                <article class="transform-slide" aria-hidden="true">
+                  <div class="transform-slide-media transform-slide-media--contain"><img src="assets/plataforma-mobile.svg" alt="Plataforma digital da Comunidade Alma Cuidada" loading="lazy"></div>
+                  <div class="transform-slide-copy"><span class="transform-slide-kicker">Experiência digital</span><h4>Plataforma Inovadora</h4><p>Experiência digital moderna, simples e acolhedora.</p></div>
+                </article>
+              </div>
+            </div>
+            <button class="transform-carousel-btn transform-carousel-prev" type="button" aria-label="Ver item anterior">‹</button>
+            <button class="transform-carousel-btn transform-carousel-next" type="button" aria-label="Ver próximo item">›</button>
+            <div class="transform-carousel-dots" aria-label="Navegação do carrossel">
+              <button class="transform-dot is-active" type="button" aria-label="Ir para Conteúdo de Alto Valor" aria-current="true"></button>
+              <button class="transform-dot" type="button" aria-label="Ir para Insights Terapêuticos"></button>
+              <button class="transform-dot" type="button" aria-label="Ir para Livros que Inspiram"></button>
+              <button class="transform-dot" type="button" aria-label="Ir para Plataforma Inovadora"></button>
+            </div>
+          </div>
+        </div>
         <div class="card practical-box reveal"><h2 class="title small">O Poder Prático da Livroterapia</h2><div class="practical-cards"><div class="practical-card"><div class="picon">🧠</div><h4>Redução do Stress</h4><p>A leitura guiada pode favorecer pausas, presença e desaceleração cotidiana.</p></div><div class="practical-card"><div class="picon">🤝</div><h4>Identificação &amp; Catarse</h4><p>Histórias ajudam a reconhecer que inquietações humanas podem ser compartilhadas.</p></div><div class="practical-card"><div class="picon">🪶</div><h4>Expressão de Emoções</h4><p>Roteiros reflexivos ajudam a nomear sentimentos difíceis de expressar.</p></div><div class="practical-card"><div class="picon">🎭</div><h4>Empatia Profunda</h4><p>Outras perspectivas podem ampliar a compreensão de si e das relações.</p></div></div><div class="quote">“A biblioterapia utiliza a literatura para criar pontes entre o mundo interno e externo do leitor.”</div></div>
       </div>
     </section>
@@ -366,7 +433,7 @@
       <div class="container faq-grid">
         <div class="reveal"><span class="eyebrow">Perguntas Frequentes</span><h2 class="title small">Esclareça as suas dúvidas</h2><p class="lead">As respostas essenciais antes de começar seu ciclo de cuidado.</p></div>
         <div class="faq-list reveal">
-          <details class="faq-item" open><summary>Preciso ter e/ou ler o livro para poder participar?</summary><p>Não. Ter o livro é opcional. O ensino será fracionado por capítulo e você terá resumos fundamentais e áudios que apoiam a compreensão de quem não conseguiu ler. O foco está na aprendizagem prática e aplicada dos conteúdos.</p></details>
+          <details class="faq-item"><summary>Preciso ter e/ou ler o livro para poder participar?</summary><p>Não. Ter o livro é opcional. O ensino será fracionado por capítulo e você terá resumos fundamentais e áudios que apoiam a compreensão de quem não conseguiu ler. O foco está na aprendizagem prática e aplicada dos conteúdos.</p></details>
           <details class="faq-item"><summary>Algum livro em análise está incluído na mensalidade?</summary><p>Não. A subscrição garante acesso à plataforma, aos roteiros terapêuticos digitais, às pílulas de áudio analíticas e aos círculos de conversa online. O livro pode ser adquirido na livraria de preferência ou em formato digital, quando disponível.</p></details>
           <details class="faq-item"><summary>Posso efetuar o cancelamento a qualquer momento?</summary><p>Sim. O plano mensal permite cancelamento sem custos adicionais. Nos planos Semestral e Anual, aplicam-se as condições do período contratado, com possibilidade de cancelamento da renovação automática.</p></details>
           <details class="faq-item"><summary>A comunidade substitui o acompanhamento psicológico?</summary><p>Não. O ecossistema funciona como apoio de desenvolvimento humano e partilha de autoconhecimento com foco na livroterapia. Não substitui acompanhamento psicológico individualizado nem terapia clínica.</p></details>
@@ -389,6 +456,8 @@
   <script>
     const reveal=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');reveal.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>reveal.observe(el));
     window.dataLayer=window.dataLayer||[];document.querySelectorAll('[data-track],.plan-cta').forEach(el=>el.addEventListener('click',()=>window.dataLayer.push({event:'cta_click',cta:el.dataset.track||'plan_cta',plan:el.dataset.plan||null,label:el.textContent.trim()})));
+
+    (()=>{const root=document.querySelector('[data-transform-carousel]');if(!root)return;const track=root.querySelector('.transform-carousel-track'),slides=[...root.querySelectorAll('.transform-slide')],dots=[...root.querySelectorAll('.transform-dot')],prev=root.querySelector('.transform-carousel-prev'),next=root.querySelector('.transform-carousel-next');let index=0,timer=null,touchX=null;const go=i=>{index=(i+slides.length)%slides.length;track.style.transform='translateX(-'+(index*100)+'%)';slides.forEach((s,n)=>{s.classList.toggle('is-active',n===index);s.setAttribute('aria-hidden',n===index?'false':'true')});dots.forEach((d,n)=>{d.classList.toggle('is-active',n===index);if(n===index)d.setAttribute('aria-current','true');else d.removeAttribute('aria-current')})};const stop=()=>{if(timer){clearInterval(timer);timer=null}};const play=()=>{stop();timer=setInterval(()=>go(index+1),5200)};prev.addEventListener('click',()=>{go(index-1);play()});next.addEventListener('click',()=>{go(index+1);play()});dots.forEach((d,n)=>d.addEventListener('click',()=>{go(n);play()}));root.addEventListener('mouseenter',stop);root.addEventListener('mouseleave',play);root.addEventListener('focusin',stop);root.addEventListener('focusout',play);root.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){go(index-1);play()}if(e.key==='ArrowRight'){go(index+1);play()}});root.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].clientX;stop()},{passive:true});root.addEventListener('touchend',e=>{if(touchX===null)return;const dx=e.changedTouches[0].clientX-touchX;if(Math.abs(dx)>45)go(index+(dx<0?1:-1));touchX=null;play()},{passive:true});go(0);play()})();
   </script>
 </body>
 </html>
