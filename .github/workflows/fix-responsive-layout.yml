@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 jobs:
-  fix-layout:
+  update:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,169 +19,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Ajustar proporções desktop tablet e mobile
-        shell: bash
+      - name: Inserir stylesheet responsivo
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
+          python3 -c "from pathlib import Path; p=Path('index.html'); s=p.read_text(encoding='utf-8'); link='<link rel=\"stylesheet\" href=\"assets/responsive-fix.css?v=20260829\">'; s=s if link in s else s.replace('</head>', '  '+link+'\n</head>', 1); p.write_text(s, encoding='utf-8')"
 
-          p = Path('index.html')
-          html = p.read_text(encoding='utf-8')
-
-          marker = '/* Responsive polish — carousel, practical, impact, founder */'
-          css = r'''
-    /* Responsive polish — carousel, practical, impact, founder */
-    .value-grid{
-      display:grid;
-      grid-template-columns:minmax(0,1.35fr) minmax(360px,.85fr);
-      gap:28px;
-      align-items:stretch;
-    }
-    .value-box,.practical-box{padding:28px;min-width:0}
-    .value-box{display:flex;flex-direction:column}
-    .transform-carousel{display:flex;flex-direction:column;flex:1}
-    .transform-carousel-viewport{width:100%}
-    .transform-slide{
-      grid-template-columns:minmax(260px,340px) minmax(0,1fr);
-      min-height:360px;
-    }
-    .transform-slide-media{padding:22px}
-    .transform-slide-media img,
-    .transform-slide-media--contain img{
-      width:min(100%,300px);
-      aspect-ratio:1/1;
-      object-fit:cover;
-    }
-    .transform-slide-copy{padding:32px 34px}
-    .transform-slide h4{font-size:clamp(1.55rem,2vw,2rem)}
-    .transform-slide p{font-size:.98rem;max-width:42ch}
-
-    .practical-box{display:flex;flex-direction:column;justify-content:flex-start}
-    .practical-box .title.small{font-size:clamp(2rem,2.8vw,3rem);line-height:1.02}
-    .practical-cards{
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:14px;
-      margin-top:24px;
-    }
-    .practical-card{padding:20px 16px;min-height:190px}
-    .practical-card h4{font-size:1.02rem;line-height:1.15}
-    .practical-card p{font-size:.8rem;line-height:1.45}
-    .quote{margin-top:18px;padding:18px 20px;font-size:.86rem}
-
-    .section-tight .split-cards{
-      width:100%;
-      grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
-      gap:28px;
-      align-items:stretch;
-    }
-    .impact-card,.founder-card{padding:34px;min-width:0;height:100%}
-    .impact-card{display:flex;flex-direction:column;align-items:flex-start}
-    .impact-card .bigline{font-size:clamp(1.25rem,1.8vw,1.55rem)}
-    .impact-card .btn{margin-top:auto}
-    .impact-graphic{grid-template-columns:repeat(5,42px);gap:8px;margin:24px 0 22px}
-    .person-dot{width:42px;height:42px;font-size:1.15rem}
-    .founder-wrap{display:grid;grid-template-columns:150px minmax(0,1fr);gap:26px;align-items:start}
-    .founder-photo{width:150px}
-    .founder-photo img{width:150px;height:150px;object-fit:cover;border-radius:22px}
-    .founder-copy{min-width:0}
-    .impact-card h3,.founder-card h3{font-size:clamp(1.75rem,2.4vw,2.2rem)}
-
-    @media(max-width:1100px){
-      .value-grid{grid-template-columns:minmax(0,1.15fr) minmax(330px,.85fr);gap:22px}
-      .transform-slide{grid-template-columns:minmax(220px,290px) minmax(0,1fr);min-height:330px}
-      .transform-slide-media img,.transform-slide-media--contain img{width:min(100%,260px)}
-      .transform-slide-copy{padding:26px}
-      .value-box,.practical-box{padding:24px}
-      .practical-card{min-height:176px;padding:17px 13px}
-      .section-tight .split-cards{gap:22px}
-      .impact-card,.founder-card{padding:28px}
-      .founder-wrap{grid-template-columns:130px minmax(0,1fr);gap:22px}
-      .founder-photo,.founder-photo img{width:130px}
-      .founder-photo img{height:130px}
-    }
-
-    @media(max-width:920px){
-      .value-grid{grid-template-columns:1fr;gap:22px}
-      .practical-box{order:2}
-      .transform-slide{grid-template-columns:minmax(220px,300px) minmax(0,1fr);min-height:330px}
-      .practical-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .section-tight .split-cards{grid-template-columns:1fr;gap:22px}
-      .impact-card,.founder-card{height:auto}
-      .founder-wrap{grid-template-columns:150px minmax(0,1fr)}
-      .founder-photo,.founder-photo img{width:150px}
-      .founder-photo img{height:150px}
-    }
-
-    @media(max-width:680px){
-      .section{padding:68px 0}
-      .section-tight{padding:46px 0}
-      .container{width:min(calc(100% - 28px),var(--max))}
-      .value-grid{gap:18px}
-      .value-box,.practical-box{padding:18px;border-radius:22px}
-      .value-box .eyebrow{font-size:.66rem;line-height:1.35}
-      .transform-carousel{margin-top:18px}
-      .transform-slide{display:flex;flex-direction:column;min-height:0}
-      .transform-slide-media{padding:14px 14px 8px}
-      .transform-slide-media img,
-      .transform-slide-media--contain img{width:min(100%,280px);margin-inline:auto;border-radius:18px}
-      .transform-slide-copy{padding:18px 18px 22px;text-align:center;align-items:center}
-      .transform-slide-kicker{align-self:center}
-      .transform-slide h4{font-size:1.55rem}
-      .transform-slide p{font-size:.92rem}
-      .transform-carousel-btn{top:150px;width:38px;height:38px}
-      .transform-carousel-prev{left:8px}.transform-carousel-next{right:8px}
-      .practical-box .title.small{font-size:2rem}
-      .practical-cards{grid-template-columns:1fr;gap:12px}
-      .practical-card{min-height:0;padding:18px 16px}
-      .practical-card .picon{font-size:1.5rem}
-      .practical-card h4{font-size:1.04rem;margin:9px 0 5px}
-      .practical-card p{font-size:.84rem}
-      .quote{padding:16px;font-size:.82rem}
-      .impact-card,.founder-card{padding:22px;border-radius:22px}
-      .impact-graphic{grid-template-columns:repeat(5,36px);gap:6px;margin:20px 0}
-      .person-dot{width:36px;height:36px;font-size:1rem}
-      .impact-card .bigline{font-size:1.28rem}
-      .impact-card .btn{width:100%;padding-inline:18px;text-align:center}
-      .founder-wrap{grid-template-columns:1fr;gap:18px}
-      .founder-photo{width:112px;margin-inline:auto}
-      .founder-photo img{width:112px;height:112px;border-radius:20px}
-      .founder-copy{text-align:center}
-      .founder-copy .eyebrow{justify-content:center}
-      .founder-copy .eyebrow:before{display:none}
-    }
-
-    @media(max-width:390px){
-      .container{width:min(calc(100% - 20px),var(--max))}
-      .value-box,.practical-box,.impact-card,.founder-card{padding:16px}
-      .transform-slide-media img,.transform-slide-media--contain img{width:min(100%,250px)}
-      .transform-carousel-btn{top:134px;width:34px;height:34px}
-      .impact-graphic{grid-template-columns:repeat(5,32px);gap:5px}
-      .person-dot{width:32px;height:32px}
-    }
-          '''
-
-          if marker in html:
-              start = html.index(marker)
-              end = html.index('</style>', start)
-              # Replace prior polish block through end of style, preserving any later CSS is unsafe.
-              # Instead strip only the previous marked block using a second marker if present.
-              # For first run, this branch should not execute.
-              raise SystemExit('Responsive polish marker already exists; manual review required.')
-          html = html.replace('</style>', css + '\n  </style>', 1)
-          p.write_text(html, encoding='utf-8')
-          PY
-
-      - name: Commit e publicar
-        shell: bash
+      - name: Publicar alteração
         run: |
-          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
           if git diff --cached --quiet; then
             echo "Nenhuma alteração necessária."
-            exit 0
+          else
+            git commit -m "Aplica layout responsivo refinado"
+            git pull --rebase origin main
+            git push origin main
           fi
-          git commit -m "Corrige proporções responsivas das seções"
-          git pull --rebase origin main
-          git push origin main
