@@ -272,6 +272,60 @@
       .transform-carousel-prev{left:8px}.transform-carousel-next{right:8px}
     }
 
+  
+    /* Ajuste quadrado carrossel */
+    .transform-slide{
+      grid-template-columns:minmax(230px,310px) 1fr;
+      grid-template-rows:none;
+      min-height:320px;
+      align-items:stretch
+    }
+    .transform-slide-media{
+      padding:18px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(145deg,#f4ede5,#eee2e7)
+    }
+    .transform-slide-media:after{display:none}
+    .transform-slide-media img,
+    .transform-slide-media--contain img{
+      width:min(100%,280px);
+      height:auto;
+      aspect-ratio:1/1;
+      object-fit:cover;
+      padding:0;
+      border-radius:20px;
+      background:transparent;
+      box-shadow:0 12px 28px rgba(68,40,64,.12);
+      transition:transform .45s ease
+    }
+    .transform-slide.is-active .transform-slide-media img{transform:scale(1.01)}
+    .transform-slide-copy{
+      padding:32px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center
+    }
+    .transform-carousel-btn{top:50%;transform:translateY(-50%)}
+    @media(max-width:900px){
+      .transform-slide{grid-template-columns:1fr;grid-template-rows:auto auto;min-height:auto}
+      .transform-slide-media{padding:18px 18px 12px}
+      .transform-slide-media img,
+      .transform-slide-media--contain img{width:min(100%,280px)}
+      .transform-slide-copy{padding:22px 24px 26px;text-align:center}
+      .transform-slide-kicker{align-self:center}
+    }
+    @media(max-width:640px){
+      .value-box{padding:22px}
+      .transform-slide-media{padding:14px 14px 10px}
+      .transform-slide-media img,
+      .transform-slide-media--contain img{width:min(100%,260px);border-radius:16px}
+      .transform-slide-copy{padding:18px 18px 22px}
+      .transform-slide h4{font-size:1.45rem}
+      .transform-carousel-btn{top:145px;width:38px;height:38px;font-size:1.5rem}
+      .transform-carousel-prev{left:8px}.transform-carousel-next{right:8px}
+    }
+
   </style>
 </head>
 <body>
@@ -366,19 +420,19 @@
             <div class="transform-carousel-viewport">
               <div class="transform-carousel-track">
                 <article class="transform-slide is-active" aria-hidden="false">
-                  <div class="transform-slide-media"><img src="assets/og-alma-cuidada-comunidade-2026.jpg" alt="Conteúdos selecionados da Comunidade Alma Cuidada" loading="lazy"></div>
+                  <div class="transform-slide-media"><img src="assets/carrossel-conteudo-alto-valor.webp" alt="Conteúdo de Alto Valor — curadoria da Comunidade Alma Cuidada" loading="lazy"></div>
                   <div class="transform-slide-copy"><span class="transform-slide-kicker">Curadoria</span><h4>Conteúdo de Alto Valor</h4><p>Materiais selecionados para apoiar seu processo.</p></div>
                 </article>
                 <article class="transform-slide" aria-hidden="true">
-                  <div class="transform-slide-media"><img src="assets/hero-meditacao.jpg" alt="Momento de pausa, reflexão e cuidado emocional" loading="lazy"></div>
+                  <div class="transform-slide-media"><img src="assets/carrossel-insights-terapeuticos.webp" alt="Insights Terapêuticos — escrita, reflexão e autoconhecimento" loading="lazy"></div>
                   <div class="transform-slide-copy"><span class="transform-slide-kicker">Autoconhecimento</span><h4>Insights Terapêuticos</h4><p>Dicas e exercícios que favorecem o autoconhecimento.</p></div>
                 </article>
                 <article class="transform-slide" aria-hidden="true">
-                  <div class="transform-slide-media"><img src="assets/plataforma-dashboard.jpg" alt="Biblioteca de conteúdos e livros da Alma Cuidada" loading="lazy"></div>
+                  <div class="transform-slide-media"><img src="assets/carrossel-livros-inspiram.webp" alt="Livros que Inspiram — leitura acolhedora e livroterapia" loading="lazy"></div>
                   <div class="transform-slide-copy"><span class="transform-slide-kicker">Livroterapia</span><h4>Livros que Inspiram</h4><p>Obras que tocam a alma e ampliam perspectivas.</p></div>
                 </article>
                 <article class="transform-slide" aria-hidden="true">
-                  <div class="transform-slide-media transform-slide-media--contain"><img src="assets/plataforma-mobile.svg" alt="Plataforma digital da Comunidade Alma Cuidada" loading="lazy"></div>
+                  <div class="transform-slide-media"><img src="assets/carrossel-plataforma-inovadora.webp" alt="Plataforma Inovadora — experiência digital da Alma Cuidada" loading="lazy"></div>
                   <div class="transform-slide-copy"><span class="transform-slide-kicker">Experiência digital</span><h4>Plataforma Inovadora</h4><p>Experiência digital moderna, simples e acolhedora.</p></div>
                 </article>
               </div>
