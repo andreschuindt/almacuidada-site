@@ -32,3 +32,132 @@
 @media(max-width:920px){.value-grid{grid-template-columns:1fr;gap:22px}.practical-box{order:2}.transform-slide{grid-template-columns:minmax(220px,300px) minmax(0,1fr);min-height:330px}.practical-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.section-tight .split-cards{grid-template-columns:1fr;gap:22px}.impact-card,.founder-card{height:auto}.founder-wrap{grid-template-columns:150px minmax(0,1fr)}.founder-photo,.founder-photo img{width:150px}.founder-photo img{height:150px}}
 @media(max-width:680px){.section{padding:68px 0}.section-tight{padding:46px 0}.container{width:min(calc(100% - 28px),var(--max))}.value-grid{gap:18px}.value-box,.practical-box{padding:18px;border-radius:22px}.value-box .eyebrow{font-size:.66rem;line-height:1.35}.transform-carousel{margin-top:18px}.transform-slide{display:flex;flex-direction:column;min-height:0}.transform-slide-media{padding:14px 14px 8px}.transform-slide-media img,.transform-slide-media--contain img{width:min(100%,280px);margin-inline:auto;border-radius:18px}.transform-slide-copy{padding:18px 18px 22px;text-align:center;align-items:center}.transform-slide-kicker{align-self:center}.transform-slide h4{font-size:1.55rem}.transform-slide p{font-size:.92rem}.transform-carousel-btn{top:150px;width:38px;height:38px}.transform-carousel-prev{left:8px}.transform-carousel-next{right:8px}.practical-box .title.small{font-size:2rem}.practical-cards{grid-template-columns:1fr;gap:12px}.practical-card{min-height:0;padding:18px 16px}.practical-card .picon{font-size:1.5rem}.practical-card h4{font-size:1.04rem;margin:9px 0 5px}.practical-card p{font-size:.84rem}.quote{padding:16px;font-size:.82rem}.impact-card,.founder-card{padding:22px;border-radius:22px}.impact-graphic{grid-template-columns:repeat(5,36px);gap:6px;margin:20px 0}.person-dot{width:36px;height:36px;font-size:1rem}.impact-card .bigline{font-size:1.28rem}.impact-card .btn{width:100%;padding-inline:18px;text-align:center}.founder-wrap{grid-template-columns:1fr;gap:18px}.founder-photo{width:112px;margin-inline:auto}.founder-photo img{width:112px;height:112px;border-radius:20px}.founder-copy{text-align:center}.founder-copy .eyebrow{justify-content:center}.founder-copy .eyebrow:before{display:none}}
 @media(max-width:390px){.container{width:min(calc(100% - 20px),var(--max))}.value-box,.practical-box,.impact-card,.founder-card{padding:16px}.transform-slide-media img,.transform-slide-media--contain img{width:min(100%,250px)}.transform-carousel-btn{top:134px;width:34px;height:34px}.impact-graphic{grid-template-columns:repeat(5,32px);gap:5px}.person-dot{width:32px;height:32px}}
+
+
+/* Carousel v3 — preenchimento proporcional e responsivo */
+.value-grid{
+  grid-template-columns:minmax(0,1.55fr) minmax(330px,.72fr);
+  gap:26px;
+  align-items:start;
+}
+.value-box{
+  padding:32px;
+  align-self:start;
+  overflow:hidden;
+}
+.value-box .eyebrow{margin-bottom:24px}
+.transform-carousel{margin-top:0}
+.transform-carousel-viewport{
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 18px 42px rgba(80,42,77,.10);
+}
+.transform-slide{
+  grid-template-columns:minmax(360px,46%) minmax(0,1fr);
+  min-height:440px;
+  background:#fffaf5;
+}
+.transform-slide-media{
+  padding:20px;
+  min-height:440px;
+  background:linear-gradient(145deg,#f7eee8,#f0e4ea);
+}
+.transform-slide-media img,
+.transform-slide-media--contain img{
+  width:100%;
+  max-width:none;
+  height:100%;
+  min-height:400px;
+  aspect-ratio:auto;
+  object-fit:cover;
+  border-radius:22px;
+  box-shadow:0 14px 30px rgba(68,40,64,.14);
+}
+.transform-slide-copy{
+  padding:44px 46px;
+  justify-content:center;
+}
+.transform-slide-kicker{font-size:.78rem;letter-spacing:.12em}
+.transform-slide h4{
+  font-size:clamp(2rem,2.8vw,3.15rem);
+  line-height:1.02;
+  max-width:12ch;
+  margin:10px 0 16px;
+}
+.transform-slide p{
+  font-size:clamp(1rem,1.25vw,1.18rem);
+  line-height:1.55;
+  max-width:34ch;
+}
+.transform-carousel-dots{margin-top:18px}
+.transform-carousel-btn{width:48px;height:48px}
+.transform-carousel-prev{left:14px}.transform-carousel-next{right:14px}
+.practical-box{align-self:start}
+
+@media(max-width:1180px){
+  .value-grid{grid-template-columns:minmax(0,1.35fr) minmax(320px,.8fr)}
+  .transform-slide{grid-template-columns:minmax(300px,43%) minmax(0,1fr);min-height:390px}
+  .transform-slide-media{min-height:390px}
+  .transform-slide-media img,.transform-slide-media--contain img{min-height:350px}
+  .transform-slide-copy{padding:34px 32px}
+  .transform-slide h4{font-size:clamp(1.9rem,2.6vw,2.7rem)}
+}
+
+@media(max-width:920px){
+  .value-grid{grid-template-columns:1fr;align-items:start}
+  .value-box,.practical-box{width:100%;align-self:auto}
+  .transform-slide{
+    display:grid;
+    grid-template-columns:minmax(280px,46%) minmax(0,1fr);
+    min-height:360px;
+  }
+  .transform-slide-media{min-height:360px;padding:16px}
+  .transform-slide-media img,.transform-slide-media--contain img{min-height:328px}
+  .transform-slide-copy{padding:30px}
+  .transform-slide h4{font-size:clamp(1.8rem,4vw,2.5rem)}
+}
+
+@media(max-width:680px){
+  .value-box{padding:16px}
+  .value-box .eyebrow{margin-bottom:16px}
+  .transform-carousel-viewport{border-radius:22px}
+  .transform-slide{
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+  }
+  .transform-slide-media{
+    min-height:0;
+    padding:12px 12px 6px;
+  }
+  .transform-slide-media img,
+  .transform-slide-media--contain img{
+    width:100%;
+    height:auto;
+    min-height:0;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:18px;
+  }
+  .transform-slide-copy{
+    padding:22px 20px 26px;
+    text-align:left;
+    align-items:flex-start;
+  }
+  .transform-slide-kicker{align-self:flex-start}
+  .transform-slide h4{
+    max-width:none;
+    font-size:clamp(1.7rem,9vw,2.25rem);
+    margin:8px 0 10px;
+  }
+  .transform-slide p{font-size:1rem;max-width:none}
+  .transform-carousel-btn{top:calc(50vw - 6px);width:40px;height:40px}
+  .transform-carousel-prev{left:10px}.transform-carousel-next{right:10px}
+  .transform-carousel-dots{margin-top:14px}
+}
+
+@media(max-width:390px){
+  .value-box{padding:12px}
+  .transform-slide-copy{padding:18px 16px 22px}
+  .transform-carousel-btn{top:calc(50vw - 4px);width:36px;height:36px}
+}
