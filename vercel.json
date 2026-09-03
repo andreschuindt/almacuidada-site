@@ -3,6 +3,10 @@
     {
       "source": "/assets/plataforma-mobile.jpg",
       "destination": "/assets/plataforma-mobile.svg"
+    },
+    {
+      "source": "/favicon.ico",
+      "destination": "/favicon.svg"
     }
   ],
   "headers": [
@@ -41,7 +45,7 @@
       ]
     },
     {
-      "source": "/(inspira-v2-1.css|inspira-v2-1.js|favicon.svg|favicon.ico|apple-touch-icon.png)",
+      "source": "/(inspira-v2-1.css|inspira-v2-1.js|favicon.svg)",
       "headers": [
         {
           "key": "Cache-Control",
