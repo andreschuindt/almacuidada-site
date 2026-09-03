@@ -145,3 +145,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #16
 @media (max-width:640px){
   .section-cta .btn{width:100%}
 }
+
+.legal-page{min-height:70vh}
+.legal-copy{max-width:860px}
+.legal-copy h1{margin-bottom:28px}
+.legal-copy h2{font-family:Georgia,"Times New Roman",serif;color:#4A2E4C;font-size:1.5rem;line-height:1.2;margin:34px 0 10px}
+.legal-copy p{color:#625764;font-size:1rem;line-height:1.75}
