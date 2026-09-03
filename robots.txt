@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /
+
+# Esta branch é apenas de validação visual.
+# O site oficial permanece em:
+# https://projetoinspira.vercel.app/
