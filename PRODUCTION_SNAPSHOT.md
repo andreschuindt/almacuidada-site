@@ -1,11 +1,23 @@
 # Projeto INSPIRA — Production Snapshot
 
-This branch preserves the complete current production site exactly as served from:
+**Release:** INSPIRA 2.1 — Auditoria, Conversão, Acessibilidade e Performance  
+**Publicado em:** 2026-09-02  
+**Site oficial:** https://projetoinspira.vercel.app/  
+**Vercel project:** projetoinspira  
+**Vercel deployment:** dpl_HVFSrJTCjkeJWjgJWLyZbLfVKhAw  
+**GitHub branch:** projetoinspira-production
 
-https://projetoinspira.vercel.app/
+## Estado preservado
+- Nova engenharia de CTAs e CTA sticky mobile
+- Contraste e acessibilidade revisados
+- Hierarquia semântica de títulos corrigida
+- Imagens externas otimizadas, sem Base64 no HTML
+- CSS e JavaScript separados
+- Política de Privacidade e Termos de Uso
+- Open Graph, Twitter Card, Schema/JSON-LD, robots.txt e sitemap.xml
+- Cabeçalhos de segurança e cache de assets
+- Vercel Web Analytics e eventos agregados de CTA
+- Carrossel de uma imagem por vez
+- Todas as atualizações visuais aprovadas na versão 2.1
 
-Saved on: 2026-09-02
-Vercel project: projetoinspira
-Source branch used for editable assets: inspira-v2-preview
-
-The production `index.html` is a self-contained snapshot with the current images embedded as data URIs, preserving the complete visual state of the site.
+Este branch é o snapshot permanente do estado atualmente publicado em produção.
