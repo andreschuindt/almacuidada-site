@@ -4,48 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>INSPIRA 2.0 — Prévia com carrossel</title>
-<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#F7F2EC}iframe{display:block;width:100%;height:100%;border:0}</style>
+<title>INSPIRA 2.0 — Prévia com carrossel ampliado</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#F7F2EC}
+iframe{display:block;width:100%;height:100%;border:0}
+</style>
 </head>
 <body>
-<iframe id="preview" src="/inspira-v2-preview.html?v=carousel-8" title="Prévia INSPIRA 2.0"></iframe>
-<script>
-(()=>{
- const frame=document.getElementById('preview');
- frame.addEventListener('load',()=>{
-  const d=frame.contentDocument;if(!d)return;
-  const old=d.querySelector('#plataforma .gallery');if(!old)return;
-  const style=d.createElement('style');
-  style.textContent=`
-  #plataforma .platform-grid{grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr);gap:58px;align-items:center}
-  .inspira-content-carousel{position:relative;min-width:0;padding:18px 18px 16px;border-radius:32px;background:linear-gradient(145deg,rgba(255,253,248,.94),rgba(246,237,238,.88));border:1px solid rgba(137,57,154,.12);box-shadow:0 26px 64px rgba(74,46,76,.13);overflow:hidden}
-  .inspira-content-carousel:before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-120px;top:-115px;background:radial-gradient(circle,rgba(37,175,162,.14),transparent 70%);pointer-events:none}
-  .icc-viewport{position:relative;overflow:hidden;border-radius:24px;min-height:535px;background:linear-gradient(145deg,#f6eee8,#eee2e8);display:grid;place-items:center}
-  .icc-track{display:flex;width:100%;transition:transform .55s cubic-bezier(.22,.7,.25,1);will-change:transform}
-  .icc-slide{min-width:100%;height:535px;display:grid;grid-template-rows:1fr auto;place-items:center;padding:24px 58px 18px;gap:12px;margin:0}
-  .icc-slide img{display:block;width:auto;max-width:100%;height:min(420px,72vh);object-fit:contain;border-radius:22px;box-shadow:0 18px 38px rgba(47,29,49,.18);background:#17131a}
-  .icc-caption{width:100%;text-align:center;color:#4A2E4C;font-weight:850;font-size:.86rem;letter-spacing:.01em;padding:10px 12px;border-radius:14px;background:rgba(255,253,248,.88);border:1px solid rgba(137,57,154,.09)}
-  .icc-btn{position:absolute;z-index:6;top:48%;transform:translateY(-50%);width:46px;height:46px;border:0;border-radius:50%;display:grid;place-items:center;background:rgba(255,253,248,.96);color:#89399A;font-size:1.8rem;line-height:1;cursor:pointer;box-shadow:0 10px 26px rgba(67,38,67,.18);transition:.2s ease}
-  .icc-btn:hover{transform:translateY(-50%) scale(1.06)}.icc-prev{left:27px}.icc-next{right:27px}
-  .icc-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding:0 3px}.icc-counter{font-size:.72rem;color:#776672;font-weight:850;white-space:nowrap}.icc-dots{display:flex;justify-content:center;gap:7px;flex:1}.icc-dot{width:8px;height:8px;border:0;border-radius:99px;padding:0;background:rgba(137,57,154,.22);cursor:pointer;transition:.25s}.icc-dot.on{width:25px;background:linear-gradient(90deg,#89399A,#25AFA2)}
-  @media(max-width:980px){#plataforma .platform-grid{grid-template-columns:1fr;gap:34px}.inspira-content-carousel{max-width:650px;width:100%;margin-inline:auto}.icc-viewport{min-height:500px}.icc-slide{height:500px}.icc-slide img{height:min(390px,62vh)}}
-  @media(max-width:640px){#plataforma .platform-grid{gap:28px}.inspira-content-carousel{padding:10px;border-radius:24px}.icc-viewport{min-height:430px;border-radius:19px}.icc-slide{height:430px;padding:16px 42px 12px}.icc-slide img{height:min(330px,52vh);border-radius:16px}.icc-btn{width:38px;height:38px;font-size:1.5rem}.icc-prev{left:16px}.icc-next{right:16px}.icc-caption{font-size:.76rem}.icc-footer{margin-top:11px}.icc-counter{font-size:.66rem}}
-  `;d.head.appendChild(style);
-  old.outerHTML=`<div class="inspira-content-carousel reveal show" data-icc tabindex="0" aria-label="Carrossel de conteúdos da Comunidade INSPIRA"><div class="icc-viewport"><div class="icc-track">
-   <figure class="icc-slide"><img src="/assets/inspira-carousel-01.svg" alt="Acalme-se — desafio terapêutico praticando 8 dias"><figcaption class="icc-caption">Acalme-se · Desafio terapêutico de 8 dias</figcaption></figure>
-   <figure class="icc-slide"><img src="/assets/inspira-carousel-02.svg" alt="Atenção plena para TDAH — mindfulness"><figcaption class="icc-caption">Atenção plena para TDAH · Mindfulness e exercícios</figcaption></figure>
-   <figure class="icc-slide"><img src="/assets/inspira-carousel-03.svg" alt="Observem os pássaros — jornada meditativa de 30 dias"><figcaption class="icc-caption">Observe os pássaros · Jornada meditativa de 30 dias</figcaption></figure>
-   <figure class="icc-slide"><img src="/assets/inspira-carousel-04.svg" alt="Meditando A gosto — jornada de 31 dias"><figcaption class="icc-caption">Meditando “A gosto” · Jornada de 31 dias</figcaption></figure>
-   <figure class="icc-slide"><img src="/assets/inspira-carousel-05.svg" alt="Meditando são as águas de março — jornada de 8 dias"><figcaption class="icc-caption">Águas de Março · Jornada de 8 dias</figcaption></figure>
-   <figure class="icc-slide"><img src="/assets/inspira-carousel-06.svg" alt="Diariamente — bem-estar no trabalho"><figcaption class="icc-caption">Diariamente · Bem-estar no trabalho</figcaption></figure>
-   <figure class="icc-slide"><img src="/assets/inspira-carousel-07.svg" alt="Geração Ansiosa — livroterapia"><figcaption class="icc-caption">Geração Ansiosa · Livroterapia e reflexão</figcaption></figure>
-   <figure class="icc-slide"><img src="/assets/inspira-carousel-08.svg" alt="Intoxicação Digital — Augusto Cury"><figcaption class="icc-caption">Intoxicação Digital · Reflexão e autocuidado</figcaption></figure>
-  </div></div><button class="icc-btn icc-prev" type="button" aria-label="Imagem anterior">‹</button><button class="icc-btn icc-next" type="button" aria-label="Próxima imagem">›</button><div class="icc-footer"><span class="icc-counter">1 de 8</span><div class="icc-dots">${Array.from({length:8},(_,i)=>`<button class="icc-dot${i===0?' on':''}" type="button" aria-label="Ir para imagem ${i+1}"></button>`).join('')}</div></div></div>`;
-  const root=d.querySelector('[data-icc]'),track=root.querySelector('.icc-track'),dots=[...root.querySelectorAll('.icc-dot')],counter=root.querySelector('.icc-counter');let i=0,timer,touch=null;
-  const go=n=>{i=(n+8)%8;track.style.transform=`translateX(-${i*100}%)`;dots.forEach((x,j)=>x.classList.toggle('on',j===i));counter.textContent=`${i+1} de 8`};const stop=()=>{if(timer){clearInterval(timer);timer=null}},play=()=>{stop();timer=setInterval(()=>go(i+1),4700)};
-  root.querySelector('.icc-prev').onclick=()=>{go(i-1);play()};root.querySelector('.icc-next').onclick=()=>{go(i+1);play()};dots.forEach((x,j)=>x.onclick=()=>{go(j);play()});root.addEventListener('mouseenter',stop);root.addEventListener('mouseleave',play);root.addEventListener('focusin',stop);root.addEventListener('focusout',play);root.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){go(i-1);play()}if(e.key==='ArrowRight'){go(i+1);play()}});root.addEventListener('touchstart',e=>{touch=e.changedTouches[0].clientX;stop()},{passive:true});root.addEventListener('touchend',e=>{if(touch==null)return;const dx=e.changedTouches[0].clientX-touch;if(Math.abs(dx)>42)go(i+(dx<0?1:-1));touch=null;play()},{passive:true});go(0);play();
- });
-})();
-</script>
+<iframe src="/inspira-v2-preview.html?v=carousel-large-20260902" title="Prévia INSPIRA 2.0"></iframe>
 </body>
 </html>
