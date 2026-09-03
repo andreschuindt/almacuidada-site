@@ -151,3 +151,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #16
 .legal-copy h1{margin-bottom:28px}
 .legal-copy h2{font-family:Georgia,"Times New Roman",serif;color:#4A2E4C;font-size:1.5rem;line-height:1.2;margin:34px 0 10px}
 .legal-copy p{color:#625764;font-size:1rem;line-height:1.75}
+
+.plans-trust span:nth-child(2){color:#14736D!important}
+.plans-trust span:nth-child(3){color:#2F6F35!important}
+.price .plan-desc,.price .cash,.price .price-kicker,.price ul li{color:rgba(255,255,255,.94)!important}
