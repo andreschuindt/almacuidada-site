@@ -115,7 +115,7 @@
     }
   
 /* INSPIRA 2.1 — auditoria de conversão, acessibilidade e performance */
-:root{--teal-text:#167F78;--green-text:#2F6F35}
+:root{--teal-text:#14736D;--green-text:#2F6F35}
 .btn-primary,.plan-button{color:#fff!important;background:linear-gradient(90deg,#167F78 0%,#347A3B 100%)!important}
 .btn-primary:hover,.plan-button:hover{box-shadow:0 16px 34px rgba(22,127,120,.24)}
 .btn-light{color:#4A2E4C;background:#FFF8E6;border-color:rgba(255,255,255,.42);box-shadow:0 12px 30px rgba(0,0,0,.14)}
