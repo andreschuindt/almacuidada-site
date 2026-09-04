@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Projeto INSPIRA — visualização corrigida</title>
+<style>
+html,body{margin:0;min-height:100%;background:#F7F2EC;color:#4A2E4C;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.loading{min-height:100vh;display:grid;place-items:center;text-align:center;padding:28px}
+.loading strong{font-family:Georgia,"Times New Roman",serif;font-size:1.6rem}
+</style>
+</head>
+<body>
+<div class="loading"><strong>Carregando a visualização atualizada do INSPIRA…</strong></div>
+<script>
+(async function(){
+  try{
+    const rev='20260904-carrossel-diariamente-e-corte-v3';
+    const res=await fetch('/inspira-v2-1-preview.html?source='+rev,{cache:'no-store'});
+    let html=await res.text();
+
+    // Remove fisicamente do HTML a seção de quatro movimentos antes da renderização.
+    html=html.replace(/<section class="section steps" id="como-funciona">[\s\S]*?<\/section>/i,'');
+
+    // Reajusta o CTA do hero para uma seção que continua existindo.
+    html=html.replace('href="#como-funciona" data-event="hero_como_funciona">Entender como funciona',
+                      'href="#plataforma" data-event="hero_experiencia">Conhecer a experiência');
+
+    // Cache-busting de CSS e JS para garantir que o navegador carregue esta revisão.
+    html=html.replace('href="/inspira-v2-1.css"','href="/inspira-v2-1.css?rev='+rev+'"');
+    html=html.replace('src="/inspira-v2-1.js"','src="/inspira-v2-1.js?rev='+rev+'"');
+
+    document.open();
+    document.write(html);
+    document.close();
+  }catch(err){
+    document.body.innerHTML='<div class="loading"><strong>Não foi possível carregar a prévia atualizada.</strong></div>';
+  }
+})();
+</script>
+</body>
+</html>
