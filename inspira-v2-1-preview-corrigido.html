@@ -16,7 +16,7 @@ html,body{margin:0;min-height:100%;background:#F7F2EC;color:#4A2E4C;font-family:
 <script>
 (async function(){
   try{
-    const rev='20260904-diariamente-webp-v8';
+    const rev='20260904-diariamente-validado-v9';
     const res=await fetch('/inspira-v2-1-preview.html?source='+rev,{cache:'no-store'});
     let html=await res.text();
 
@@ -25,14 +25,14 @@ html,body{margin:0;min-height:100%;background:#F7F2EC;color:#4A2E4C;font-family:
     html=html.replace('href="#como-funciona" data-event="hero_como_funciona">Entender como funciona',
                       'href="#plataforma" data-event="hero_experiencia">Conhecer a experiência');
 
-    // Corrige definitivamente o primeiro slide usando o arquivo WebP real, sem SVG, Base64 ou sprite.
+    // Primeiro slide do carrossel: arquivo WebP validado e real, sem sprite, SVG ou Base64.
     const platformStart=html.indexOf('<section class="section platform" id="plataforma">');
     if(platformStart>=0){
       const platformEnd=html.indexOf('</section>',platformStart)+10;
       let platform=html.slice(platformStart,platformEnd);
       const firstSlide=`<article class="carousel-slide">
         <div class="carousel-image carousel-image-direct">
-          <img src="/assets/diariamente-bem-estar-trabalho-v2.webp?v=${rev}" alt="Diariamente — Bem-estar no trabalho" width="729" height="980" loading="eager" decoding="async" fetchpriority="high">
+          <img src="/assets/diariamente-bem-estar-trabalho-v3.webp?v=${rev}" alt="Diariamente — Bem-estar no trabalho" width="729" height="980" loading="eager" decoding="async" fetchpriority="high">
         </div>
         <h3>Diariamente — bem-estar no trabalho</h3>
       </article>`;
@@ -40,7 +40,7 @@ html,body{margin:0;min-height:100%;background:#F7F2EC;color:#4A2E4C;font-family:
       html=html.slice(0,platformStart)+platform+html.slice(platformEnd);
     }
 
-    // Mantém a nova composição editorial aprovada para as quatro formas de viver o INSPIRA.
+    // Nova composição editorial já aprovada.
     const experienceSection=`
 <section class="section experience-showcase" id="agora">
   <div class="container experience-head reveal">
@@ -48,46 +48,22 @@ html,body{margin:0;min-height:100%;background:#F7F2EC;color:#4A2E4C;font-family:
     <h2 class="experience-title">Algumas formas de você viver essa experiência INSPIRA.</h2>
     <p class="experience-lead">Cada pessoa pode encontrar uma porta de entrada diferente: pela leitura, pela pausa, pela reflexão ou por uma jornada de cuidado que acompanha o seu ritmo.</p>
   </div>
-
   <div class="container experience-grid">
     <article class="experience-card reveal">
       <div class="experience-photo"><img src="/assets/carrossel-livros-inspiram.webp" alt="Livros e leitura como inspiração para a experiência INSPIRA" width="280" height="280" loading="lazy" decoding="async"></div>
-      <div class="experience-body">
-        <span class="experience-number">01</span>
-        <h3>Leituras que inspiram</h3>
-        <div class="experience-rule"></div>
-        <p>Encontre ideias, histórias e provocações que ajudam a olhar para a vida com mais presença, significado e novas possibilidades.</p>
-      </div>
+      <div class="experience-body"><span class="experience-number">01</span><h3>Leituras que inspiram</h3><div class="experience-rule"></div><p>Encontre ideias, histórias e provocações que ajudam a olhar para a vida com mais presença, significado e novas possibilidades.</p></div>
     </article>
-
     <article class="experience-card reveal">
       <div class="experience-photo"><img src="/assets/hero-meditacao.jpg" alt="Prática de pausa e meditação na experiência INSPIRA" width="755" height="604" loading="lazy" decoding="async"></div>
-      <div class="experience-body">
-        <span class="experience-number">02</span>
-        <h3>Pausas que restauram</h3>
-        <div class="experience-rule"></div>
-        <p>Práticas simples de respiração, mindfulness e desaceleração para criar pequenos intervalos de cuidado no meio da vida real.</p>
-      </div>
+      <div class="experience-body"><span class="experience-number">02</span><h3>Pausas que restauram</h3><div class="experience-rule"></div><p>Práticas simples de respiração, mindfulness e desaceleração para criar pequenos intervalos de cuidado no meio da vida real.</p></div>
     </article>
-
     <article class="experience-card reveal">
       <div class="experience-photo"><img src="/assets/insights-terapeuticos.jpg" alt="Conteúdo reflexivo e aprendizado guiado no INSPIRA" width="755" height="604" loading="lazy" decoding="async"></div>
-      <div class="experience-body">
-        <span class="experience-number">03</span>
-        <h3>Reflexões que ampliam caminhos</h3>
-        <div class="experience-rule"></div>
-        <p>Conteúdos guiados para reconhecer emoções, ampliar perspectivas e transformar aprendizados em movimentos possíveis no cotidiano.</p>
-      </div>
+      <div class="experience-body"><span class="experience-number">03</span><h3>Reflexões que ampliam caminhos</h3><div class="experience-rule"></div><p>Conteúdos guiados para reconhecer emoções, ampliar perspectivas e transformar aprendizados em movimentos possíveis no cotidiano.</p></div>
     </article>
-
     <article class="experience-card reveal">
       <div class="experience-photo"><img src="/assets/projeto-inspira-hero-square.webp" alt="Projeto INSPIRA como jornada de leitura, cuidado e comunidade" width="400" height="400" loading="lazy" decoding="async"></div>
-      <div class="experience-body">
-        <span class="experience-number">04</span>
-        <h3>Uma jornada que acompanha você</h3>
-        <div class="experience-rule"></div>
-        <p>Curadoria, práticas e comunidade reunidas em um caminho flexível, acolhedor e respeitoso com o tempo que você tem hoje.</p>
-      </div>
+      <div class="experience-body"><span class="experience-number">04</span><h3>Uma jornada que acompanha você</h3><div class="experience-rule"></div><p>Curadoria, práticas e comunidade reunidas em um caminho flexível, acolhedor e respeitoso com o tempo que você tem hoje.</p></div>
     </article>
   </div>
 </section>`;
@@ -95,10 +71,10 @@ html,body{margin:0;min-height:100%;background:#F7F2EC;color:#4A2E4C;font-family:
 
     const previewStyles=`
 <style>
-/* Primeiro slide do carrossel: asset direto e proporção nativa 729 x 980. */
-#plataforma .carousel-image.carousel-image-direct{width:min(100%,420px);height:auto!important;aspect-ratio:729/980!important;background-image:none!important;background:#f7f2ec!important;overflow:hidden;border-radius:26px;display:block}
-#plataforma .carousel-image.carousel-image-direct img{width:100%;height:100%;display:block;object-fit:contain;object-position:center;background:#f7f2ec}
-@media(max-width:640px){#plataforma .carousel-image.carousel-image-direct{width:min(100%,380px);border-radius:22px}}
+/* Primeiro slide: proporção natural e arquivo real validado. */
+#plataforma .carousel-image.carousel-image-direct{width:min(100%,420px)!important;height:auto!important;aspect-ratio:auto!important;background:none!important;background-image:none!important;border:0!important;box-shadow:none!important;overflow:visible!important;display:flex!important;align-items:center;justify-content:center}
+#plataforma .carousel-image.carousel-image-direct img{display:block!important;width:100%!important;height:auto!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center!important;border-radius:26px;box-shadow:0 18px 40px rgba(74,46,76,.16);border:1px solid rgba(137,57,154,.08);background:#f7f2ec}
+@media(max-width:640px){#plataforma .carousel-image.carousel-image-direct{width:min(100%,380px)!important}#plataforma .carousel-image.carousel-image-direct img{border-radius:22px}}
 
 #agora.experience-showcase{position:relative;overflow:hidden;padding-top:82px;padding-bottom:78px;background:linear-gradient(180deg,#fbf7f1 0%,#f7efe8 100%)}
 #agora.experience-showcase:before{content:"";position:absolute;width:480px;height:480px;border-radius:50%;right:-250px;top:-240px;background:radial-gradient(circle,rgba(37,175,162,.10),transparent 70%);pointer-events:none}
@@ -112,10 +88,8 @@ html,body{margin:0;min-height:100%;background:#F7F2EC;color:#4A2E4C;font-family:
 #agora .experience-photo{aspect-ratio:1/1;overflow:hidden;background:#efe8e1}
 #agora .experience-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s ease}
 #agora .experience-card:hover .experience-photo img{transform:scale(1.025)}
-#agora .experience-card:nth-child(1) .experience-photo img{object-position:center}
 #agora .experience-card:nth-child(2) .experience-photo img{object-position:center 44%}
 #agora .experience-card:nth-child(3) .experience-photo img{object-position:center 46%}
-#agora .experience-card:nth-child(4) .experience-photo img{object-position:center}
 #agora .experience-body{position:relative;padding:23px 22px 26px;min-height:228px}
 #agora .experience-number{display:inline-flex;margin-bottom:10px;color:#25AFA2;font-size:.76rem;font-weight:900;letter-spacing:.12em}
 #agora .experience-body h3{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;line-height:1.08;letter-spacing:-.025em;color:#4A2E4C}
@@ -126,7 +100,6 @@ html,body{margin:0;min-height:100%;background:#F7F2EC;color:#4A2E4C;font-family:
 </style>`;
     html=html.replace('</head>',previewStyles+'</head>');
 
-    // Cache-busting para garantir que o navegador não reutilize o asset quebrado anterior.
     html=html.replace('href="/inspira-v2-1.css"','href="/inspira-v2-1.css?rev='+rev+'"');
     html=html.replace('src="/inspira-v2-1.js"','src="/inspira-v2-1.js?rev='+rev+'"');
 
