@@ -16,18 +16,14 @@ html,body{margin:0;min-height:100%;background:#F7F2EC;color:#4A2E4C;font-family:
 <script>
 (async function(){
   try{
-    const rev='20260904-carrossel-diariamente-e-corte-v3';
+    const rev='20260904-diariamente-real-jpg-v4';
     const res=await fetch('/inspira-v2-1-preview.html?source='+rev,{cache:'no-store'});
     let html=await res.text();
 
-    // Remove fisicamente do HTML a seção de quatro movimentos antes da renderização.
     html=html.replace(/<section class="section steps" id="como-funciona">[\s\S]*?<\/section>/i,'');
-
-    // Reajusta o CTA do hero para uma seção que continua existindo.
     html=html.replace('href="#como-funciona" data-event="hero_como_funciona">Entender como funciona',
                       'href="#plataforma" data-event="hero_experiencia">Conhecer a experiência');
 
-    // Cache-busting de CSS e JS para garantir que o navegador carregue esta revisão.
     html=html.replace('href="/inspira-v2-1.css"','href="/inspira-v2-1.css?rev='+rev+'"');
     html=html.replace('src="/inspira-v2-1.js"','src="/inspira-v2-1.js?rev='+rev+'"');
 
