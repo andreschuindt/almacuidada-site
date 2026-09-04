@@ -1,5 +1,17 @@
 
 (function(){
+  const steps=document.getElementById('como-funciona');
+  if(steps) steps.remove();
+
+  const heroLink=document.querySelector('a[data-event="hero_como_funciona"]');
+  if(heroLink){
+    heroLink.href='#plataforma';
+    heroLink.textContent='Conhecer a experiência';
+    heroLink.setAttribute('data-event','hero_experiencia');
+  }
+})();
+
+(function(){
   const root=document.querySelector('#plataforma .platform-gallery-card');
   if(!root)return;
   const track=root.querySelector('#carouselTrack');
