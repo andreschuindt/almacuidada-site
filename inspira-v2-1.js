@@ -6,6 +6,21 @@
   const dotsWrap=root.querySelector('#carouselDots');
   const prevBtn=root.querySelector('.carousel-arrow.prev');
   const nextBtn=root.querySelector('.carousel-arrow.next');
+
+  // A arte “Diariamente — Bem-estar no trabalho” já faz parte do carrossel em alta qualidade.
+  // Nesta prévia ela passa a ser o primeiro conteúdo exibido, com legenda coerente com a própria arte.
+  const diariamente=Array.from(track.querySelectorAll('.carousel-slide')).find(slide=>{
+    const title=slide.querySelector('h3');
+    return title && title.textContent.trim()==='Bem-estar no trabalho';
+  });
+  if(diariamente){
+    const title=diariamente.querySelector('h3');
+    const art=diariamente.querySelector('.carousel-image');
+    title.textContent='Diariamente — bem-estar no trabalho';
+    if(art) art.setAttribute('aria-label','Diariamente — Bem-estar no trabalho');
+    track.prepend(diariamente);
+  }
+
   const slides=Array.from(track.querySelectorAll('.carousel-slide'));
   let currentIndex=0;
   let autoPlay;
