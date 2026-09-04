@@ -1,9 +1,11 @@
 
 (function(){
+  // Remove integralmente a seção “Da assinatura à experiência, em quatro movimentos”.
   const steps=document.getElementById('como-funciona');
   if(steps) steps.remove();
 
-  const heroLink=document.querySelector('a[data-event="hero_como_funciona"]');
+  // Reaponta o CTA do hero para uma seção existente.
+  const heroLink=document.querySelector('a[data-event="hero_como_funciona"],a[data-event="hero_experiencia"]');
   if(heroLink){
     heroLink.href='#plataforma';
     heroLink.textContent='Conhecer a experiência';
@@ -18,37 +20,43 @@
   const dotsWrap=root.querySelector('#carouselDots');
   const prevBtn=root.querySelector('.carousel-arrow.prev');
   const nextBtn=root.querySelector('.carousel-arrow.next');
+  if(!track||!dotsWrap||!prevBtn||!nextBtn)return;
 
+  // Coloca “Diariamente — Bem-estar no trabalho” como primeiro item,
+  // usando diretamente o sprite WebP em alta definição já hospedado no projeto.
   const diariamente=Array.from(track.querySelectorAll('.carousel-slide')).find(slide=>{
     const title=slide.querySelector('h3');
-    return title && title.textContent.trim()==='Bem-estar no trabalho';
+    const txt=title?title.textContent.trim():'';
+    return txt==='Bem-estar no trabalho' || txt==='Diariamente — bem-estar no trabalho';
   });
+
   if(diariamente){
     const title=diariamente.querySelector('h3');
-    const oldArt=diariamente.querySelector('.carousel-image');
-    title.textContent='Diariamente — bem-estar no trabalho';
+    if(title) title.textContent='Diariamente — bem-estar no trabalho';
 
-    if(oldArt){
-      const img=document.createElement('img');
-      img.src='/assets/diariamente-bem-estar-no-trabalho-hq.svg?v=2';
-      img.alt='Diariamente — Bem-estar no trabalho';
-      img.width=484;
-      img.height=646;
-      img.loading='eager';
-      img.decoding='async';
-      img.fetchPriority='high';
-      img.style.width='min(100%,420px)';
-      img.style.height='auto';
-      img.style.aspectRatio='484 / 646';
-      img.style.objectFit='contain';
-      img.style.objectPosition='center';
-      img.style.display='block';
-      img.style.borderRadius='26px';
-      img.style.boxShadow='0 18px 40px rgba(74,46,76,.16)';
-      img.style.border='1px solid rgba(137,57,154,.08)';
-      img.style.background='#f7f2ec';
-      oldArt.replaceWith(img);
+    let art=diariamente.querySelector('.carousel-image');
+    const oldImg=diariamente.querySelector('img');
+    if(!art){
+      art=document.createElement('div');
+      art.className='carousel-image';
+      if(oldImg) oldImg.replaceWith(art);
+      else diariamente.insertBefore(art,title||diariamente.firstChild);
     }
+
+    art.setAttribute('role','img');
+    art.setAttribute('aria-label','Diariamente — Bem-estar no trabalho');
+    art.style.width='min(100%,420px)';
+    art.style.aspectRatio='420 / 490';
+    art.style.backgroundImage="url('/assets/inspira-carousel-sprite-hq.webp?v=4')";
+    art.style.backgroundRepeat='no-repeat';
+    art.style.backgroundSize='800% 100%';
+    art.style.backgroundPosition='71.428571% 0';
+    art.style.backgroundColor='#f7f2ec';
+    art.style.borderRadius='26px';
+    art.style.boxShadow='0 18px 40px rgba(74,46,76,.16)';
+    art.style.border='1px solid rgba(137,57,154,.08)';
+    art.style.display='block';
+
     track.prepend(diariamente);
   }
 
@@ -68,18 +76,22 @@
       dotsWrap.appendChild(dot);
     });
   }
+
   function update(){
     track.style.transform='translateX(-'+(currentIndex*100)+'%)';
     Array.from(dotsWrap.querySelectorAll('button')).forEach((dot,i)=>dot.classList.toggle('active',i===currentIndex));
     prevBtn.disabled=currentIndex===0;
     nextBtn.disabled=currentIndex===maxIndex;
   }
+
   function start(){
     if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){clearInterval(autoPlay);return;}
     clearInterval(autoPlay);
     autoPlay=setInterval(()=>{currentIndex=currentIndex<maxIndex?currentIndex+1:0;update();},4800);
   }
+
   function restart(){start();}
+
   prevBtn.addEventListener('click',()=>{if(currentIndex>0){currentIndex--;update();restart();}});
   nextBtn.addEventListener('click',()=>{currentIndex=currentIndex<maxIndex?currentIndex+1:0;update();restart();});
   root.addEventListener('mouseenter',()=>clearInterval(autoPlay));
@@ -87,10 +99,20 @@
   root.addEventListener('focusin',()=>clearInterval(autoPlay));
   root.addEventListener('focusout',start);
   root.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')prevBtn.click();if(e.key==='ArrowRight')nextBtn.click();});
+
   let touchX=null;
   root.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].clientX;clearInterval(autoPlay);},{passive:true});
-  root.addEventListener('touchend',e=>{if(touchX===null)return;const dx=e.changedTouches[0].clientX-touchX;if(Math.abs(dx)>42){dx<0?nextBtn.click():prevBtn.click();}touchX=null;start();},{passive:true});
-  renderDots();update();start();
+  root.addEventListener('touchend',e=>{
+    if(touchX===null)return;
+    const dx=e.changedTouches[0].clientX-touchX;
+    if(Math.abs(dx)>42){dx<0?nextBtn.click():prevBtn.click();}
+    touchX=null;
+    start();
+  },{passive:true});
+
+  renderDots();
+  update();
+  start();
 })();
 
 (function(){
