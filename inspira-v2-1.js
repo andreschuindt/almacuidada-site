@@ -7,17 +7,30 @@
   const prevBtn=root.querySelector('.carousel-arrow.prev');
   const nextBtn=root.querySelector('.carousel-arrow.next');
 
-  // A arte “Diariamente — Bem-estar no trabalho” já faz parte do carrossel em alta qualidade.
-  // Nesta prévia ela passa a ser o primeiro conteúdo exibido, com legenda coerente com a própria arte.
+  // Coloca “Diariamente — Bem-estar no trabalho” como primeira experiência do carrossel.
   const diariamente=Array.from(track.querySelectorAll('.carousel-slide')).find(slide=>{
     const title=slide.querySelector('h3');
     return title && title.textContent.trim()==='Bem-estar no trabalho';
   });
   if(diariamente){
     const title=diariamente.querySelector('h3');
-    const art=diariamente.querySelector('.carousel-image');
+    const oldArt=diariamente.querySelector('.carousel-image');
     title.textContent='Diariamente — bem-estar no trabalho';
-    if(art) art.setAttribute('aria-label','Diariamente — Bem-estar no trabalho');
+
+    // Substitui o recorte do sprite pela arte real enviada pelo usuário,
+    // evitando o quadro vazio e mantendo a proporção integral da capa.
+    if(oldArt){
+      const img=document.createElement('img');
+      img.className='carousel-hq-image';
+      img.src='/assets/diariamente-bem-estar-no-trabalho-hq.svg?v=1';
+      img.alt='Diariamente — Bem-estar no trabalho';
+      img.width=484;
+      img.height=646;
+      img.loading='eager';
+      img.decoding='async';
+      img.fetchPriority='high';
+      oldArt.replaceWith(img);
+    }
     track.prepend(diariamente);
   }
 
