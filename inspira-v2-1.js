@@ -7,7 +7,6 @@
   const prevBtn=root.querySelector('.carousel-arrow.prev');
   const nextBtn=root.querySelector('.carousel-arrow.next');
 
-  // Coloca “Diariamente — Bem-estar no trabalho” como primeira experiência do carrossel.
   const diariamente=Array.from(track.querySelectorAll('.carousel-slide')).find(slide=>{
     const title=slide.querySelector('h3');
     return title && title.textContent.trim()==='Bem-estar no trabalho';
@@ -17,18 +16,25 @@
     const oldArt=diariamente.querySelector('.carousel-image');
     title.textContent='Diariamente — bem-estar no trabalho';
 
-    // Substitui o recorte do sprite pela arte real enviada pelo usuário,
-    // evitando o quadro vazio e mantendo a proporção integral da capa.
     if(oldArt){
       const img=document.createElement('img');
-      img.className='carousel-hq-image';
-      img.src='/assets/diariamente-bem-estar-no-trabalho-hq.svg?v=1';
+      img.src='/assets/diariamente-bem-estar-no-trabalho-hq.svg?v=2';
       img.alt='Diariamente — Bem-estar no trabalho';
       img.width=484;
       img.height=646;
       img.loading='eager';
       img.decoding='async';
       img.fetchPriority='high';
+      img.style.width='min(100%,420px)';
+      img.style.height='auto';
+      img.style.aspectRatio='484 / 646';
+      img.style.objectFit='contain';
+      img.style.objectPosition='center';
+      img.style.display='block';
+      img.style.borderRadius='26px';
+      img.style.boxShadow='0 18px 40px rgba(74,46,76,.16)';
+      img.style.border='1px solid rgba(137,57,154,.08)';
+      img.style.background='#f7f2ec';
       oldArt.replaceWith(img);
     }
     track.prepend(diariamente);
@@ -74,8 +80,6 @@
   root.addEventListener('touchend',e=>{if(touchX===null)return;const dx=e.changedTouches[0].clientX-touchX;if(Math.abs(dx)>42){dx<0?nextBtn.click():prevBtn.click();}touchX=null;start();},{passive:true});
   renderDots();update();start();
 })();
-
-
 
 (function(){
   const menu=document.getElementById('menu');
