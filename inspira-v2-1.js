@@ -1,10 +1,8 @@
 
 (function(){
-  // Remove integralmente a seção “Da assinatura à experiência, em quatro movimentos”.
   const steps=document.getElementById('como-funciona');
   if(steps) steps.remove();
 
-  // Reaponta o CTA do hero para uma seção existente.
   const heroLink=document.querySelector('a[data-event="hero_como_funciona"],a[data-event="hero_experiencia"]');
   if(heroLink){
     heroLink.href='#plataforma';
@@ -22,8 +20,6 @@
   const nextBtn=root.querySelector('.carousel-arrow.next');
   if(!track||!dotsWrap||!prevBtn||!nextBtn)return;
 
-  // Coloca “Diariamente — Bem-estar no trabalho” como primeiro item,
-  // usando diretamente o sprite WebP em alta definição já hospedado no projeto.
   const diariamente=Array.from(track.querySelectorAll('.carousel-slide')).find(slide=>{
     const title=slide.querySelector('h3');
     const txt=title?title.textContent.trim():'';
@@ -34,28 +30,30 @@
     const title=diariamente.querySelector('h3');
     if(title) title.textContent='Diariamente — bem-estar no trabalho';
 
-    let art=diariamente.querySelector('.carousel-image');
+    const oldArt=diariamente.querySelector('.carousel-image');
     const oldImg=diariamente.querySelector('img');
-    if(!art){
-      art=document.createElement('div');
-      art.className='carousel-image';
-      if(oldImg) oldImg.replaceWith(art);
-      else diariamente.insertBefore(art,title||diariamente.firstChild);
-    }
+    const img=document.createElement('img');
+    img.src='/assets/diariamente-bem-estar-no-trabalho.jpg?rev=20260904-real-v1';
+    img.alt='Diariamente — Bem-estar no trabalho';
+    img.width=484;
+    img.height=646;
+    img.loading='eager';
+    img.decoding='async';
+    img.fetchPriority='high';
+    img.style.width='min(100%,420px)';
+    img.style.height='auto';
+    img.style.aspectRatio='484 / 646';
+    img.style.objectFit='contain';
+    img.style.objectPosition='center';
+    img.style.display='block';
+    img.style.borderRadius='26px';
+    img.style.boxShadow='0 18px 40px rgba(74,46,76,.16)';
+    img.style.border='1px solid rgba(137,57,154,.08)';
+    img.style.background='#f7f2ec';
 
-    art.setAttribute('role','img');
-    art.setAttribute('aria-label','Diariamente — Bem-estar no trabalho');
-    art.style.width='min(100%,420px)';
-    art.style.aspectRatio='420 / 490';
-    art.style.backgroundImage="url('/assets/inspira-carousel-sprite-hq.webp?v=4')";
-    art.style.backgroundRepeat='no-repeat';
-    art.style.backgroundSize='800% 100%';
-    art.style.backgroundPosition='71.428571% 0';
-    art.style.backgroundColor='#f7f2ec';
-    art.style.borderRadius='26px';
-    art.style.boxShadow='0 18px 40px rgba(74,46,76,.16)';
-    art.style.border='1px solid rgba(137,57,154,.08)';
-    art.style.display='block';
+    if(oldArt) oldArt.replaceWith(img);
+    else if(oldImg) oldImg.replaceWith(img);
+    else diariamente.insertBefore(img,title||diariamente.firstChild);
 
     track.prepend(diariamente);
   }
