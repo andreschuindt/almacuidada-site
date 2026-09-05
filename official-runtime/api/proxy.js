@@ -1,5 +1,5 @@
 const RAW_BASE='https://raw.githubusercontent.com/andreschuindt/almacuidada-site/projetoinspira-production';
-const RELEASE='2.6';
+const RELEASE='2.7';
 
 const PLATFORM_SECTION=`<section class="section platform platform-without-gallery" id="plataforma">
   <div class="container platform-grid" style="grid-template-columns:minmax(0,1fr);justify-content:center;max-width:1040px;">
@@ -17,6 +17,21 @@ const PLATFORM_SECTION=`<section class="section platform platform-without-galler
         <a class="btn btn-primary" href="#agora" data-event="plataforma_conteudos">Ver formas de viver o INSPIRA</a>
         <a class="btn btn-ghost" href="#planos" data-event="plataforma_planos">Quero participar</a>
       </div>
+    </div>
+  </div>
+</section>`;
+
+const IMPACT_SECTION=`<section class="section impact" id="impacto">
+  <div class="container impact-grid">
+    <div class="reveal" style="display:flex;align-items:center;justify-content:center;min-height:390px;">
+      <img src="/assets/impacto-social-5mais1.svg?v=27" width="700" height="700" alt="Cinco pessoas contribuindo para que uma nova pessoa receba acesso ao cuidado no Projeto INSPIRA" loading="lazy" decoding="async" style="width:min(100%,540px);height:auto;border-radius:34px;box-shadow:0 22px 58px rgba(78,47,82,.10);border:1px solid rgba(137,57,154,.08);">
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Impacto social</span>
+      <h2 class="title sm">Quando uma pessoa cuida de si, outra também pode começar.</h2>
+      <p class="lead">A cada <strong>5 acessos pagantes</strong> ao INSPIRA, <strong>uma concessão de acesso é entregue a quem precisa</strong> e não consegue custear a participação.</p>
+      <p class="muted">É assim que o cuidado se multiplica: cada grupo de cinco assinaturas ajuda a abrir uma nova possibilidade de acesso para pessoas em contexto de vulnerabilidade emocional.</p>
+      <p class="muted">Em parcerias com empresas e organizações, essa lógica também pode ser ampliada por meio de acessos em lote e Planos Sementes.</p>
     </div>
   </div>
 </section>`;
@@ -45,13 +60,16 @@ function cleanIndex(html){
   // Defesa adicional contra qualquer resíduo do carrossel em versões antigas do HTML.
   html=html.replace(/<div\b[^>]*class=["'][^"']*platform-gallery-card[^"']*["'][^>]*>[\s\S]*?<\/div>\s*<\/div>/gi,'');
 
+  // Atualiza integralmente a seção de impacto social com a nova arte e a explicação objetiva do modelo 5 + 1.
+  html=html.replace(/<section\b[^>]*\bid=["']impacto["'][^>]*>[\s\S]*?<\/section>/i,IMPACT_SECTION);
+
   // CTA secundário do HERO aponta para a seção que continua existindo.
   html=html.replace(/href=["']#como-funciona["']\s+data-event=["']hero_como_funciona["']>[^<]*</i,'href="#plataforma" data-event="hero_experiencia">Conhecer a experiência<');
   html=html.replace(/data-event=["']hero_experiencia["']>[^<]*</i,'data-event="hero_experiencia">Conhecer a experiência<');
 
   // Bypass de cache de recursos da release atual.
-  html=html.replace(/href=["']\/inspira-v2-1\.css(?:\?[^"']*)?["']/i,'href="/inspira-v2-1.css?v=26"');
-  html=html.replace(/src=["']\/inspira-v2-1\.js(?:\?[^"']*)?["']/i,'src="/inspira-v2-1.js?v=26"');
+  html=html.replace(/href=["']\/inspira-v2-1\.css(?:\?[^"']*)?["']/i,'href="/inspira-v2-1.css?v=27"');
+  html=html.replace(/src=["']\/inspira-v2-1\.js(?:\?[^"']*)?["']/i,'src="/inspira-v2-1.js?v=27"');
   html=html.replace('</head>',`  <meta name="inspira-release" content="${RELEASE}">\n</head>`);
   return html;
 }
