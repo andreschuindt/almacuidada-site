@@ -1,4 +1,4 @@
-const COMMIT='9d91f82d45108750165cae49c18ecaba07b2007f';
+const COMMIT='ed482d3d1ccbef21a278746e9f16ef56999f355d';
 const REPO='andreschuindt/almacuidada-site';
 const RAW=`https://raw.githubusercontent.com/${REPO}/${COMMIT}/`;
 
@@ -28,8 +28,8 @@ export default async function handler(req,res){
     const body=Buffer.from(await upstream.arrayBuffer());
     res.setHeader('Content-Type',MIME[ext(path)]||upstream.headers.get('content-type')||'application/octet-stream');
     if(path.startsWith('assets/')) res.setHeader('Cache-Control','public, max-age=31536000, s-maxage=31536000, immutable');
-    else if(/\.(css|js|svg)$/.test(path)) res.setHeader('Cache-Control','public, max-age=3600, s-maxage=86400, must-revalidate');
-    else res.setHeader('Cache-Control','public, max-age=60, s-maxage=300, must-revalidate');
+    else if(/\.(css|js|svg)$/.test(path)) res.setHeader('Cache-Control','public, max-age=60, s-maxage=60, must-revalidate');
+    else res.setHeader('Cache-Control','public, max-age=30, s-maxage=60, must-revalidate');
     res.setHeader('X-Content-Type-Options','nosniff');
     res.setHeader('Referrer-Policy','strict-origin-when-cross-origin');
     res.status(200).send(body);
