@@ -1,28 +1,32 @@
 # Projeto INSPIRA — Production Snapshot
 
-**Release:** INSPIRA 2.8 — seção “Quem conduz” reorganizada em retrato simétrico  
+**Release:** INSPIRA 2.9 — atualização visual consolidada da experiência, conteúdos e seção “Quem conduz”  
 **Publicado em:** 2026-09-05  
 **Site oficial:** https://projetoinspira.vercel.app/  
 **Vercel project:** projetoinspira  
-**Vercel deployment:** dpl_3S5vLCYN8Uhp9C2GuvneLdL7gio5  
+**Vercel deployment:** dpl_2Kz496ajyT82GfDb3ooygbN427hB  
 **GitHub branch:** projetoinspira-production
 
 ## Estado publicado
 - seção **“Da assinatura à experiência, em quatro movimentos.”** permanece removida integralmente;
-- carrossel **“Conteúdos reais da plataforma”** permanece removido;
-- seção **“Por dentro da experiência”** permanece reorganizada em uma única coluna central;
+- carrossel antigo **“Conteúdos reais da plataforma”** permanece removido;
 - CTA secundário do HERO permanece como **“Conhecer a experiência”**;
-- seção **Impacto social** mantém a arte do modelo 5 + 1 e a explicação objetiva de que a cada 5 acessos pagantes uma concessão é entregue a quem precisa;
-- seção **“Quem conduz”** foi completamente reorganizada em uma composição de duas colunas mais simétrica;
-- a foto de André Schuindt deixou o formato circular pequeno e passou a ocupar um **bloco vertical em formato retrato**, ao lado do texto;
-- foto e conteúdo textual agora possuem alturas e proporções visuais mais equilibradas no desktop;
-- legenda **“André Schuindt · idealizador e mediador”** foi mantida sobre a base da fotografia em formato de selo;
-- quote, textos institucionais, box **“Minha intenção com o INSPIRA”**, assinatura, credenciais e CTA foram preservados e redistribuídos com melhor espaçamento;
-- responsividade ajustada: em telas menores, foto e texto passam para uma coluna, mantendo a fotografia em proporção 4:5;
-- CSS/JS publicados com cache-buster `v=28`;
+- seção **“Por dentro da experiência”** foi centralizada e recebeu nova hierarquia editorial;
+- título atualizado para **“Veja uma parte do que você encontra dentro do INSPIRA.”**;
+- benefícios da seção foram reorganizados em uma grade simétrica e responsiva;
+- foi incluída uma **amostra visual real do ambiente digital da Plataforma Alma Cuidada**, com legenda explicando que o catálogo é dinâmico;
+- bloco **“Quatro formas de viver a experiência INSPIRA”** recebeu quatro novas imagens editoriais, totalmente diferentes das anteriores e alinhadas aos temas **Leituras que inspiram**, **Pausas que restauram**, **Reflexões que ampliam caminhos** e **Uma jornada que acompanha você**;
+- textos e legendas dos quatro cartões foram refinados e mantidos em composição uniforme;
+- seção **Impacto social** mantém a arte do modelo 5 + 1 e a explicação de que a cada cinco acessos pagantes uma concessão é entregue a quem precisa;
+- seção **“Quem conduz”** foi novamente refinada para evitar corte da fotografia de André Schuindt;
+- retrato agora é apresentado integralmente dentro de um card próprio, sem `object-fit: cover` que corte o rosto, com legenda separada e composição equilibrada ao lado do texto;
+- quote, textos institucionais, box **“Minha intenção com o INSPIRA”**, assinatura, credenciais e CTA foram preservados;
+- todos os novos elementos possuem comportamento responsivo para desktop, tablet e celular;
+- recursos visuais desta versão foram consolidados em `assets/inspira-v29-sprite.svg`;
+- CSS/JS publicados com cache-buster `v=29`;
 - HTML principal servido com `Cache-Control: no-store`;
-- cabeçalho de verificação `X-INSPIRA-Release: 2.8` ativo;
-- site oficial validado com HTTP 200.
+- cabeçalho de verificação `X-INSPIRA-Release: 2.9` ativo;
+- site oficial e novo recurso visual validados com HTTP 200.
 
 ## Arquitetura de publicação
 O conteúdo-fonte permanece versionado no branch `projetoinspira-production`.
@@ -31,16 +35,20 @@ O runtime oficial está versionado no GitHub em:
 - `official-runtime/api/proxy.js`
 - `official-runtime/vercel.json`
 
-O deployment Vercel usa um bootstrap enxuto que carrega o runtime versionado do branch de produção e entrega a página oficial com as alterações estruturais aplicadas no servidor antes do HTML chegar ao navegador.
+Os elementos visuais consolidados da release estão em:
+- `assets/inspira-v29-sprite.svg`
 
-## Validação da release 2.8
-- Deployment Vercel: `dpl_3S5vLCYN8Uhp9C2GuvneLdL7gio5`
+O runtime entrega a página oficial com as alterações estruturais aplicadas no servidor antes do HTML chegar ao navegador.
+
+## Validação da release 2.9
+- Deployment Vercel: `dpl_2Kz496ajyT82GfDb3ooygbN427hB`
 - Status: `READY`
 - Alias oficial: `https://projetoinspira.vercel.app/`
 - HTTP: `200`
-- Release header: `2.8`
-- Seção validada no HTML: `founder-v28`
-- Foto utilizada pela seção: `/assets/andre-schuindt.jpg?v=28`
+- Release header: `2.9`
+- CSS/JS: `v=29`
+- Asset visual: `/assets/inspira-v29-sprite.svg?v=29`
+- Asset visual validado com HTTP 200
 
 ## Rollback
 Os estados anteriores permanecem preservados no histórico do GitHub e nos deployments anteriores do Vercel.
