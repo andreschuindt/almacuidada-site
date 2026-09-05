@@ -1,23 +1,30 @@
 const RAW_BASE='https://raw.githubusercontent.com/andreschuindt/almacuidada-site/projetoinspira-production';
-const RELEASE='2.8';
+const RELEASE='2.9-pending';
 
-const PLATFORM_SECTION=`<section class="section platform platform-without-gallery" id="plataforma">
-  <div class="container platform-grid" style="grid-template-columns:minmax(0,1fr);justify-content:center;max-width:1040px;">
-    <div class="platform-copy reveal" style="max-width:900px;margin-inline:auto;width:100%;">
+const PLATFORM_SECTION=`<section class="section platform platform-v29" id="plataforma">
+  <div class="container platform-v29-wrap">
+    <div class="platform-v29-copy reveal">
       <span class="eyebrow">Por dentro da experiência</span>
-      <h2 class="title sm">Veja o que você realmente encontra.</h2>
-      <p class="lead">Menos promessa abstrata. Mais experiência concreta: conteúdos organizados para ler, escutar, assistir e praticar no tempo que você tem.</p>
-      <ul style="max-width:820px;">
-        <li>Ambiente de membros com acesso individual</li>
-        <li>Trilhas temáticas e conteúdos atualizados</li>
-        <li>Meditações, mindfulness e materiais reflexivos</li>
-        <li>Literacia familiar e conteúdos para diferentes fases da vida</li>
-      </ul>
-      <div class="actions" style="margin-top:28px">
+      <h2 class="title sm">Veja uma parte do que você encontra dentro do INSPIRA.</h2>
+      <p class="lead">Menos promessa abstrata. Mais experiência concreta: uma plataforma organizada para você ler, escutar, assistir, refletir e praticar no seu próprio ritmo.</p>
+      <div class="platform-v29-points" aria-label="Recursos disponíveis na plataforma">
+        <span>✓ Ambiente de membros com acesso individual</span>
+        <span>✓ Trilhas temáticas e conteúdos atualizados</span>
+        <span>✓ Meditações, mindfulness e materiais reflexivos</span>
+        <span>✓ Literacia familiar e conteúdos para diferentes fases da vida</span>
+      </div>
+      <div class="actions platform-v29-actions">
         <a class="btn btn-primary" href="#agora" data-event="plataforma_conteudos">Ver formas de viver o INSPIRA</a>
         <a class="btn btn-ghost" href="#planos" data-event="plataforma_planos">Quero participar</a>
       </div>
     </div>
+
+    <figure class="platform-v29-proof reveal">
+      <div class="platform-v29-image-frame">
+        <img src="/assets/plataforma-conteudos-amostra-v29.webp" width="728" height="499" alt="Amostra real da Plataforma Alma Cuidada com programas em destaque e conteúdos sobre ansiedade, burnout, depressão e TDAH" loading="lazy" decoding="async">
+      </div>
+      <figcaption>Uma amostra real do ambiente de conteúdos. O catálogo é dinâmico e recebe novas trilhas, programas e materiais ao longo da jornada.</figcaption>
+    </figure>
   </div>
 </section>`;
 
@@ -36,20 +43,23 @@ const IMPACT_SECTION=`<section class="section impact" id="impacto">
   </div>
 </section>`;
 
-const FOUNDER_SECTION=`<section class="section founder-section founder-v28" id="andre">
-  <div class="container founder-v28-grid">
-    <div class="founder-v28-photo reveal">
-      <img src="/assets/andre-schuindt.jpg?v=28" alt="André Schuindt, idealizador e mediador do INSPIRA LIVROTERAPIA" width="470" height="600" loading="lazy" decoding="async">
-      <div class="founder-v28-caption">André Schuindt · idealizador e mediador</div>
+const FOUNDER_SECTION=`<section class="section founder-section founder-v29" id="andre">
+  <div class="container founder-v29-grid">
+    <div class="founder-v29-photo-card reveal">
+      <div class="founder-v29-photo-stage">
+        <img src="/assets/andre-schuindt.jpg?v=29" alt="André Schuindt, idealizador e mediador do INSPIRA LIVROTERAPIA" width="470" height="460" loading="lazy" decoding="async">
+      </div>
+      <div class="founder-v29-caption">André Schuindt · idealizador e mediador</div>
     </div>
-    <article class="founder-v28-card reveal">
+
+    <article class="founder-v29-card reveal">
       <span class="eyebrow">Quem conduz</span>
       <h3>“Eu criei o INSPIRA porque acredito que algumas leituras chegam até nós como companhia.”</h3>
       <p>Nem todo cuidado começa em uma resposta. Às vezes, começa em uma história que nos ajuda a reconhecer algo que ainda não sabíamos nomear.</p>
       <p>O INSPIRA nasceu da união entre educação, escuta, leitura e cuidado humano. Minha intenção é mediar essa experiência com profundidade, sem transformar desenvolvimento pessoal em pressão por desempenho.</p>
       <p>Quero que cada pessoa encontre aqui um ritmo possível — uma forma de ler, refletir e se perceber com mais presença.</p>
-      <div class="founder-v28-intent"><strong>Minha intenção com o INSPIRA:</strong> criar um espaço em que leitura, reflexão e cuidado possam se encontrar de forma simples, humana e possível.</div>
-      <div class="founder-v28-signature">
+      <div class="founder-v29-intent"><strong>Minha intenção com o INSPIRA:</strong> criar um espaço em que leitura, reflexão e cuidado possam se encontrar de forma simples, humana e possível.</div>
+      <div class="founder-v29-signature">
         <div class="signature">André Schuindt</div>
         <div class="signature-role">Fundador da Alma Cuidada e idealizador do INSPIRA LIVROTERAPIA</div>
       </div>
@@ -59,25 +69,69 @@ const FOUNDER_SECTION=`<section class="section founder-section founder-v28" id="
   </div>
 </section>`;
 
-const FOUNDER_STYLES=`<style id="inspira-founder-v28">
-.founder-v28{background:linear-gradient(180deg,rgba(255,248,230,.36),rgba(255,253,248,.10));overflow:hidden}
-.founder-v28-grid{display:grid;grid-template-columns:minmax(320px,.86fr) minmax(0,1.14fr);gap:30px;align-items:stretch;max-width:1120px;margin-inline:auto}
-.founder-v28-photo,.founder-v28-card{border:1px solid rgba(137,57,154,.12);box-shadow:0 20px 52px rgba(80,45,82,.09);background:rgba(255,253,248,.86)}
-.founder-v28-photo{position:relative;overflow:hidden;border-radius:30px;min-height:650px}
-.founder-v28-photo img{width:100%;height:100%;min-height:650px;object-fit:cover;object-position:50% 42%;display:block}
-.founder-v28-caption{position:absolute;left:24px;right:24px;bottom:22px;padding:11px 16px;border-radius:999px;background:rgba(255,253,248,.95);border:1px solid rgba(137,57,154,.14);box-shadow:0 10px 24px rgba(77,45,82,.11);font-size:.72rem;font-weight:900;color:var(--purple);text-align:center}
-.founder-v28-card{border-radius:30px;padding:42px 44px;display:flex;flex-direction:column;justify-content:center}
-.founder-v28-card h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.35rem,4.15vw,4.35rem);line-height:.99;letter-spacing:-.04em;margin:13px 0 24px;color:var(--purple3);max-width:760px}
-.founder-v28-card p{color:#66555f;font-size:.98rem;line-height:1.72;margin:0 0 15px}
-.founder-v28-intent{margin-top:6px;padding:18px 20px;border-radius:18px;background:linear-gradient(90deg,rgba(37,175,162,.08),rgba(93,212,87,.07));border:1px solid rgba(37,175,162,.11);font-size:.84rem;color:#5c4e59;line-height:1.65}
-.founder-v28-intent strong{color:var(--teal)}
-.founder-v28-signature{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
-.founder-v28-signature .signature{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:1.42rem;color:var(--purple)}
-.founder-v28-signature .signature-role{font-size:.72rem;color:var(--muted);text-align:right;max-width:330px;line-height:1.45}
-.founder-v28-card .credentials{margin-top:14px;font-size:.73rem;color:var(--muted);line-height:1.6}
-.founder-v28-card .founder-cta{margin-top:22px}
-@media(max-width:980px){.founder-v28-grid{grid-template-columns:1fr;max-width:760px;gap:20px}.founder-v28-photo{min-height:0;aspect-ratio:4/5;max-width:520px;width:100%;justify-self:center}.founder-v28-photo img{min-height:0;height:100%;object-position:50% 40%}.founder-v28-card{padding:34px 32px}.founder-v28-signature{align-items:flex-start;flex-direction:column}.founder-v28-signature .signature-role{text-align:left}}
-@media(max-width:640px){.founder-v28-grid{gap:16px}.founder-v28-photo{border-radius:24px;aspect-ratio:4/5}.founder-v28-caption{left:16px;right:16px;bottom:16px;font-size:.66rem;padding:9px 12px}.founder-v28-card{padding:26px 22px;border-radius:24px}.founder-v28-card h3{font-size:clamp(2rem,10.6vw,3.1rem)}.founder-v28-card p{font-size:.94rem}.founder-v28-intent{font-size:.8rem;padding:16px}.founder-v28-card .founder-cta .btn{width:100%}}
+const PENDING_STYLES=`<style id="inspira-pending-v29">
+.platform-v29{overflow:hidden;background:linear-gradient(180deg,rgba(255,253,248,.12),rgba(255,248,230,.26))}
+.platform-v29-wrap{max-width:1120px;margin-inline:auto;display:grid;gap:42px}
+.platform-v29-copy{max-width:920px;margin-inline:auto;text-align:center}
+.platform-v29-copy .eyebrow{justify-content:center}
+.platform-v29-copy .title{max-width:900px;margin-inline:auto}
+.platform-v29-copy .lead{max-width:820px;margin:22px auto 0}
+.platform-v29-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;max-width:860px;margin:28px auto 0;text-align:left}
+.platform-v29-points span{display:flex;align-items:center;min-height:48px;padding:12px 16px;border-radius:16px;background:rgba(255,253,248,.72);border:1px solid rgba(137,57,154,.10);box-shadow:0 8px 22px rgba(83,47,88,.045);font-size:.86rem;color:#625866}
+.platform-v29-points span::first-letter{color:var(--green)}
+.platform-v29-actions{justify-content:center;margin-top:28px}
+.platform-v29-proof{width:min(100%,980px);margin:0 auto;text-align:center}
+.platform-v29-image-frame{padding:12px;border-radius:28px;background:rgba(255,253,248,.88);border:1px solid rgba(137,57,154,.12);box-shadow:0 24px 60px rgba(78,45,82,.12)}
+.platform-v29-image-frame img{width:100%;height:auto;display:block;border-radius:20px}
+.platform-v29-proof figcaption{max-width:760px;margin:15px auto 0;font-size:.78rem;line-height:1.6;color:var(--muted)}
+
+.founder-v29{background:linear-gradient(180deg,rgba(255,248,230,.36),rgba(255,253,248,.10));overflow:hidden}
+.founder-v29-grid{display:grid;grid-template-columns:minmax(300px,.78fr) minmax(0,1.22fr);gap:34px;align-items:center;max-width:1120px;margin-inline:auto}
+.founder-v29-photo-card,.founder-v29-card{border:1px solid rgba(137,57,154,.12);box-shadow:0 20px 52px rgba(80,45,82,.09);background:rgba(255,253,248,.88);border-radius:30px}
+.founder-v29-photo-card{padding:16px;align-self:center}
+.founder-v29-photo-stage{display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:23px;background:linear-gradient(180deg,#F7F2EC,#FFFDF8);min-height:0}
+.founder-v29-photo-stage img{width:100%;height:auto;max-height:560px;object-fit:contain;object-position:center center;display:block;border-radius:22px}
+.founder-v29-caption{margin:14px 8px 2px;padding:10px 14px;border-radius:999px;background:var(--cream);border:1px solid rgba(137,57,154,.12);font-size:.7rem;font-weight:900;color:var(--purple);text-align:center}
+.founder-v29-card{padding:40px 42px}
+.founder-v29-card h3{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.2rem,3.7vw,3.75rem);line-height:1.01;letter-spacing:-.038em;margin:13px 0 23px;color:var(--purple3);max-width:760px}
+.founder-v29-card p{color:#66555f;font-size:.96rem;line-height:1.72;margin:0 0 14px}
+.founder-v29-intent{margin-top:6px;padding:17px 19px;border-radius:18px;background:linear-gradient(90deg,rgba(37,175,162,.08),rgba(93,212,87,.07));border:1px solid rgba(37,175,162,.11);font-size:.83rem;color:#5c4e59;line-height:1.65}
+.founder-v29-intent strong{color:var(--teal)}
+.founder-v29-signature{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin-top:23px;padding-top:18px;border-top:1px solid var(--line)}
+.founder-v29-signature .signature{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:1.42rem;color:var(--purple)}
+.founder-v29-signature .signature-role{font-size:.72rem;color:var(--muted);text-align:right;max-width:330px;line-height:1.45}
+.founder-v29-card .credentials{margin-top:14px;font-size:.73rem;color:var(--muted);line-height:1.6}
+.founder-v29-card .founder-cta{margin-top:22px}
+
+@media(max-width:980px){
+  .platform-v29-points{grid-template-columns:1fr;max-width:720px}
+  .founder-v29-grid{grid-template-columns:1fr;max-width:760px;gap:20px}
+  .founder-v29-photo-card{max-width:520px;width:100%;justify-self:center}
+  .founder-v29-photo-stage img{max-height:none;width:100%;height:auto}
+  .founder-v29-card{padding:34px 32px}
+  .founder-v29-signature{align-items:flex-start;flex-direction:column}
+  .founder-v29-signature .signature-role{text-align:left}
+}
+@media(max-width:640px){
+  .platform-v29-wrap{gap:30px}
+  .platform-v29-copy .title{font-size:clamp(2.25rem,11vw,3.15rem)}
+  .platform-v29-points span{font-size:.8rem;padding:11px 13px}
+  .platform-v29-actions .btn{width:100%}
+  .platform-v29-image-frame{padding:7px;border-radius:20px}
+  .platform-v29-image-frame img{border-radius:15px}
+  .platform-v29-proof figcaption{font-size:.72rem;padding-inline:8px}
+  .founder-v29-grid{gap:16px}
+  .founder-v29-photo-card,.founder-v29-card{border-radius:24px}
+  .founder-v29-photo-card{padding:10px}
+  .founder-v29-photo-stage{border-radius:18px}
+  .founder-v29-photo-stage img{border-radius:17px}
+  .founder-v29-caption{font-size:.65rem;margin-top:10px;padding:9px 11px}
+  .founder-v29-card{padding:26px 22px}
+  .founder-v29-card h3{font-size:clamp(2rem,10.3vw,2.95rem)}
+  .founder-v29-card p{font-size:.94rem}
+  .founder-v29-intent{font-size:.8rem;padding:16px}
+  .founder-v29-card .founder-cta .btn{width:100%}
+}
 </style>`;
 
 function contentType(path,upstream){
@@ -102,9 +156,9 @@ function cleanIndex(html){
   html=html.replace(/<section\b[^>]*\bid=["']andre["'][^>]*>[\s\S]*?<\/section>/i,FOUNDER_SECTION);
   html=html.replace(/href=["']#como-funciona["']\s+data-event=["']hero_como_funciona["']>[^<]*</i,'href="#plataforma" data-event="hero_experiencia">Conhecer a experiência<');
   html=html.replace(/data-event=["']hero_experiencia["']>[^<]*</i,'data-event="hero_experiencia">Conhecer a experiência<');
-  html=html.replace(/href=["']\/inspira-v2-1\.css(?:\?[^"']*)?["']/i,'href="/inspira-v2-1.css?v=28"');
-  html=html.replace(/src=["']\/inspira-v2-1\.js(?:\?[^"']*)?["']/i,'src="/inspira-v2-1.js?v=28"');
-  html=html.replace('</head>',`${FOUNDER_STYLES}\n  <meta name="inspira-release" content="${RELEASE}">\n</head>`);
+  html=html.replace(/href=["']\/inspira-v2-1\.css(?:\?[^"']*)?["']/i,'href="/inspira-v2-1.css?v=29"');
+  html=html.replace(/src=["']\/inspira-v2-1\.js(?:\?[^"']*)?["']/i,'src="/inspira-v2-1.js?v=29"');
+  html=html.replace('</head>',`${PENDING_STYLES}\n  <meta name="inspira-release" content="${RELEASE}">\n</head>`);
   return html;
 }
 
