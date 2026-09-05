@@ -1,4 +1,3 @@
-
 (function(){
   const root=document.querySelector('#plataforma .platform-gallery-card');
   if(!root)return;
@@ -29,7 +28,7 @@
     nextBtn.disabled=currentIndex===maxIndex;
   }
   function start(){
-    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){clearInterval(autoPlay);return;}
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){clearInterval(autoPlay);return;}
     clearInterval(autoPlay);
     autoPlay=setInterval(()=>{currentIndex=currentIndex<maxIndex?currentIndex+1:0;update();},4800);
   }
@@ -69,9 +68,7 @@
   if(reduced){
     document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
   }else if('IntersectionObserver' in window){
-    const io=new IntersectionObserver(es=>es.forEach(e=>{
-      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
-    }),{threshold:.08});
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:.08});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   }else{
     document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
@@ -93,18 +90,16 @@
     const el=e.target.closest('[data-event]');
     if(!el)return;
     const name=el.getAttribute('data-event');
-    if(typeof window.va==='function'){
-      window.va('event',{name,data:{destination:el.getAttribute('href')?.startsWith('#')?'internal':'external'}});
-    }
+    if(typeof window.va==='function')window.va('event',{name,data:{destination:el.getAttribute('href')?.startsWith('#')?'internal':'external'}});
   });
 })();
 
-/* INSPIRA 2.2 — atualizações aprovadas em visualização */
+/* INSPIRA 2.3 — arte DIARIAMENTE e atualizações aprovadas */
 (function(){
-  const rev='20260904-production-v22';
+  const rev='20260905-production-v23';
 
   const steps=document.getElementById('como-funciona');
-  if(steps) steps.remove();
+  if(steps)steps.remove();
 
   const heroSecondary=document.querySelector('[data-event="hero_como_funciona"]');
   if(heroSecondary){
@@ -115,7 +110,7 @@
 
   const firstSlide=document.querySelector('#plataforma #carouselTrack .carousel-slide');
   if(firstSlide){
-    firstSlide.innerHTML='<div class="carousel-image carousel-image-direct"><img src="/assets/diariamente-bem-estar-trabalho-v3.webp?v='+rev+'" alt="Diariamente — Bem-estar no trabalho" width="729" height="980" loading="eager" decoding="async" fetchpriority="high"></div><h3>Diariamente — bem-estar no trabalho</h3>';
+    firstSlide.innerHTML='<div class="carousel-image carousel-image-direct"><img src="/assets/diariamente-bem-estar-trabalho-carousel-v5.svg?v='+rev+'" alt="Diariamente — Bem-estar no trabalho" width="900" height="1260" loading="eager" decoding="async" fetchpriority="high"></div><h3>Diariamente — bem-estar no trabalho</h3>';
   }
 
   const agora=document.getElementById('agora');
@@ -128,10 +123,10 @@
   }
 
   const style=document.createElement('style');
-  style.id='inspira-v22-approved-styles';
+  style.id='inspira-v23-approved-styles';
   style.textContent=`
-#plataforma .carousel-image.carousel-image-direct{width:min(100%,420px)!important;height:auto!important;aspect-ratio:auto!important;background:none!important;background-image:none!important;border:0!important;box-shadow:none!important;overflow:visible!important;display:flex!important;align-items:center;justify-content:center}
-#plataforma .carousel-image.carousel-image-direct img{display:block!important;width:100%!important;height:auto!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center!important;border-radius:26px;box-shadow:0 18px 40px rgba(74,46,76,.16);border:1px solid rgba(137,57,154,.08);background:#f7f2ec}
+#plataforma .carousel-image.carousel-image-direct{width:min(100%,470px)!important;height:auto!important;aspect-ratio:auto!important;background:none!important;background-image:none!important;border:0!important;box-shadow:none!important;overflow:visible!important;display:flex!important;align-items:center;justify-content:center}
+#plataforma .carousel-image.carousel-image-direct img{display:block!important;width:100%!important;height:auto!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center!important;border-radius:26px;box-shadow:0 22px 48px rgba(74,46,76,.17);border:1px solid rgba(137,57,154,.08);background:#f7f2ec}
 #agora.experience-showcase{position:relative;overflow:hidden;padding-top:82px;padding-bottom:78px;background:linear-gradient(180deg,#fbf7f1 0%,#f7efe8 100%)}
 #agora.experience-showcase:before{content:"";position:absolute;width:480px;height:480px;border-radius:50%;right:-250px;top:-240px;background:radial-gradient(circle,rgba(37,175,162,.10),transparent 70%);pointer-events:none}
 #agora .experience-head{position:relative;z-index:2;max-width:1080px;margin:0 auto;text-align:center}
@@ -152,7 +147,7 @@
 #agora .experience-rule{width:30px;height:2px;margin:13px 0 12px;border-radius:3px;background:linear-gradient(90deg,#25AFA2,#5DD457)}
 #agora .experience-body p{margin:0;color:#665B68;font-size:.94rem;line-height:1.62}
 @media(max-width:1080px){#agora .experience-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:860px;margin-left:auto;margin-right:auto}#agora .experience-body{min-height:205px}}
-@media(max-width:640px){#plataforma .carousel-image.carousel-image-direct{width:min(100%,380px)!important}#plataforma .carousel-image.carousel-image-direct img{border-radius:22px}#agora.experience-showcase{padding-top:58px;padding-bottom:58px}#agora .experience-title{font-size:clamp(2.55rem,11vw,3.85rem)}#agora .experience-lead{font-size:1rem}#agora .experience-grid{grid-template-columns:1fr;gap:18px;margin-top:32px}#agora .experience-card{border-radius:22px}#agora .experience-photo{aspect-ratio:1.16/1}#agora .experience-body{padding:20px;min-height:0}#agora .experience-body h3{font-size:1.45rem}}
+@media(max-width:640px){#plataforma .carousel-image.carousel-image-direct{width:min(100%,400px)!important}#plataforma .carousel-image.carousel-image-direct img{border-radius:22px}#agora.experience-showcase{padding-top:58px;padding-bottom:58px}#agora .experience-title{font-size:clamp(2.55rem,11vw,3.85rem)}#agora .experience-lead{font-size:1rem}#agora .experience-grid{grid-template-columns:1fr;gap:18px;margin-top:32px}#agora .experience-card{border-radius:22px}#agora .experience-photo{aspect-ratio:1.16/1}#agora .experience-body{padding:20px;min-height:0}#agora .experience-body h3{font-size:1.45rem}}
 `;
   document.head.appendChild(style);
 })();
