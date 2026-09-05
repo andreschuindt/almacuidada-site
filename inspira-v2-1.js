@@ -50,38 +50,32 @@
   });
 })();
 
-/* INSPIRA 2.4 — painel estático no lugar do carrossel */
+/* INSPIRA 2.5 — remoção definitiva visual das seções solicitadas */
 (function(){
-  const rev='20260904-production-v24-static-platform';
-
   const steps=document.getElementById('como-funciona');
   if(steps)steps.remove();
 
-  const heroSecondary=document.querySelector('[data-event="hero_como_funciona"]');
+  const heroSecondary=document.querySelector('[data-event="hero_como_funciona"], [data-event="hero_experiencia"]');
   if(heroSecondary){
     heroSecondary.href='#plataforma';
     heroSecondary.dataset.event='hero_experiencia';
     heroSecondary.textContent='Conhecer a experiência';
   }
 
-  const gallery=document.querySelector('#plataforma .platform-gallery-card');
-  if(gallery){
-    gallery.setAttribute('aria-label','Visão da experiência e dos conteúdos da plataforma');
-    gallery.innerHTML=`
-      <div class="platform-gallery-header"><span class="eyebrow">Conteúdos reais da plataforma</span></div>
-      <figure class="platform-static-panel">
-        <div class="platform-static-frame">
-          <img src="/assets/comunidade-inspira-banner-1000.webp?v=${rev}" width="1000" height="575" alt="Comunidade INSPIRA e Plataforma Alma Cuidada — curadoria, comunidade, experiências e conteúdos de livroterapia" loading="lazy" decoding="async">
-        </div>
-        <figcaption>
-          <strong>Uma visão da experiência INSPIRA.</strong>
-          <span>Conteúdos, curadoria, práticas e comunidade reunidos em um mesmo ecossistema digital de cuidado.</span>
-        </figcaption>
-      </figure>`;
+  const platform=document.getElementById('plataforma');
+  if(platform){
+    const gallery=platform.querySelector('.platform-gallery-card');
+    if(gallery)gallery.remove();
+    platform.classList.add('platform-without-gallery');
+    const contentButton=platform.querySelector('[data-event="plataforma_conteudos"]');
+    if(contentButton){
+      contentButton.href='#agora';
+      contentButton.textContent='Ver formas de viver o INSPIRA';
+    }
   }
 
   const agora=document.getElementById('agora');
-  if(agora){
+  if(agora && !agora.classList.contains('experience-showcase')){
     const replacement=document.createElement('section');
     replacement.className='section experience-showcase';
     replacement.id='agora';
@@ -90,16 +84,12 @@
   }
 
   const style=document.createElement('style');
-  style.id='inspira-v24-static-platform-styles';
+  style.id='inspira-v25-cleanup-styles';
   style.textContent=`
-#plataforma .platform-gallery-card{overflow:hidden}
-#plataforma .platform-static-panel{margin:0;display:grid;gap:18px}
-#plataforma .platform-static-frame{position:relative;overflow:hidden;border-radius:28px;background:#f7f2ec;border:1px solid rgba(137,57,154,.10);box-shadow:0 22px 52px rgba(74,46,76,.14)}
-#plataforma .platform-static-frame:after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.34)}
-#plataforma .platform-static-frame img{display:block;width:100%;height:auto;object-fit:contain;object-position:center;background:#f7f2ec}
-#plataforma .platform-static-panel figcaption{display:grid;gap:6px;text-align:center;padding:0 18px 2px;color:#625764;line-height:1.55}
-#plataforma .platform-static-panel figcaption strong{font-family:Georgia,"Times New Roman",serif;color:#4A2E4C;font-size:1.08rem}
-#plataforma .platform-static-panel figcaption span{font-size:.94rem}
+#como-funciona{display:none!important}
+#plataforma .platform-gallery-card{display:none!important}
+#plataforma.platform-without-gallery .platform-grid{grid-template-columns:minmax(0,860px)!important;justify-content:center!important}
+#plataforma.platform-without-gallery .platform-copy{max-width:860px;margin-inline:auto}
 #agora.experience-showcase{position:relative;overflow:hidden;padding-top:82px;padding-bottom:78px;background:linear-gradient(180deg,#fbf7f1 0%,#f7efe8 100%)}
 #agora.experience-showcase:before{content:"";position:absolute;width:480px;height:480px;border-radius:50%;right:-250px;top:-240px;background:radial-gradient(circle,rgba(37,175,162,.10),transparent 70%);pointer-events:none}
 #agora .experience-head{position:relative;z-index:2;max-width:1080px;margin:0 auto;text-align:center}
@@ -120,7 +110,7 @@
 #agora .experience-rule{width:30px;height:2px;margin:13px 0 12px;border-radius:3px;background:linear-gradient(90deg,#25AFA2,#5DD457)}
 #agora .experience-body p{margin:0;color:#665B68;font-size:.94rem;line-height:1.62}
 @media(max-width:1080px){#agora .experience-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:860px;margin-left:auto;margin-right:auto}#agora .experience-body{min-height:205px}}
-@media(max-width:640px){#plataforma .platform-static-frame{border-radius:22px}#plataforma .platform-static-panel figcaption{padding:0 4px}#agora.experience-showcase{padding-top:58px;padding-bottom:58px}#agora .experience-title{font-size:clamp(2.55rem,11vw,3.85rem)}#agora .experience-lead{font-size:1rem}#agora .experience-grid{grid-template-columns:1fr;gap:18px;margin-top:32px}#agora .experience-card{border-radius:22px}#agora .experience-photo{aspect-ratio:1.16/1}#agora .experience-body{padding:20px;min-height:0}#agora .experience-body h3{font-size:1.45rem}}
+@media(max-width:640px){#agora.experience-showcase{padding-top:58px;padding-bottom:58px}#agora .experience-title{font-size:clamp(2.55rem,11vw,3.85rem)}#agora .experience-lead{font-size:1rem}#agora .experience-grid{grid-template-columns:1fr;gap:18px;margin-top:32px}#agora .experience-card{border-radius:22px}#agora .experience-photo{aspect-ratio:1.16/1}#agora .experience-body{padding:20px;min-height:0}#agora .experience-body h3{font-size:1.45rem}}
 `;
   document.head.appendChild(style);
 })();
