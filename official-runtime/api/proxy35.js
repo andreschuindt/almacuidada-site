@@ -13,7 +13,9 @@ module.exports = async function handler(req, res) {
     });
 
     res.status(upstream.status);
-    const type = upstream.headers.get('content-type') || (isMainJs ? 'application/javascript; charset=utf-8' : 'application/octet-stream');
+    const type = isMainJs
+      ? 'application/javascript; charset=utf-8'
+      : (upstream.headers.get('content-type') || 'application/octet-stream');
     res.setHeader('Content-Type', type);
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
