@@ -1,30 +1,33 @@
-const base = require('./proxy');
+const UPSTREAM = 'https://projetoinspira-ms56uo6vp-schuindt.vercel.app';
+const PLATFORM_IMAGE = 'https://raw.githubusercontent.com/andreschuindt/almacuidada-site/projetoinspira-production/assets/plataforma-dashboard-v33.svg';
 
 module.exports = async function handler(req, res) {
-  let statusCode = 200;
-  let body;
-  const headers = {};
+  try {
+    let path = String(req.query.path || '').replace(/^\/+/, '');
+    const url = path ? `${UPSTREAM}/${path}` : `${UPSTREAM}/`;
+    const upstream = await fetch(url, { headers: { 'User-Agent': 'Projeto-INSPIRA-3.2' } });
 
-  const capture = {
-    setHeader(name, value) { headers[String(name).toLowerCase()] = value; },
-    status(code) { statusCode = code; return this; },
-    send(value) { body = value; return this; }
-  };
+    res.status(upstream.status);
+    const type = upstream.headers.get('content-type') || 'application/octet-stream';
+    res.setHeader('Content-Type', type);
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    res.setHeader('X-INSPIRA-Release', '3.2');
 
-  await base(req, capture);
+    if (type.includes('text/html')) {
+      let html = await upstream.text();
+      html = html
+        .replace('/assets/plataforma-dashboard.jpg?v=31', PLATFORM_IMAGE)
+        .replace('content="3.1"', 'content="3.2"');
+      res.setHeader('Cache-Control', 'no-store, max-age=0');
+      return res.send(html);
+    }
 
-  if (typeof body === 'string') {
-    body = body
-      .replace('/assets/plataforma-dashboard.jpg?v=31', '/assets/plataforma-dashboard-v33.svg?v=32')
-      .replace('content="3.1"', 'content="3.2"')
-      .replace('inspira-v2-1.css?v=31', 'inspira-v2-1.css?v=32')
-      .replace('inspira-v2-1.js?v=31', 'inspira-v2-1.js?v=32');
+    const buf = Buffer.from(await upstream.arrayBuffer());
+    res.setHeader('Cache-Control', upstream.headers.get('cache-control') || 'public, max-age=300');
+    return res.send(buf);
+  } catch (error) {
+    console.error('INSPIRA 3.2 proxy error', error);
+    return res.status(500).send('Internal Server Error');
   }
-
-  for (const [name, value] of Object.entries(headers)) {
-    res.setHeader(name, value);
-  }
-  res.setHeader('X-INSPIRA-Release', '3.2');
-  res.setHeader('Cache-Control', typeof body === 'string' ? 'no-store, max-age=0' : (headers['cache-control'] || 'public, max-age=300'));
-  res.status(statusCode).send(body);
 };
