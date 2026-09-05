@@ -1,29 +1,30 @@
 # Projeto INSPIRA — Production Snapshot
 
-**Release:** INSPIRA 2.2 — Atualizações visuais finais + carrossel corrigido  
-**Publicado em:** 2026-09-04  
+**Release:** INSPIRA 2.3 — nova arte DIARIAMENTE no carrossel  
+**Publicado em:** 2026-09-05  
 **Site oficial:** https://projetoinspira.vercel.app/  
 **Vercel project:** projetoinspira  
-**Vercel deployment:** dpl_Bog4erhmh7X6xACyY7fwcRqoKyfx  
+**Vercel deployment:** dpl_Fow8famMEn3f826HPWkPnDVK2VNn  
 **GitHub branch:** projetoinspira-production
 
 ## Estado preservado
-- Todas as melhorias da versão 2.1 de auditoria, conversão, acessibilidade e performance
-- CTA mobile e arquitetura de conversão preservados
-- Contraste, foco, semântica, SEO, Open Graph, Schema/JSON-LD e páginas legais preservados
-- Carrossel de uma imagem por vez
-- Primeira imagem do carrossel atualizada para **Diariamente — bem-estar no trabalho** com asset WebP direto e validado
-- Asset: `assets/diariamente-bem-estar-trabalho-v3.webp`
-- Remoção da seção **Da assinatura à experiência, em quatro movimentos**
-- CTA secundário do hero atualizado para **Conhecer a experiência**
-- Nova seção **Algumas formas de você viver essa experiência INSPIRA.**
-- Quatro cards editoriais: Leituras que inspiram; Pausas que restauram; Reflexões que ampliam caminhos; Uma jornada que acompanha você
+- Todas as melhorias das versões 2.1 e 2.2 preservadas
+- CTA mobile, arquitetura de conversão, acessibilidade, contraste, SEO, Open Graph e Schema/JSON-LD preservados
+- Carrossel de uma imagem por vez preservado
+- Primeira imagem do carrossel substituída por uma nova arte editorial de alta definição para **DIARIAMENTE — Bem-estar no Trabalho**
+- Novo asset vetorial: `assets/diariamente-bem-estar-trabalho-carousel-v5.svg`
+- Legenda do primeiro slide: **Diariamente — bem-estar no trabalho**
+- Asset validado em produção com HTTP 200 e `Content-Type: image/svg+xml`
+- Ajuste de enquadramento do primeiro slide para exibição completa, sem bloco cinza, corte ou distorção
+- Cache-busting aplicado ao JavaScript principal (`?v=20260905-v23`) para forçar a nova revisão no navegador
+- Seção dos quatro movimentos continua removida por regra da versão 2.2
+- Seção **Algumas formas de você viver essa experiência INSPIRA.** preservada
 - Estado oficial sincronizado entre GitHub e Vercel
 
 ## Arquitetura de publicação
-O conteúdo-fonte completo permanece versionado no branch `projetoinspira-production`. O deployment oficial do Vercel utiliza `api/proxy.js` e `vercel.json` para servir, com MIME e cache corretos, o snapshot imutável do commit `9d91f82d45108750165cae49c18ecaba07b2007f`, que contém o HTML/CSS/JS e todos os assets necessários à release 2.2.
+O conteúdo-fonte permanece versionado no branch `projetoinspira-production`. O deployment oficial do Vercel utiliza `api/proxy.js` e `vercel.json` para servir o snapshot de conteúdo do commit `ed482d3d1ccbef21a278746e9f16ef56999f355d`, com MIME correto e cache controlado. O HTML oficial recebe versionamento do JavaScript na resposta para evitar reutilização de uma revisão antiga em cache.
 
 ## Rollback
-O estado anterior da produção foi preservado em branches de backup criados antes desta publicação, incluindo `projetoinspira-production-backup-20260904-final`.
+Os estados anteriores permanecem preservados no histórico do GitHub e nos deployments anteriores do Vercel.
 
 Este branch registra o estado atualmente publicado em produção.
