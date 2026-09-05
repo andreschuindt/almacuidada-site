@@ -1,0 +1,41 @@
+name: Emergency - Disable Vercel Authentication
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/emergency-disable-vercel-auth.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unprotect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar credencial Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "VERCEL_TOKEN não configurado no repositório."
+            exit 2
+          fi
+
+      - name: Desativar Vercel Authentication do projeto público
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          npx --yes vercel@latest project protection disable projetoinspira --sso --token "$VERCEL_TOKEN" --scope schuindt
+
+      - name: Confirmar acesso público
+        run: |
+          sleep 5
+          code=$(curl -sS -o /tmp/site.html -w "%{http_code}" https://projetoinspira.vercel.app/)
+          echo "HTTP=$code"
+          if grep -qi "Faça login no Vercel\|Log in to Vercel" /tmp/site.html; then
+            echo "A proteção ainda está ativa."
+            exit 3
+          fi
+          test "$code" = "200"
