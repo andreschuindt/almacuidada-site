@@ -1,7 +1,7 @@
 const UPSTREAM = 'https://projetoinspira-nfm7h9dh8-schuindt.vercel.app';
 const RAW_BASE = 'https://raw.githubusercontent.com/andreschuindt/almacuidada-site/projetoinspira-production';
 const RAW_JS = `${RAW_BASE}/inspira-v2-1.js`;
-const RELEASE = '4.0-pending';
+const RELEASE = '4.0';
 
 const DIRECT_ASSETS = new Set([
   'assets/plataforma-dashboard-premium-v38.svg'
@@ -31,7 +31,7 @@ module.exports = async function handler(req, res) {
         : (path ? `${UPSTREAM}/${path}` : `${UPSTREAM}/`);
 
     const upstream = await fetch(url, {
-      headers: { 'User-Agent': 'Projeto-INSPIRA-4.0-pending' }
+      headers: { 'User-Agent': 'Projeto-INSPIRA-4.0' }
     });
 
     if (!upstream.ok) {
@@ -65,9 +65,13 @@ module.exports = async function handler(req, res) {
         .replace(/inspira-v2-1\.js\?v=\d+/g, 'inspira-v2-1.js?v=40')
         .replace(/inspira-v2-1\.css\?v=\d+/g, 'inspira-v2-1.css?v=40')
         .replace(/content="3\.\d+"/g, 'content="4.0"')
-        .replace('<small>Relato da comunidade</small>', '<small>Mariana Alves · pseudônimo</small>')
-        .replace('<small>Relato da comunidade</small>', '<small>Rafael Costa · pseudônimo</small>')
-        .replace('<small>Relato da comunidade</small>', '<small>Camila Ribeiro · pseudônimo</small>')
+        .replace('<small>Relato da comunidade</small>', '<small>Mariana Alves</small>')
+        .replace('<small>Relato da comunidade</small>', '<small>Rafael Costa</small>')
+        .replace('<small>Relato da comunidade</small>', '<small>Camila Ribeiro</small>')
+        .replace(
+          '<p class="container proof-note">Os relatos são apresentados sem nota média ou volume de avaliações enquanto esses dados não forem publicados com fonte verificável.</p>',
+          '<p class="container proof-note">Os relatos são apresentados sem nota média ou volume de avaliações enquanto esses dados não forem publicados com fonte verificável. Os nomes exibidos são nomes de apresentação e não devem ser interpretados como identificação pública verificável dos autores.</p>'
+        )
         .replace(
           '<h2 class="title">Talvez você não precise mudar tudo. Talvez precise apenas começar por uma página.</h2><p class="lead">Conheça a experiência, escolha o ciclo que combina com o seu momento e caminhe no seu ritmo.</p>',
           '<h2 class="title">“Ser socialmente saudável é ter relações e uma comunidade nas quais você possa se sentir parte”.</h2><p class="lead"><strong>Dra. Kasley Killan</strong></p><p class="lead" style="margin-top:10px;font-weight:800;color:var(--purple3)">Vem pra Comunidade INSPIRA!</p>'
@@ -86,7 +90,7 @@ module.exports = async function handler(req, res) {
     }
     return res.send(buf);
   } catch (error) {
-    console.error('INSPIRA 4.0 pending proxy error', error);
+    console.error('INSPIRA 4.0 proxy error', error);
     return res.status(500).send('Internal Server Error');
   }
 };
