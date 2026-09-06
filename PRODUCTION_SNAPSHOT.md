@@ -1,39 +1,37 @@
 # Projeto INSPIRA — Production Snapshot
 
-**Release:** INSPIRA 3.6 — correção definitiva de carregamento das imagens  
+**Release:** INSPIRA 3.7 — correção visual definitiva das seções de experiência  
 **Publicado em:** 2026-09-05  
 **Site oficial:** https://projetoinspira.vercel.app/  
 **Vercel project:** projetoinspira  
-**Vercel deployment:** dpl_8sgFunDYrWStffXLprSHaTGX8eqY  
+**Vercel deployment:** dpl_3R7Zj1MDszE54zu62iQZwWrvZgBm  
 **GitHub branch:** projetoinspira-production
 
 ## Estado publicado
-- corrigido o carregamento da imagem principal da seção **“Por dentro da experiência”**;
-- corrigido o carregamento das quatro imagens do bloco **“Algumas formas de você viver essa experiência INSPIRA”**;
-- os cinco arquivos visuais passam a ser servidos diretamente do branch de produção do GitHub pelo runtime oficial, eliminando dependência do deployment upstream para esses assets;
-- aplicado novo cache-buster `v=36` nas imagens e no JavaScript para eliminar cache antigo de imagens quebradas no navegador;
-- imagem da plataforma: `/assets/inspira-platform-v34.webp?v=36`;
-- cards: `/assets/inspira-card-leituras-v34.webp?v=36`, `/assets/inspira-card-pausas-v34.webp?v=36`, `/assets/inspira-card-reflexoes-v34.webp?v=36`, `/assets/inspira-card-jornada-v34.webp?v=36`;
-- novo checkout visual da release 3.5 foi preservado integralmente;
-- links oficiais da Greenn permanecem preservados;
+- corrigida a seção **“Por dentro da experiência”** com o asset válido `/assets/plataforma-dashboard-v33.svg?v=37`;
+- removida, em runtime, a substituição que trocava as quatro artes do bloco **“Quatro formas de viver a experiência INSPIRA”** por arquivos WebP que estavam falhando no navegador;
+- as quatro artes passam a permanecer diretamente incorporadas no HTML como SVGs inline, eliminando dependência de arquivos externos quebrados;
+- as quatro artes representam, respectivamente: leituras que inspiram, pausas que restauram, reflexões que ampliam caminhos e uma jornada que acompanha você;
+- cache-buster atualizado para `v=37` no CSS e JavaScript;
+- novo checkout visual permanece preservado integralmente, com os links oficiais da Greenn;
 - HTML principal servido com `Cache-Control: no-store`;
-- JavaScript publicado em `/inspira-v2-1.js?v=36`;
-- cabeçalho `X-INSPIRA-Release: 3.6` ativo;
-- site oficial e assets validados com HTTP 200 e MIME `image/webp`.
+- cabeçalho `X-INSPIRA-Release: 3.7` ativo.
 
 ## Runtime oficial
-- `official-runtime/api/proxy36.js`
+- `official-runtime/api/proxy37.js`
 - `official-runtime/vercel.json`
-- script de experiência e checkout: `inspira-v2-1.js`
+- script remoto transformado em runtime: `inspira-v2-1.js`
 
-## Validação da release 3.6
-- Deployment Vercel: `dpl_8sgFunDYrWStffXLprSHaTGX8eqY`
+## Validação da release 3.7
+- Deployment Vercel: `dpl_3R7Zj1MDszE54zu62iQZwWrvZgBm`
 - Status: `READY`
 - Alias oficial: `https://projetoinspira.vercel.app/`
-- HTTP: `200`
-- Release header: `3.6`
-- JS: `/inspira-v2-1.js?v=36`
-- Imagens: HTTP `200`, `image/webp`
+- HTTP principal: `200`
+- Release header: `3.7`
+- JS: `/inspira-v2-1.js?v=37`, HTTP `200`
+- JS confirma `const agora=null`, preservando as quatro artes SVG inline;
+- imagem da plataforma: `/assets/plataforma-dashboard-v33.svg?v=37`, HTTP `200`, MIME `image/svg+xml; charset=utf-8`;
+- HTML oficial contém as quatro artes SVG inline no bloco `#agora`.
 
 ## Rollback
 Os estados anteriores permanecem preservados no histórico do GitHub e nos deployments anteriores do Vercel.
