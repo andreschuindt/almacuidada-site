@@ -1,40 +1,39 @@
 # Projeto INSPIRA — Production Snapshot
 
-**Release:** INSPIRA 3.5 — novo checkout visual  
+**Release:** INSPIRA 3.6 — correção definitiva de carregamento das imagens  
 **Publicado em:** 2026-09-05  
 **Site oficial:** https://projetoinspira.vercel.app/  
 **Vercel project:** projetoinspira  
-**Vercel deployment:** dpl_Qv1JEhXNQTFnXVoNKTmaxXw1mhtT  
+**Vercel deployment:** dpl_8sgFunDYrWStffXLprSHaTGX8eqY  
 **GitHub branch:** projetoinspira-production
 
 ## Estado publicado
-- site oficial permanece com todas as seções e artes consolidadas da release anterior;
-- seção **Planos / Checkout** foi redesenhada com três cards inspirados no modelo de referência;
-- plano **Mensal** exibe R$ 47/mês, selo “Sem fidelização” e CTA “INICIAR MENSAL”;
-- plano **Semestral** exibe economia de 20%, até 6x de R$ 42,45, R$ 227 à vista e CTA “INICIAR SEMESTRAL”;
-- plano **Anual** recebe destaque visual com borda verde, selo “Melhor escolha — ECONOMIA DE R$157,00”, economia de 28%, até 12x de R$ 41,85, R$ 407 à vista e CTA “INICIAR ANUAL”;
-- cards usam gradiente roxo, valores ampliados, checks verdes e botões em gradiente turquesa/verde;
-- links oficiais da Greenn foram preservados para os três planos;
-- layout responsivo para desktop, tablet e celular;
-- JavaScript do checkout publicado com cache-buster `v=35`;
-- JavaScript validado com MIME `application/javascript; charset=utf-8`;
+- corrigido o carregamento da imagem principal da seção **“Por dentro da experiência”**;
+- corrigido o carregamento das quatro imagens do bloco **“Algumas formas de você viver essa experiência INSPIRA”**;
+- os cinco arquivos visuais passam a ser servidos diretamente do branch de produção do GitHub pelo runtime oficial, eliminando dependência do deployment upstream para esses assets;
+- aplicado novo cache-buster `v=36` nas imagens e no JavaScript para eliminar cache antigo de imagens quebradas no navegador;
+- imagem da plataforma: `/assets/inspira-platform-v34.webp?v=36`;
+- cards: `/assets/inspira-card-leituras-v34.webp?v=36`, `/assets/inspira-card-pausas-v34.webp?v=36`, `/assets/inspira-card-reflexoes-v34.webp?v=36`, `/assets/inspira-card-jornada-v34.webp?v=36`;
+- novo checkout visual da release 3.5 foi preservado integralmente;
+- links oficiais da Greenn permanecem preservados;
 - HTML principal servido com `Cache-Control: no-store`;
-- cabeçalho `X-INSPIRA-Release: 3.5` ativo;
-- site oficial validado com HTTP 200.
+- JavaScript publicado em `/inspira-v2-1.js?v=36`;
+- cabeçalho `X-INSPIRA-Release: 3.6` ativo;
+- site oficial e assets validados com HTTP 200 e MIME `image/webp`.
 
 ## Runtime oficial
-- `official-runtime/api/proxy35.js`
+- `official-runtime/api/proxy36.js`
 - `official-runtime/vercel.json`
 - script de experiência e checkout: `inspira-v2-1.js`
 
-## Validação da release 3.5
-- Deployment Vercel: `dpl_Qv1JEhXNQTFnXVoNKTmaxXw1mhtT`
+## Validação da release 3.6
+- Deployment Vercel: `dpl_8sgFunDYrWStffXLprSHaTGX8eqY`
 - Status: `READY`
 - Alias oficial: `https://projetoinspira.vercel.app/`
 - HTTP: `200`
-- Release header: `3.5`
-- JS: `/inspira-v2-1.js?v=35`
-- MIME JS: `application/javascript; charset=utf-8`
+- Release header: `3.6`
+- JS: `/inspira-v2-1.js?v=36`
+- Imagens: HTTP `200`, `image/webp`
 
 ## Rollback
 Os estados anteriores permanecem preservados no histórico do GitHub e nos deployments anteriores do Vercel.
