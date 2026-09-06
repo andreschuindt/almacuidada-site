@@ -1,7 +1,17 @@
 const UPSTREAM = 'https://projetoinspira-nfm7h9dh8-schuindt.vercel.app';
 const RAW_BASE = 'https://raw.githubusercontent.com/andreschuindt/almacuidada-site/projetoinspira-production';
 const RAW_JS = `${RAW_BASE}/inspira-v2-1.js`;
-const RELEASE = '4.1';
+const RELEASE = '4.2';
+const PLATFORM_V42 = 'assets/inspira-dashboard-v42.webp';
+const PLATFORM_CHUNKS = [
+  'assets/platform-v42-00.b64',
+  'assets/platform-v42-01.b64',
+  'assets/platform-v42-02.b64',
+  'assets/platform-v42-03.b64',
+  'assets/platform-v42-04.b64',
+  'assets/platform-v42-05.b64',
+  'assets/platform-v42-06.b64'
+];
 
 const DIRECT_ASSETS = new Set([
   'assets/plataforma-dashboard-premium-v38.svg',
@@ -25,6 +35,24 @@ module.exports = async function handler(req, res) {
     const isMainJs = path === 'inspira-v2-1.js';
     const isDirectAsset = DIRECT_ASSETS.has(path);
 
+    if (path === PLATFORM_V42) {
+      const parts = await Promise.all(PLATFORM_CHUNKS.map(async chunk => {
+        const r = await fetch(`${RAW_BASE}/${chunk}`, {
+          headers: { 'User-Agent': 'Projeto-INSPIRA-4.2' }
+        });
+        if (!r.ok) throw new Error(`Falha ao carregar ${chunk}: ${r.status}`);
+        return (await r.text()).trim();
+      }));
+      const image = Buffer.from(parts.join(''), 'base64');
+      res.status(200);
+      res.setHeader('Content-Type', 'image/webp');
+      res.setHeader('Content-Length', image.length);
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      res.setHeader('X-Content-Type-Options', 'nosniff');
+      res.setHeader('X-INSPIRA-Release', RELEASE);
+      return res.send(image);
+    }
+
     const url = isMainJs
       ? RAW_JS
       : isDirectAsset
@@ -32,7 +60,7 @@ module.exports = async function handler(req, res) {
         : (path ? `${UPSTREAM}/${path}` : `${UPSTREAM}/`);
 
     const upstream = await fetch(url, {
-      headers: { 'User-Agent': 'Projeto-INSPIRA-4.1' }
+      headers: { 'User-Agent': 'Projeto-INSPIRA-4.2' }
     });
 
     if (!upstream.ok) {
@@ -50,11 +78,11 @@ module.exports = async function handler(req, res) {
     if (isMainJs) {
       let js = await upstream.text();
       js = js
-        .replace(/platformImg\.src='\/assets\/(?:inspira-platform-v34\.webp|plataforma-dashboard-premium-v38\.svg)\?v=\d+';/, "platformImg.src='/assets/inspira-carousel-sprite-hq.webp?v=41';")
-        .replace("const agora=document.getElementById('agora');", "const agora=null; // 4.1: preserva as quatro artes SVG inline do HTML")
-        .replace(/\?v=(?:34|35|36|37|38|39|40)/g, '?v=41')
-        .replace(/INSPIRA 3\.5 PENDING/g, 'INSPIRA 4.1')
-        .replace(/INSPIRA (?:3\.(?:4|5|6|7|8|9)|4\.0)/g, 'INSPIRA 4.1');
+        .replace(/platformImg\.src='\/assets\/(?:inspira-platform-v34\.webp|plataforma-dashboard-premium-v38\.svg|inspira-carousel-sprite-hq\.webp)\?v=\d+';/, "platformImg.src='/assets/inspira-dashboard-v42.webp?v=42';")
+        .replace("const agora=document.getElementById('agora');", "const agora=null; // 4.2: preserva as quatro artes SVG inline do HTML")
+        .replace(/\?v=(?:34|35|36|37|38|39|40|41)/g, '?v=42')
+        .replace(/INSPIRA 3\.5 PENDING/g, 'INSPIRA 4.2')
+        .replace(/INSPIRA (?:3\.(?:4|5|6|7|8|9)|4\.(?:0|1))/g, 'INSPIRA 4.2');
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
       return res.send(js);
     }
@@ -62,10 +90,10 @@ module.exports = async function handler(req, res) {
     if (upstreamType.includes('text/html')) {
       let html = await upstream.text();
       html = html
-        .replace(/\/assets\/(?:inspira-platform-v34\.webp|plataforma-dashboard-v33\.svg|plataforma-dashboard-premium-v38\.svg|inspira-carousel-sprite-hq\.webp)\?v=\d+/g, '/assets/inspira-carousel-sprite-hq.webp?v=41')
-        .replace(/inspira-v2-1\.js\?v=\d+/g, 'inspira-v2-1.js?v=41')
-        .replace(/inspira-v2-1\.css\?v=\d+/g, 'inspira-v2-1.css?v=41')
-        .replace(/content="(?:3\.\d+|4\.0)"/g, 'content="4.1"')
+        .replace(/\/assets\/(?:inspira-platform-v34\.webp|plataforma-dashboard-v33\.svg|plataforma-dashboard-premium-v38\.svg|inspira-carousel-sprite-hq\.webp|inspira-dashboard-v42\.webp)\?v=\d+/g, '/assets/inspira-dashboard-v42.webp?v=42')
+        .replace(/inspira-v2-1\.js\?v=\d+/g, 'inspira-v2-1.js?v=42')
+        .replace(/inspira-v2-1\.css\?v=\d+/g, 'inspira-v2-1.css?v=42')
+        .replace(/content="(?:3\.\d+|4\.(?:0|1))"/g, 'content="4.2"')
         .replace('<small>Relato da comunidade</small>', '<small>Mariana Alves</small>')
         .replace('<small>Relato da comunidade</small>', '<small>Rafael Costa</small>')
         .replace('<small>Relato da comunidade</small>', '<small>Camila Ribeiro</small>')
@@ -91,7 +119,7 @@ module.exports = async function handler(req, res) {
     }
     return res.send(buf);
   } catch (error) {
-    console.error('INSPIRA 4.1 proxy error', error);
+    console.error('INSPIRA 4.2 proxy error', error);
     return res.status(500).send('Internal Server Error');
   }
 };
