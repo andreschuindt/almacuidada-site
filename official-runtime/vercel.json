@@ -1,7 +1,7 @@
 {
   "rewrites": [
-    {"source": "/", "destination": "/api/proxy39"},
-    {"source": "/:path*", "destination": "/api/proxy39?path=:path*"}
+    {"source": "/", "destination": "/api/proxy40"},
+    {"source": "/:path*", "destination": "/api/proxy40?path=:path*"}
   ],
   "headers": [
     {"source": "/(.*)", "headers": [
