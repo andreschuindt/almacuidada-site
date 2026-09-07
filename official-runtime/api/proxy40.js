@@ -2,28 +2,14 @@ const UPSTREAM = 'https://projetoinspira-nfm7h9dh8-schuindt.vercel.app';
 const RAW_BASE = 'https://raw.githubusercontent.com/andreschuindt/almacuidada-site/projetoinspira-production';
 const RAW_JS = `${RAW_BASE}/inspira-v2-1.js`;
 const RELEASE = '4.8';
-const BUILD = '4.8.4';
+const BUILD = '4.8.5';
 
 const DASHBOARD_PARTS = [
-  'assets/platform-v484-00.b64',
-  'assets/platform-v484-01.b64',
-  'assets/platform-v484-02.b64',
-  'assets/platform-v49-03.b64',
-  'assets/platform-v49-04.b64',
-  'assets/platform-v49-05.b64',
-  'assets/platform-v49-06.b64',
-  'assets/platform-v49-07.b64',
-  'assets/platform-v49-08.b64',
-  'assets/platform-v486-tail-00.b64',
-  'assets/platform-v486-tail-01.b64',
-  'assets/platform-v486-tail-02.b64',
-  'assets/platform-v486-tail-03.b64',
-  'assets/platform-v486-tail-04.b64',
-  'assets/platform-v486-tail-05.b64',
-  'assets/platform-v486-tail-06.b64',
-  'assets/platform-v486-tail-07.b64',
-  'assets/platform-v486-tail-08.b64',
-  'assets/platform-v486-tail-09.b64'
+  'assets/platform-v485-00.b64',
+  'assets/platform-v485-01.b64',
+  'assets/platform-v485-02.b64',
+  'assets/platform-v485-03.b64',
+  'assets/platform-v485-04.b64'
 ];
 
 const DASHBOARD_PATHS = new Set([
@@ -52,7 +38,7 @@ function typeFor(path, fallback = 'application/octet-stream') {
 
 async function fetchText(url) {
   const r = await fetch(url, {
-    headers: { 'User-Agent': 'Projeto-INSPIRA-4.8.4' },
+    headers: { 'User-Agent': 'Projeto-INSPIRA-4.8.5' },
     cache: 'no-store'
   });
   if (!r.ok) throw new Error(`Falha ao carregar ${url}: ${r.status}`);
@@ -63,12 +49,12 @@ async function buildDashboard() {
   if (dashboardCache) return dashboardCache;
 
   const chunks = await Promise.all(DASHBOARD_PARTS.map(async (path) => {
-    const text = await fetchText(`${RAW_BASE}/${path}?build=484`);
+    const text = await fetchText(`${RAW_BASE}/${path}?build=485`);
     return text.replace(/\s+/g, '');
   }));
 
   const base64 = chunks.join('');
-  if (base64.length !== 283336) {
+  if (base64.length !== 241312) {
     throw new Error(`Dashboard base64 invalido: chars=${base64.length}`);
   }
 
@@ -77,7 +63,7 @@ async function buildDashboard() {
   const webp = image.subarray(8, 12).toString('ascii');
   const declared = image.length >= 8 ? image.readUInt32LE(4) + 8 : 0;
 
-  if (image.length !== 212500 || declared !== 212500 || riff !== 'RIFF' || webp !== 'WEBP') {
+  if (image.length !== 180982 || declared !== 180982 || riff !== 'RIFF' || webp !== 'WEBP') {
     throw new Error(`Dashboard invalido: bytes=${image.length}, declared=${declared}, sig=${riff}/${webp}`);
   }
 
@@ -87,18 +73,18 @@ async function buildDashboard() {
 
 function transformJs(js) {
   return js
-    .replace(/platformImg\.src='\/assets\/(?:inspira-platform-v34\.webp|plataforma-dashboard-premium-v38\.svg|inspira-carousel-sprite-hq\.webp|inspira-dashboard-v42\.webp|inspira-dashboard-v43\.webp|inspira-dashboard-v44\.webp|inspira-dashboard-v45\.webp|inspira-dashboard-v46-300dpi\.jpg|inspira-dashboard-v47\.webp|inspira-dashboard-v48(?:-fixed|-final)?\.webp)\?v=\d+';/, "platformImg.src='/assets/inspira-dashboard-v48-final.webp?v=484';")
+    .replace(/platformImg\.src='\/assets\/(?:inspira-platform-v34\.webp|plataforma-dashboard-premium-v38\.svg|inspira-carousel-sprite-hq\.webp|inspira-dashboard-v42\.webp|inspira-dashboard-v43\.webp|inspira-dashboard-v44\.webp|inspira-dashboard-v45\.webp|inspira-dashboard-v46-300dpi\.jpg|inspira-dashboard-v47\.webp|inspira-dashboard-v48(?:-fixed|-final)?\.webp)\?v=\d+';/, "platformImg.src='/assets/inspira-dashboard-v48-final.webp?v=485';")
     .replace("const agora=document.getElementById('agora');", "const agora=null; // INSPIRA 4.8: preserva as artes inline")
-    .replace(/\?v=(?:34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|481|482|483)/g, '?v=484')
+    .replace(/\?v=(?:34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|481|482|483|484)/g, '?v=485')
     .replace(/INSPIRA 3\.5 PENDING/g, 'INSPIRA 4.8')
     .replace(/INSPIRA (?:3\.(?:4|5|6|7|8|9)|4\.(?:0|1|2|3|4|5|6|7))/g, 'INSPIRA 4.8');
 }
 
 function transformHtml(html) {
   return html
-    .replace(/\/assets\/(?:inspira-platform-v34\.webp|plataforma-dashboard-v33\.svg|plataforma-dashboard-premium-v38\.svg|inspira-carousel-sprite-hq\.webp|inspira-dashboard-v42\.webp|inspira-dashboard-v43\.webp|inspira-dashboard-v44\.webp|inspira-dashboard-v45\.webp|inspira-dashboard-v46-300dpi\.jpg|inspira-dashboard-v47\.webp|inspira-dashboard-v48(?:-fixed|-final)?\.webp)\?v=\d+/g, '/assets/inspira-dashboard-v48-final.webp?v=484')
-    .replace(/inspira-v2-1\.js\?v=\d+/g, 'inspira-v2-1.js?v=484')
-    .replace(/inspira-v2-1\.css\?v=\d+/g, 'inspira-v2-1.css?v=484')
+    .replace(/\/assets\/(?:inspira-platform-v34\.webp|plataforma-dashboard-v33\.svg|plataforma-dashboard-premium-v38\.svg|inspira-carousel-sprite-hq\.webp|inspira-dashboard-v42\.webp|inspira-dashboard-v43\.webp|inspira-dashboard-v44\.webp|inspira-dashboard-v45\.webp|inspira-dashboard-v46-300dpi\.jpg|inspira-dashboard-v47\.webp|inspira-dashboard-v48(?:-fixed|-final)?\.webp)\?v=\d+/g, '/assets/inspira-dashboard-v48-final.webp?v=485')
+    .replace(/inspira-v2-1\.js\?v=\d+/g, 'inspira-v2-1.js?v=485')
+    .replace(/inspira-v2-1\.css\?v=\d+/g, 'inspira-v2-1.css?v=485')
     .replace(/<meta name="inspira-release" content="[^"]*">(?:\s*<meta name="inspira-build" content="[^"]*">)?/g, '')
     .replace(/(<img class="platform-v31-real"[^>]*?)width="\d+" height="\d+"/, '$1width="1000" height="750"')
     .replace('<small>Relato da comunidade</small>', '<small>Mariana Alves</small>')
@@ -115,7 +101,7 @@ function transformHtml(html) {
       .platform-v29-copy,.platform-v31-copy{text-align:center!important}
       .platform-v29-actions,.platform-v31-actions{justify-content:center!important}
       @media (max-width:980px){.founder-v29-grid,.founder-v31-grid{grid-template-columns:1fr!important}.platform-v29-points,.platform-v31-points{grid-template-columns:1fr!important}}
-    </style><meta name="inspira-release" content="4.8"><meta name="inspira-build" content="4.8.4"></head>`);
+    </style><meta name="inspira-release" content="4.8"><meta name="inspira-build" content="4.8.5"></head>`);
 }
 
 module.exports = async function handler(req, res) {
@@ -134,7 +120,7 @@ module.exports = async function handler(req, res) {
       res.setHeader('X-Content-Type-Options', 'nosniff');
       res.setHeader('X-INSPIRA-Release', RELEASE);
       res.setHeader('X-INSPIRA-Build', BUILD);
-      res.setHeader('X-INSPIRA-Dashboard', 'approved-exact-212500');
+      res.setHeader('X-INSPIRA-Dashboard', 'approved-attachment-180982');
       return res.send(image);
     }
 
@@ -145,7 +131,7 @@ module.exports = async function handler(req, res) {
         : (path ? `${UPSTREAM}/${path}` : `${UPSTREAM}/`);
 
     const upstream = await fetch(url, {
-      headers: { 'User-Agent': 'Projeto-INSPIRA-4.8.4' },
+      headers: { 'User-Agent': 'Projeto-INSPIRA-4.8.5' },
       redirect: 'follow'
     });
 
@@ -180,7 +166,7 @@ module.exports = async function handler(req, res) {
       : (upstream.headers.get('cache-control') || 'public, max-age=300'));
     return res.send(buf);
   } catch (error) {
-    console.error('INSPIRA 4.8.4 proxy error', error);
+    console.error('INSPIRA 4.8.5 proxy error', error);
     return res.status(500).send('Internal Server Error');
   }
 };
