@@ -11,9 +11,14 @@ const DASHBOARD_PARTS = [
   'assets/platform-v488-clean-01.b64',
   'assets/platform-v488-clean-02.b64',
   'assets/platform-v488-clean-03.b64',
-  'assets/platform-v488-clean-04.b64',
-  'assets/platform-v488-clean-05.b64',
-  'assets/platform-v488-clean-06.b64'
+  'assets/platform-v488-rem-00.b64',
+  'assets/platform-v488-rem-01.b64',
+  'assets/platform-v488-rem-02.b64',
+  'assets/platform-v488-rem-03.b64',
+  'assets/platform-v488-rem-04.b64',
+  'assets/platform-v488-rem-05.b64',
+  'assets/platform-v488-rem-06.b64',
+  'assets/platform-v488-rem-07.b64'
 ];
 
 const DASHBOARD_PATHS = new Set([
