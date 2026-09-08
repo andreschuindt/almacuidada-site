@@ -2,7 +2,7 @@ const UPSTREAM = 'https://projetoinspira-nfm7h9dh8-schuindt.vercel.app';
 const RAW_BASE = 'https://raw.githubusercontent.com/andreschuindt/almacuidada-site/projetoinspira-production';
 const RAW_JS = `${RAW_BASE}/inspira-v2-1.js`;
 const RELEASE = '4.8';
-const BUILD = '4.8.9';
+const BUILD = '4.8.10';
 
 const DIRECT_ASSETS = new Set([
   'assets/plataforma-dashboard-premium-v38.svg',
@@ -29,9 +29,9 @@ function typeFor(path, fallback = 'application/octet-stream') {
 function transformJs(js) {
   return js
     .replace("const agora=document.getElementById('agora');", "const agora=null; // INSPIRA 4.8: preserva as artes inline")
-    .replace(/\?v=(?:34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|481|482|483|484|485|486|487|488)/g, '?v=489')
+    .replace(/\?v=(?:34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|481|482|483|484|485|486|487|488|489)/g, '?v=490')
     .replace(/INSPIRA 3\.5 PENDING/g, 'INSPIRA 4.8')
-    .replace(/INSPIRA (?:3\.(?:4|5|6|7|8|9)|4\.(?:0|1|2|3|4|5|6|7|8))/g, 'INSPIRA 4.8');
+    .replace(/INSPIRA (?:3\.(?:4|5|6|7|8|9)|4\.(?:0|1|2|3|4|5|6|7|8|9))/g, 'INSPIRA 4.8');
 }
 
 function removePlatformSection(html) {
@@ -45,8 +45,9 @@ function transformHtml(html) {
   let out = removePlatformSection(html);
 
   out = out
-    .replace(/inspira-v2-1\.js\?v=\d+/g, 'inspira-v2-1.js?v=489')
-    .replace(/inspira-v2-1\.css\?v=\d+/g, 'inspira-v2-1.css?v=489')
+    .replace('Quatro formas de viver a experiência INSPIRA.', 'Algumas formas de viver a experiência INSPIRA.')
+    .replace(/inspira-v2-1\.js\?v=\d+/g, 'inspira-v2-1.js?v=490')
+    .replace(/inspira-v2-1\.css\?v=\d+/g, 'inspira-v2-1.css?v=490')
     .replace(/<meta name="inspira-release" content="[^"]*">(?:\s*<meta name="inspira-build" content="[^"]*">)?/g, '')
     .replace('<small>Relato da comunidade</small>', '<small>Mariana Alves</small>')
     .replace('<small>Relato da comunidade</small>', '<small>Rafael Costa</small>')
@@ -59,7 +60,7 @@ function transformHtml(html) {
     .replace('</head>', `<style>
       .founder-v29-photo-stage img,.founder-v31-photo img,.founder-section img[alt*="André Schuindt"]{width:100%!important;height:auto!important;max-height:560px!important;object-fit:contain!important;object-position:center center!important;display:block!important}
       @media (max-width:980px){.founder-v29-grid,.founder-v31-grid{grid-template-columns:1fr!important}}
-    </style><meta name="inspira-release" content="4.8"><meta name="inspira-build" content="4.8.9"></head>`);
+    </style><meta name="inspira-release" content="4.8"><meta name="inspira-build" content="4.8.10"></head>`);
 
   return out;
 }
@@ -86,7 +87,7 @@ module.exports = async function handler(req, res) {
         : (path ? `${UPSTREAM}/${path}` : `${UPSTREAM}/`);
 
     const upstream = await fetch(url, {
-      headers: { 'User-Agent': 'Projeto-INSPIRA-4.8.9' },
+      headers: { 'User-Agent': 'Projeto-INSPIRA-4.8.10' },
       redirect: 'follow'
     });
 
@@ -121,7 +122,7 @@ module.exports = async function handler(req, res) {
       : (upstream.headers.get('cache-control') || 'public, max-age=300'));
     return res.send(buf);
   } catch (error) {
-    console.error('INSPIRA 4.8.9 proxy error', error);
+    console.error('INSPIRA 4.8.10 proxy error', error);
     return res.status(500).send('Internal Server Error');
   }
 };
