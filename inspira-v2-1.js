@@ -1,12 +1,35 @@
-/* Projeto INSPIRA 5.0 — comportamento mínimo, analytics e UTMs */
+/* Projeto INSPIRA 5.0.2 — comportamento, analytics, UTMs e imagens da experiência */
 (function(){
   'use strict';
+
+  async function hydrateExperienceImages(){
+    try{
+      const parts=await Promise.all([0,1,2,3,4,5].map(i=>fetch(`/assets/experience-images-${String(i).padStart(2,'0')}.txt?v=502`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`Falha imagem ${i}`);return r.text();})));
+      const data=JSON.parse(parts.join(''));
+      document.querySelectorAll('.experience-card img').forEach(img=>{
+        const key=(img.getAttribute('src')||'').replace(/^\//,'');
+        const b64=data[key];
+        if(!b64)return;
+        img.src=`data:image/jpeg;base64,${b64}`;
+        img.width=600;
+        img.height=450;
+        img.style.aspectRatio='4 / 3';
+        img.style.objectFit='cover';
+        img.style.objectPosition='center';
+      });
+    }catch(error){
+      console.error('Falha ao carregar imagens da experiência',error);
+    }
+  }
+  hydrateExperienceImages();
+
   const menu=document.getElementById('menu');
   const nav=document.getElementById('navlinks');
   if(menu&&nav){
     menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');menu.textContent=open?'×':'☰';});
     nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Abrir menu');menu.textContent='☰';}));
   }
+
   const utmKeys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
   const current=new URLSearchParams(location.search);const stored={};
   try{utmKeys.forEach(k=>{const incoming=current.get(k);if(incoming)sessionStorage.setItem('inspira_'+k,incoming);const value=sessionStorage.getItem('inspira_'+k);if(value)stored[k]=value;});}catch(_){}
