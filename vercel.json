@@ -1,4 +1,8 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "alias": [
+    "depaiparafilha.vercel.app"
+  ],
   "redirects": [
     {
       "source": "/conselhosdeummaupai",
@@ -12,6 +16,16 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "depaiparafilha.vercel.app"
+        }
+      ],
+      "destination": "/depaiparafilha/"
+    },
     {
       "source": "/assets/plataforma-mobile.jpg",
       "destination": "/assets/plataforma-mobile.svg"
