@@ -17,14 +17,14 @@
   ],
   "rewrites": [
     {
-      "source": "/",
+      "source": "/:path*",
       "has": [
         {
           "type": "host",
           "value": "depaiparafilha.vercel.app"
         }
       ],
-      "destination": "/depaiparafilha/"
+      "destination": "/depaiparafilha/:path*"
     },
     {
       "source": "/assets/plataforma-mobile.jpg",
