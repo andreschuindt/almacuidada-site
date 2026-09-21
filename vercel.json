@@ -3,6 +3,18 @@
   "alias": [
     "depaiparafilha.vercel.app"
   ],
+  "routes": [
+    {
+      "src": "^/$",
+      "has": [
+        {
+          "type": "host",
+          "value": "depaiparafilha.vercel.app"
+        }
+      ],
+      "dest": "/depaiparafilha/index.html"
+    }
+  ],
   "redirects": [
     {
       "source": "/conselhosdeummaupai",
@@ -16,16 +28,6 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "depaiparafilha.vercel.app"
-        }
-      ],
-      "destination": "/depaiparafilha/:path*"
-    },
     {
       "source": "/assets/plataforma-mobile.jpg",
       "destination": "/assets/plataforma-mobile.svg"
