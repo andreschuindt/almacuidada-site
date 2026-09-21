@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/conselhosdeummaupai",
+      "destination": "/depaiparafilha",
+      "permanent": true
+    },
+    {
+      "source": "/conselhosdeummaupai/:path*",
+      "destination": "/depaiparafilha/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/assets/plataforma-mobile.jpg",
