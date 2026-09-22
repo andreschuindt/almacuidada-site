@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Mapa do Leitor — Teste de Compreensão Leitora</title>
+<link href="https://cdn.jsdelivr.net/gh/andreschuindt/almacuidada-site@mapadeleitores-vercel-import/mapadeleitores/style.css" rel="stylesheet"/>
+</head>
+<body>
+<main>
+<header class="topbar"><div class="brandMark">ML</div><div><strong>Mapa do Leitor</strong><span>Compreensão leitora para adultos</span></div><div class="scienceTag">Demo autônoma • versão piloto</div></header>
+<div class="demo-note">Esta versão roda inteiramente no seu navegador. Nenhuma resposta é enviada para servidor.</div>
+<section class="hero shell" id="intro">
+<div class="heroCopy"><span class="eyebrow">LEIA • COMPREENDA • INTERPRETE • AVALIE</span><h1>Descubra como você <em>compreende</em> o que lê.</h1><p class="lead">Uma avaliação de autoconhecimento com situações reais de leitura. Ao final, você recebe um mapa das suas habilidades e caminhos práticos para evoluir.</p><div class="heroActions"><button class="primary" onclick="goIdentity()">Iniciar avaliação</button><span>20 questões • cerca de 15–20 minutos</span></div><div class="notice"><strong>Importante:</strong> instrumento educativo piloto. Não é teste oficial do Inaf, não realiza diagnóstico e não deve ser usado para rotular pessoas.</div></div>
+<aside class="mapCard"><div class="miniLabel">SEU MAPA COMO LEITOR</div><div class="mapRow"><span>01</span><b>Encontra</b></div><div class="mapRow"><span>02</span><b>Entende</b></div><div class="mapRow"><span>03</span><b>Conecta</b></div><div class="mapRow"><span>04</span><b>Infere</b></div><div class="mapRow"><span>05</span><b>Questiona</b></div><div class="mapRow"><span>06</span><b>Aplica</b></div></aside>
+</section>
+<section class="panel shell narrow hidden" id="identity"><span class="eyebrow">ANTES DE COMEÇAR</span><h2>Seu resultado é individual.</h2><p>Use um ambiente tranquilo. Leia no seu ritmo. Não use buscadores, calculadora ou ajuda de outra pessoa.</p><label>Como podemos chamar você?<input id="name" placeholder="Seu primeiro nome"/></label><label>E-mail (opcional nesta demo)<input id="email" placeholder="voce@email.com" type="email"/></label><label class="consent"><input id="consent" type="checkbox"/><span>Entendo que este resultado é indicativo e não diagnóstico.</span></label><button class="primary full" onclick="startTest()">Começar agora</button></section>
+<section class="test shell narrow hidden" id="test"><div class="progressHead"><span id="qcount"></span><span id="pct"></span></div><div class="progress"><div id="bar"></div></div><div class="domainPill" id="domain"></div><article class="questionCard"><pre id="stimulus"></pre><h2 id="prompt"></h2><div class="options" id="options"></div></article><p class="quiet">Não mostramos acertos durante o teste para não alterar seu desempenho nas próximas questões.</p></section>
+<section class="result shell hidden" id="result"><div class="resultHero"><div><span class="eyebrow">SEU MAPA COMO LEITOR</span><h1 id="rtitle"></h1><p class="lead" id="rdesc"></p><div class="scoreLine"><strong id="overall"></strong><span>de acertos no conjunto desta versão piloto</span></div></div><div class="levelBadge"><small>FAIXA</small><strong id="level"></strong><span id="short"></span></div></div><h2 class="sectionTitle">As 6 habilidades do seu mapa</h2><div class="domainGrid" id="domainGrid"></div><div class="insightGrid"><div class="insightCard strength"><span class="eyebrow">SUA FORÇA ATUAL</span><h2 id="strengthTitle"></h2><p id="strengthText"></p></div><div class="insightCard growth"><span class="eyebrow">MELHOR OPORTUNIDADE</span><h2 id="growthTitle"></h2><p id="growthText"></p></div></div><div class="recommendation"><span class="eyebrow">PLANO PERSONALIZADO</span><h2>Seu próximo ciclo de desenvolvimento</h2><p id="next"></p><ol id="plan"></ol></div><div class="interpretationNote"><strong>Como interpretar:</strong> este é um instrumento educativo de autoconhecimento. Os pontos de corte são provisórios e não equivalem a uma classificação oficial do Inaf ou PIAAC. Para uso científico ou institucional, o instrumento deve passar por estudo piloto, análise de itens e calibração psicométrica.</div><div class="resultActions noPrint"><button class="primary" onclick="window.print()">Imprimir / salvar em PDF</button><button class="secondary" onclick="composeEmail()">Preparar e-mail com resultado</button><button class="textButton" onclick="location.reload()">Refazer teste</button></div></section>
+<footer><div>Mapa do Leitor — versão piloto</div><div>Triagem educativa de compreensão leitora para adultos.</div></footer>
+</main>
+<script src="https://cdn.jsdelivr.net/gh/andreschuindt/almacuidada-site@mapadeleitores-vercel-import/mapadeleitores/data-a.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/andreschuindt/almacuidada-site@mapadeleitores-vercel-import/mapadeleitores/data-b.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/andreschuindt/almacuidada-site@mapadeleitores-vercel-import/mapadeleitores/profiles.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/andreschuindt/almacuidada-site@mapadeleitores-vercel-import/mapadeleitores/core.js"></script>
+</body></html>
