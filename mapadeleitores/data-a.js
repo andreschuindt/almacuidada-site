@@ -1,0 +1,28 @@
+const domainLabels = {
+  localizar: "Encontra",
+  compreender: "Entende",
+  conectar: "Conecta",
+  inferir: "Infere",
+  avaliar: "Questiona",
+  aplicar: "Aplica",
+};
+const domainSubtitles = {
+  localizar: "Localiza informações explícitas",
+  compreender: "Compreende ideias e relações",
+  conectar: "Relaciona trechos e textos",
+  inferir: "Percebe o que está implícito",
+  avaliar: "Avalia argumentos e evidências",
+  aplicar: "Usa a informação para decidir",
+};
+const questions = [
+  {id:"q01",domain:"localizar",difficulty:1,stimulus:"AVISO DA BIBLIOTECA\nSegunda a sexta: 8h às 17h\nSábado: 9h às 12h\nDomingo: fechado",prompt:"Uma pessoa chega à biblioteca às 18h de terça-feira. Ela encontrará a biblioteca aberta?",options:["Sim","Não","O aviso não permite saber","Somente se tiver agendamento"],correct:1,rationale:"O horário informado para terça-feira termina às 17h."},
+  {id:"q02",domain:"localizar",difficulty:1,stimulus:"OFICINA DE LEITURA\nData: 18 de outubro\nHorário: 14h\nLocal: Sala 3\nInscrição gratuita até 15 de outubro",prompt:"Qual é o último dia informado para fazer a inscrição?",options:["3 de outubro","14 de outubro","15 de outubro","18 de outubro"],correct:2,rationale:"A informação está explicitamente indicada no aviso."},
+  {id:"q03",domain:"localizar",difficulty:2,stimulus:"COMUNICADO\nA reunião que aconteceria na quarta-feira foi transferida para sexta-feira, às 16h, na mesma sala. Quem não puder comparecer deve avisar a coordenação até quinta-feira ao meio-dia.",prompt:"Quando uma pessoa que não poderá ir à reunião deve avisar a coordenação?",options:["Até quarta-feira às 16h","Até quinta-feira ao meio-dia","Na sexta-feira antes da reunião","Depois da reunião"],correct:1,rationale:"É preciso localizar a condição e o prazo associados ao aviso."},
+  {id:"q04",domain:"localizar",difficulty:2,stimulus:"REGULAMENTO DO EVENTO\nEntrada permitida a partir das 18h.\nCredenciamento encerra às 20h.\nPalestra principal começa às 20h30.",prompt:"Qual informação indica o momento máximo para realizar o credenciamento?",options:["18h","20h","20h30","O regulamento não informa"],correct:1,rationale:"O texto informa diretamente que o credenciamento encerra às 20h."},
+  {id:"q05",domain:"compreender",difficulty:2,stimulus:"Mensagem: 'O curso será mantido amanhã. Porém, como haverá manutenção no prédio, a entrada será feita exclusivamente pela portaria lateral.'",prompt:"Qual é a orientação principal da mensagem?",options:["O curso foi cancelado","O curso mudou de prédio","O curso acontece, mas a entrada será por outra portaria","A manutenção foi adiada"],correct:2,rationale:"A ideia central combina a manutenção do curso com a mudança de acesso."},
+  {id:"q06",domain:"compreender",difficulty:2,stimulus:"Texto: 'A praça passou por uma reforma. Foram instalados bancos, iluminação e brinquedos. A prefeitura informou que a obra buscou tornar o espaço mais seguro e acessível.'",prompt:"Qual frase resume melhor o texto?",options:["A praça deixou de ter brinquedos","A reforma procurou melhorar o uso da praça","A iluminação foi retirada","A prefeitura proibiu o acesso à praça"],correct:1,rationale:"A alternativa sintetiza as mudanças e o objetivo apresentado."},
+  {id:"q07",domain:"compreender",difficulty:3,stimulus:"Texto: 'Embora o número de inscritos tenha aumentado, a organização decidiu manter apenas duas turmas. Por isso, alguns participantes serão chamados para uma lista de espera.'",prompt:"Por que haverá uma lista de espera?",options:["Porque houve poucos inscritos","Porque todas as turmas foram canceladas","Porque a procura aumentou, mas o número de turmas não","Porque os participantes pediram novas datas"],correct:2,rationale:"É necessário compreender a relação entre aumento da procura e oferta mantida."},
+  {id:"q08",domain:"compreender",difficulty:3,stimulus:"Texto: 'A empresa reduziu o consumo de papel depois de digitalizar formulários internos. O resultado foi menor gasto com impressão e mais rapidez para localizar documentos.'",prompt:"Qual relação de causa e consequência aparece no texto?",options:["A digitalização aumentou o gasto com impressão","A redução do papel dificultou localizar documentos","A digitalização contribuiu para reduzir custos e facilitar buscas","A empresa voltou a usar somente documentos impressos"],correct:2,rationale:"O texto liga a digitalização a dois efeitos: menos impressão e busca mais rápida."},
+  {id:"q09",domain:"inferir",difficulty:3,stimulus:"Carlos abriu a porta de casa e viu duas xícaras ainda quentes sobre a mesa. Ele morava sozinho. Antes de entrar, pegou o telefone.",prompt:"Qual conclusão é mais bem sustentada pelo texto?",options:["Carlos tinha acabado de preparar café","Carlos percebeu sinais de que alguém poderia estar na casa","Carlos decidiu vender a casa","Carlos havia convidado duas pessoas para jantar"],correct:1,rationale:"As xícaras quentes em uma casa onde ele mora sozinho sustentam a inferência de presença recente de outra pessoa."},
+  {id:"q10",domain:"inferir",difficulty:3,stimulus:"Texto: 'Marina chegou ao ponto quando o ônibus dobrava a esquina. Olhou o relógio, suspirou e começou a caminhar na direção do metrô.'",prompt:"O que provavelmente aconteceu?",options:["Marina decidiu passear sem destino","Marina perdeu o ônibus e buscou outra opção de transporte","O metrô estava fechado","Marina chegou cedo demais"],correct:1,rationale:"A sequência de ações permite inferir que ela perdeu o ônibus."}
+];
