@@ -19,4 +19,7 @@ footer{padding:44px 0 30px;background:rgba(255,248,230,.38);border-top:1px solid
 @media(max-width:680px){.container{width:min(calc(100% - 28px),var(--max))}.section{padding:66px 0}.hero{padding-top:48px}.hero h1{font-size:clamp(3rem,14vw,4.4rem)}.hero-copy .actions .btn{width:100%}.trust-grid,.pillars,.credibility-grid,.pricing-grid,.experience-grid,.resource-grid,.info-grid{grid-template-columns:1fr}.pricing-grid .price-card:last-child{grid-column:auto;max-width:none}.trust-grid>div{border-right:0;border-bottom:1px solid var(--line)}.trust-grid>div:last-child{border-bottom:0}.experience-card{border-radius:21px}.price-card,.price-card.featured{padding:25px 21px}.price-top{align-items:flex-start}.price-card>p{min-height:0}.price-card li{font-size:.94rem}.cash small{font-size:.88rem}.plan-trust{justify-content:flex-start}.b2b-box{padding:28px}.foot{grid-template-columns:1fr}.legal{font-size:.8rem}.final{padding:78px 0 82px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.experience-card{transition:none}}
 /* Foto vertical da comunidade de livroterapia – 2026-10-21 */
-.community-section .photo-card img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center center}
+.community-section .photo-card{width:100%;align-self:center}
+.community-section .photo-card img{display:block;width:100%;height:clamp(350px,38vw,480px);max-height:480px;aspect-ratio:auto;object-fit:cover;object-position:center 22%}
+@media(max-width:1000px){.community-section .photo-card{max-width:580px;justify-self:center}.community-section .photo-card img{height:clamp(320px,58vw,480px)}}
+@media(max-width:680px){.community-section .photo-card{max-width:100%}.community-section .photo-card img{height:clamp(300px,90vw,440px)}}
